@@ -1,28 +1,101 @@
+![EDY — GOMES — Portfolio de Edmilson Gomes](docs/assets/github/banner.webp)
+
 # EDY — GOMES
 
-Portfólio editorial de Edmilson Gomes, dedicado a projetos de **IT Support**, **Cybersecurity** e **Systems & Automation**.
+Portfólio editorial de **Edmilson Gomes** dedicado a projetos reais de **IT Support**, **Cybersecurity** e **Systems & Automation**.
 
-O site apresenta seis estudos de caso com capturas reais, contexto técnico e navegação narrativa, preservando uma experiência própria para desktop e mobile.
+Uma experiência responsiva, cinematográfica e orientada a case studies — construída para apresentar problemas, decisões técnicas e resultados com clareza.
+
+**[LIVE DEMO](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/)** · **[GITHUB](https://github.com/EDY075/EDY-Portfolio)** · **[LINKEDIN](https://www.linkedin.com/in/edmilsongomes21/)**
+
+## Sobre o projeto
+
+EDY — GOMES é o portfólio pessoal de Edmilson Gomes. O projeto combina direção visual editorial, fotografia aprovada e capturas autênticas de produto para apresentar seis sistemas nas áreas de suporte, segurança, automação e análise.
+
+Desktop e mobile possuem composições próprias. A experiência preserva hierarquia, legibilidade e navegação narrativa em cada formato, sem tratar o mobile como uma simples redução do layout amplo.
+
+## Projetos em destaque
+
+| Projeto | Categoria | Visão geral |
+|---|---|---|
+| [EDY SHADOWCAT](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-shadowcat) | Cybersecurity · Automation | Orquestração modular de reconnaissance, evidências e relatórios. |
+| [EDY VERDICT](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-verdict) | Security Analysis | Avaliação estruturada para decisões baseadas em evidências. |
+| [EDY RECON](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-recon) | OSINT | Coleta e organização de inteligência de fontes abertas. |
+| [EDY ScanURL Family](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-scanurl-family) | Web Security | Análise de URLs e websites com resultados claros e acionáveis. |
+| [EDY HelpDesk](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-helpdesk) | IT Support | Fluxo operacional para tickets, produtividade e conhecimento. |
+| [EDY SOC Analytics](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-soc-analytics) | Security Analytics | Visualização de dados SOC para leitura e investigação mais rápidas. |
+
+## Experiência desktop
+
+Direção visual de alto contraste, tipografia editorial e projetos apresentados com espaço para contexto.
+
+![Home do EDY — GOMES em desktop](docs/assets/github/screenshots/desktop-01-home.webp)
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/assets/github/screenshots/desktop-03-work.webp" alt="Galeria de projetos do EDY — GOMES em desktop"></td>
+    <td width="50%"><img src="docs/assets/github/screenshots/desktop-04-shadowcat.webp" alt="Case study EDY SHADOWCAT em desktop"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Selected Work</sub></td>
+    <td align="center"><sub>Case Study</sub></td>
+  </tr>
+</table>
+
+## Experiência mobile
+
+O mobile recompõe tipografia, retrato, navegação e mídia para `390×844`, mantém scroll nativo e entrega assets responsivos adequados ao viewport.
+
+<p align="center">
+  <img src="docs/assets/github/screenshots/mobile-01-home.webp" alt="Home do EDY — GOMES em mobile" width="31%">
+  <img src="docs/assets/github/screenshots/mobile-03-work.webp" alt="Galeria de projetos do EDY — GOMES em mobile" width="31%">
+  <img src="docs/assets/github/screenshots/mobile-04-shadowcat.webp" alt="Case study EDY SHADOWCAT em mobile" width="31%">
+</p>
 
 ## Stack
 
-- React 19 e TypeScript
-- Vinext/Vite com App Router
-- Tailwind CSS
-- Framer Motion e GSAP
-- Lenis no desktop e rolagem nativa no mobile
-- Cloudflare Workers como runtime de produção
+- React 19 e TypeScript 5.9
+- Vinext 1.0 beta, Vite 8 e App Router
+- Tailwind CSS 4
+- Framer Motion 12
+- GSAP 3 com ScrollTrigger
+- Lenis no desktop; scroll nativo no mobile
+- Cloudflare Workers no ambiente de produção
 
-## Projetos apresentados
+## Motion e UX
 
-- EDY Shadowcat
-- EDY Verdict
-- EDY Recon
-- EDY ScanURL Family
-- EDY HelpDesk
-- EDY SOC Analytics
+- Revelações editoriais e transições de página com Framer Motion.
+- Sequências controladas com GSAP e ScrollTrigger.
+- Lenis restrito ao desktop e a dispositivos de ponteiro preciso.
+- Navegação sequencial com **Next Chapter** e **Next Project**.
+- Hover suspenso durante o momentum de scroll para evitar competição visual.
+- Suporte a `prefers-reduced-motion`, teclado e foco visível.
 
-## Rodar localmente
+## Performance
+
+Último baseline validado em produção:
+
+| Métrica | Desktop | Mobile |
+|---|---:|---:|
+| Lighthouse Performance | **100** | **92** |
+| Largest Contentful Paint | **646 ms** | **3,114 s** |
+| Accessibility | **100** | **100** |
+| Best Practices | **100** | **100** |
+| SEO | **100** | **100** |
+| Cumulative Layout Shift | **0** | **0** |
+
+O perfil de rolagem validado registrou **0 long tasks**.
+
+## Qualidade e validação
+
+- 11/11 rotas públicas verificadas.
+- 0 vulnerabilidades conhecidas em dependências de produção no baseline validado.
+- Auditoria de segredos e headers de segurança: PASS.
+- QA visual desktop e mobile: PASS.
+- Teste físico em Poco X5 Pro: PASS.
+- Viewports cobertos: `390×844`, `430×932`, `1440×900`, `1920×1080` e `2560×1440`.
+
+## Desenvolvimento local
 
 Requisitos: Node.js 22.13 ou superior.
 
@@ -31,7 +104,7 @@ npm ci
 npm run dev
 ```
 
-Abra a URL exibida pelo servidor. Para executar os gates locais:
+Use a URL exibida pelo servidor. Gates locais disponíveis:
 
 ```bash
 npm run lint
@@ -40,34 +113,27 @@ npm run build
 npm audit --omit=dev
 ```
 
-O build oficial gera um Worker Vinext em `dist/server/` e os assets públicos em `dist/client/`.
+## Estrutura do projeto
 
-## Produção
+```text
+app/          rotas, layouts e metadata
+components/   interface, navegação e motion
+data/         textos, projetos, bio e links
+lib/          SEO, GSAP, scroll e utilitários
+public/       retratos e assets responsivos do site
+docs/         documentação e apresentação do repositório
+```
 
-O código oficial vive neste repositório e a produção utiliza Cloudflare Workers:
-
-- https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev
-
-`SITE_URL` deve receber essa URL, sem barra final, durante o build de produção para gerar canonical, Open Graph, robots e sitemap com endereços absolutos corretos. O deploy usa o arquivo gerado `dist/server/wrangler.json`.
-
-## Onde editar
+## Editando conteúdo
 
 - Textos gerais, localização e links: `data/site.ts`
-- Conteúdo dos projetos e cases: `data/projects.ts`
+- Projetos e case studies: `data/projects.ts`
 - Biografia, valores e capacidades: `data/about.ts`
-- Retratos responsivos: `public/images/` e `public/images/optimized/`
+- Retratos e imagens responsivas: `public/images/`
 - Estilos e tokens: `app/globals.css`
-- Metadados globais: `app/layout.tsx`
+- Metadata global: `app/layout.tsx`
 
-## Rotas
+## Documentação
 
-- `/` — Home
-- `/about` — Perfil e princípios
-- `/work` — Galeria completa
-- `/work/[slug]` — Case study dinâmico
-- `/capabilities` — Capacidades
-- `/contact` — Contato
-
-## Imagens de projetos
-
-As capturas reais ficam em `public/images/projects/`; as variantes AVIF/WebP responsivas são geradas em `public/images/optimized/` pelos scripts do projeto.
+- [Aprendizados do projeto](docs/PROJECT_LEARNINGS.md)
+- [Playbook de design, motion, performance e QA](docs/CODEX_WEB_PROJECT_MEMORY.md)
