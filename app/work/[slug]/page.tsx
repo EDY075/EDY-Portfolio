@@ -1,10 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { SiteFrame } from '@/components/SiteFrame';
 import { PageReveal } from '@/components/PageReveal';
 import { getProject, projects } from '@/data/projects';
+import { ImageReveal } from '@/components/motion/ImageReveal';
+import { ProjectVisual } from '@/components/ProjectVisual';
+import { NextChapter } from '@/components/NextChapter';
+import { pageSocialMetadata } from '@/lib/seo';
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -14,7 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  return { title: project.title, description: project.summary };
+  const image = project.caseImage ?? project.image;
+  return {
+    title: project.title,
+    description: project.summary,
+    ...pageSocialMetadata(`/work/${project.slug}`, `${project.title} — EDY GOMES`, project.summary, image),
+  };
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -22,21 +31,22 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = getProject(slug);
   if (!project) notFound();
   const current = projects.findIndex((item) => item.slug === project.slug);
-  const next = projects[(current + 1) % projects.length];
+  const next = projects[current + 1];
 
   return (
     <SiteFrame>
       <main className="case-page">
-        <section className="case-hero">
+        <section className={`case-hero case-hero-${project.slug}`}>
           <p className="page-kicker"><span>{project.number} / CASE STUDY</span><span>{project.keywords.join(' / ')}</span></p>
-          <Link href="/work" className="back-link"><ArrowLeft aria-hidden="true" /> All work</Link>
+          <Link href="/work" prefetch={false} className="back-link"><ArrowLeft aria-hidden="true" /> All work</Link>
           <PageReveal><h1><small>EDY</small>{project.displayTitle}</h1></PageReveal>
           <PageReveal className="case-subtitle"><p>{project.subtitle}</p></PageReveal>
-          <div className={`case-art project-art project-art-${current + 1}`} aria-label={`Visual abstrato do projeto ${project.title}`} role="img">
-            <div className="case-rings" aria-hidden="true" />
-            <span>{project.title}</span>
-            <p>{project.keywords.join(' · ')}</p>
-          </div>
+          <ImageReveal className={`case-art case-art-real project-art project-art-real project-art-${current + 1}`}>
+            <ProjectVisual
+              image={project.caseImage ?? project.image}
+              sizes="(max-width: 900px) 90vw, 58vw"
+            />
+          </ImageReveal>
         </section>
 
         <section className="case-overview section-pad">
@@ -65,11 +75,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <PageReveal><span className="section-index">06 / OUTCOME</span><blockquote>{project.outcome}</blockquote></PageReveal>
         </section>
 
-        <section className="next-project section-pad">
-          <span>Next case study</span>
-          <Link href={`/work/${next.slug}`}><strong>{next.title}</strong><ArrowUpRight aria-hidden="true" /></Link>
-          <Link href="/contact" className="text-link">Start a conversation <ArrowRight aria-hidden="true" /></Link>
-        </section>
+        <NextChapter
+          eyebrow={next ? 'PRÓXIMO PROJETO' : 'VER TODOS OS PROJETOS'}
+          number={next?.number}
+          title={next ? next.title : 'ALL WORK'}
+          subtitle={next?.subtitle}
+          href={next ? `/work/${next.slug}` : '/work'}
+        />
       </main>
     </SiteFrame>
   );

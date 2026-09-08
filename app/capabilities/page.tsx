@@ -2,10 +2,13 @@ import type { Metadata } from 'next';
 import { SiteFrame } from '@/components/SiteFrame';
 import { PageReveal } from '@/components/PageReveal';
 import { capabilities } from '@/data/about';
+import { TextReveal } from '@/components/motion/TextReveal';
+import { pageSocialMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Capabilities',
+  title: 'Competências',
   description: 'Capacidades de Edmilson Gomes em suporte, segurança, sistemas, automação, dados e documentação.',
+  ...pageSocialMetadata('/capabilities', 'Competências — EDY GOMES', 'Capacidades de Edmilson Gomes em suporte, segurança, sistemas, automação, dados e documentação.'),
 };
 
 export default function CapabilitiesPage() {
@@ -13,15 +16,12 @@ export default function CapabilitiesPage() {
     <SiteFrame>
       <main className="capabilities-page">
         <section className="capabilities-hero">
-          <p className="page-kicker"><span>03 / CAPABILITIES</span><span>Technology that works for people</span></p>
-          <PageReveal>
-            <h1>
-              {capabilities.map((capability, index) => (
-                <span key={capability.title} className={index % 2 ? 'capability-offset' : ''}>{capability.title}</span>
-              ))}
-            </h1>
-          </PageReveal>
-          <p className="capability-quote">Solve. Organize.<br />Automate. Improve.</p>
+          <p className="page-kicker"><span>03 / COMPETÊNCIAS</span><span>Tecnologia que funciona para pessoas</span></p>
+          <TextReveal
+            ariaLabel="IT Support, Cybersecurity, Systems, Automation, Data and Analysis, Documentation"
+            lines={capabilities.map((capability, index) => <span key={capability.title} className={index % 2 ? 'capability-offset' : ''}>{capability.title}</span>)}
+          />
+          <p className="capability-quote">Resolver. Organizar.<br />Automatizar. Melhorar.</p>
         </section>
         <section className="capability-details">
           {capabilities.map((capability, index) => (

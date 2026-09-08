@@ -10,10 +10,10 @@ export const about = {
 };
 
 export const capabilities = [
-  { title: 'IT SUPPORT', items: ['Troubleshooting', 'Hardware & Software', 'User Assistance', 'System Maintenance'] },
-  { title: 'CYBERSECURITY', items: ['Threat Awareness', 'Access Management', 'Incident Support', 'Evidence Handling'] },
-  { title: 'SYSTEMS', items: ['System Organization', 'Infrastructure Support', 'Network Fundamentals', 'Performance Monitoring'] },
-  { title: 'AUTOMATION', items: ['Workflow Automation', 'Scripting & Tools', 'Process Optimization', 'Time Efficiency'] },
-  { title: 'DATA & ANALYSIS', items: ['Data Organization', 'Reporting', 'Insight Generation', 'Problem Solving'] },
-  { title: 'DOCUMENTATION', items: ['Technical Documentation', 'Process Guides', 'Knowledge Bases', 'Clear Communication'] },
+  { title: 'SUPORTE DE TI', items: ['Solução de problemas', 'Hardware e software', 'Atendimento ao usuário', 'Manutenção de sistemas'] },
+  { title: 'CIBERSEGURANÇA', items: ['Conscientização de ameaças', 'Gestão de acessos', 'Suporte a incidentes', 'Tratamento de evidências'] },
+  { title: 'SISTEMAS', items: ['Organização de sistemas', 'Suporte à infraestrutura', 'Fundamentos de redes', 'Monitoramento de desempenho'] },
+  { title: 'AUTOMAÇÃO', items: ['Automação de fluxos', 'Scripts e ferramentas', 'Otimização de processos', 'Eficiência de tempo'] },
+  { title: 'DADOS & ANÁLISE', items: ['Organização de dados', 'Relatórios', 'Geração de insights', 'Solução de problemas'] },
+  { title: 'DOCUMENTAÇÃO', items: ['Documentação técnica', 'Guias de processos', 'Bases de conhecimento', 'Comunicação clara'] },
 ] as const;

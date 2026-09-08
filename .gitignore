@@ -10,6 +10,9 @@
 
 # testing
 /coverage
+/playwright-report/
+/test-results/
+/.lighthouseci/
 
 # next.js
 /.next/
@@ -19,6 +22,10 @@
 # misc
 .DS_Store
 *.pem
+*.log
+/tmp/
+/temp/
+/.cache/
 
 # debug
 npm-debug.log*
@@ -28,12 +35,16 @@ yarn-error.log*
 
 # local environment
 .env*
+!.env.example
 
 # deployment and generated files
 .vercel
 next-env.d.ts
 /dist/
 /.wrangler/
+/.dev.vars*
 /outputs/
 /work/
+/.qa-chrome/
+/artifacts/
 *.tsbuildinfo

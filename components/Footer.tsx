@@ -6,12 +6,12 @@ export function Footer() {
     <footer className="footer">
       <div>
         <p className="eyebrow">EDY — GOMES</p>
-        <p className="footer-cta">Ideas become useful<br />when they become real.</p>
+        <p className="footer-cta">Ideias se tornam úteis<br />quando se tornam reais.</p>
       </div>
       <div className="footer-links">
-        <Link href="/work">Selected work</Link>
-        <Link href="/about">About Edy</Link>
-        <Link href="/contact">Get in touch</Link>
+        <Link href="/work" prefetch={false}>Projetos</Link>
+        <Link href="/about" prefetch={false}>Sobre Edy</Link>
+        <Link href="/contact" prefetch={false}>Entrar em contato</Link>
       </div>
       <div className="footer-meta">
         <span>{site.name}</span>

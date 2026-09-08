@@ -1,32 +1,59 @@
 # EDY — GOMES
 
-Portfólio pessoal editorial de Edmilson Gomes, criado com Next.js (App Router), TypeScript, Tailwind CSS, Framer Motion e `next/image`.
+Portfólio editorial de Edmilson Gomes, dedicado a projetos de **IT Support**, **Cybersecurity** e **Systems & Automation**.
+
+O site apresenta seis estudos de caso com capturas reais, contexto técnico e navegação narrativa, preservando uma experiência própria para desktop e mobile.
+
+## Stack
+
+- React 19 e TypeScript
+- Vinext/Vite com App Router
+- Tailwind CSS
+- Framer Motion e GSAP
+- Lenis no desktop e rolagem nativa no mobile
+- Cloudflare Workers como runtime de produção
+
+## Projetos apresentados
+
+- EDY Shadowcat
+- EDY Verdict
+- EDY Recon
+- EDY ScanURL Family
+- EDY HelpDesk
+- EDY SOC Analytics
 
 ## Rodar localmente
 
 Requisitos: Node.js 22.13 ou superior.
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-Abra `http://localhost:3000`. Para validar a versão de produção:
+Abra a URL exibida pelo servidor. Para executar os gates locais:
 
 ```bash
+npm run lint
+npm run typecheck
 npm run build
+npm audit --omit=dev
 ```
+
+O build oficial gera um Worker Vinext em `dist/server/` e os assets públicos em `dist/client/`.
+
+## Produção
+
+O código oficial vive neste repositório e a produção utiliza Cloudflare Workers. A URL pública estável será registrada aqui após o primeiro deploy validado.
 
 ## Onde editar
 
 - Textos gerais, localização e links: `data/site.ts`
 - Conteúdo dos projetos e cases: `data/projects.ts`
 - Biografia, valores e capacidades: `data/about.ts`
-- Retrato principal: substitua `public/images/edy-portrait.png`, mantendo o mesmo nome, ou atualize o caminho em `components/HeroPortrait.tsx`
+- Retratos responsivos: `public/images/` e `public/images/optimized/`
 - Estilos e tokens: `app/globals.css`
 - Metadados globais: `app/layout.tsx`
-
-Os placeholders `SEU_EMAIL_AQUI` e `SEU_LINKEDIN_AQUI` aparecem de forma segura como campos ainda não publicados. Basta trocá-los em `data/site.ts` para ativar os links.
 
 ## Rotas
 
@@ -39,4 +66,4 @@ Os placeholders `SEU_EMAIL_AQUI` e `SEU_LINKEDIN_AQUI` aparecem de forma segura 
 
 ## Imagens de projetos
 
-Os blocos dos projetos usam uma direção abstrata criada em CSS para evitar mockups falsos. Quando houver screenshots reais, coloque-os em `public/images/projects/` e associe cada arquivo ao projeto correspondente em `data/projects.ts`.
+As capturas reais ficam em `public/images/projects/`; as variantes AVIF/WebP responsivas são geradas em `public/images/optimized/` pelos scripts do projeto.

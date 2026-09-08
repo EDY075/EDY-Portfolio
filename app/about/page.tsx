@@ -4,10 +4,13 @@ import { HeroPortrait } from '@/components/HeroPortrait';
 import { PageReveal } from '@/components/PageReveal';
 import { about } from '@/data/about';
 import { site } from '@/data/site';
+import { TextReveal } from '@/components/motion/TextReveal';
+import { pageSocialMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'About Edy',
+  title: 'Sobre Edy',
   description: 'Conheça Edmilson Gomes, sua abordagem prática e sua visão sobre tecnologia útil.',
+  ...pageSocialMetadata('/about', 'Sobre Edy — EDY GOMES', 'Conheça Edmilson Gomes, sua abordagem prática e sua visão sobre tecnologia útil.'),
 };
 
 export default function AboutPage() {
@@ -15,8 +18,8 @@ export default function AboutPage() {
     <SiteFrame>
       <main>
         <section className="editorial-hero about-hero">
-          <div className="page-kicker"><span>01 / PROFILE</span><span>Discipline turns ideas into reality</span></div>
-          <h1>ABOUT <em>EDY</em></h1>
+          <div className="page-kicker"><span>01 / PERFIL</span><span>Disciplina transforma ideias em realidade</span></div>
+          <TextReveal className="about-motion-title" ariaLabel="Sobre Edy" lines={['SOBRE', <em key="edy">EDY</em>]} />
           <HeroPortrait className="about-portrait" priority />
           <div className="about-lead">
             <p>{about.intro}</p>
@@ -27,15 +30,17 @@ export default function AboutPage() {
         <section className="about-story section-pad">
           <PageReveal className="story-index"><span>WHO / WHY / HOW</span></PageReveal>
           <PageReveal className="story-copy">
-            <p>{about.body}</p>
-            <aside>Practical systems.<br />Clear outcomes.<br />Useful technology.</aside>
+            <div className="story-prose">
+              {about.body.split(/(?<=\.)\s+/).map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+            <aside>Sistemas práticos.<br />Resultados claros.<br />Tecnologia útil.</aside>
           </PageReveal>
         </section>
 
         <section className="values-section section-pad">
           <PageReveal className="values-heading">
-            <span className="section-index">02 / PRINCIPLES</span>
-            <h2>What stays<br /><em>constant.</em></h2>
+            <span className="section-index">02 / PRINCÍPIOS</span>
+            <h2>O que<br /><em>permanece.</em></h2>
           </PageReveal>
           <div className="values-grid">
             {about.values.map((value, index) => (

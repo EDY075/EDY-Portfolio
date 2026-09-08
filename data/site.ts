@@ -5,19 +5,18 @@ export const site = {
   description:
     'Portfólio de Edmilson Gomes: tecnologia útil, sistemas seguros e automação com propósito.',
   location: 'São Paulo — BR',
-  disciplines: ['IT Support', 'Cybersecurity', 'Systems & Automation'],
+  disciplines: ['Suporte de TI', 'Cibersegurança', 'Sistemas & Automação'],
   contact: {
-    email: 'SEU_EMAIL_AQUI',
+    email: 'edmilsongsousa20@gmail.com',
     github: 'https://github.com/EDY075',
-    linkedin: 'SEU_LINKEDIN_AQUI',
+    linkedin: 'https://www.linkedin.com/in/edmilsongomes21/',
     location: 'São Paulo — BR',
   },
   navigation: [
-    { label: 'Work', href: '/work' },
-    { label: 'About', href: '/about' },
-    { label: 'Projects', href: '/work' },
-    { label: 'Capabilities', href: '/capabilities' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Projetos', href: '/work' },
+    { label: 'Sobre', href: '/about' },
+    { label: 'Competências', href: '/capabilities' },
+    { label: 'Contato', href: '/contact' },
   ],
 } as const;
 

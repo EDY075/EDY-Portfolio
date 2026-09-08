@@ -46,9 +46,18 @@ export default defineConfig(async () => {
 
   return {
     css: { postcss: { plugins: [tailwindcss()] } },
-    server: isCodexSeatbeltSandbox
-      ? { watch: { useFsEvents: false, usePolling: true } }
-      : undefined,
+    optimizeDeps: { exclude: ['lucide-react'] },
+    environments: {
+      rsc: { optimizeDeps: { exclude: ['lucide-react'] } },
+    },
+    server: {
+      watch: {
+        ignored: ['**/.qa-chrome/**', '**/artifacts/**', '**/work/**', '**/outputs/**'],
+        ...(isCodexSeatbeltSandbox
+          ? { useFsEvents: false, usePolling: true }
+          : {}),
+      },
+    },
     plugins: [
       vinext(),
       sites(),
