@@ -44,7 +44,11 @@ O build oficial gera um Worker Vinext em `dist/server/` e os assets públicos em
 
 ## Produção
 
-O código oficial vive neste repositório e a produção utiliza Cloudflare Workers. A URL pública estável será registrada aqui após o primeiro deploy validado.
+O código oficial vive neste repositório e a produção utiliza Cloudflare Workers:
+
+- https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev
+
+`SITE_URL` deve receber essa URL, sem barra final, durante o build de produção para gerar canonical, Open Graph, robots e sitemap com endereços absolutos corretos. O deploy usa o arquivo gerado `dist/server/wrangler.json`.
 
 ## Onde editar
 
