@@ -10,13 +10,7 @@ Uma experiência responsiva, cinematográfica e orientada a case studies — con
 
 ## Apresentação em vídeo
 
-[![Assista à apresentação do portfólio EDY — desktop e celular](docs/assets/github/video/portfolio-preview.jpg)](https://github.com/EDY075/EDY-Portfolio/releases/download/portfolio-media-2026-10-02/edy-portfolio-desktop-4k.mp4)
-
-**Clique na capa para abrir ou baixar o vídeo desktop em 4K.** A apresentação tem 20 segundos, textos em português, trilha cinematográfica e telas reais do portfólio.
-
-**[Desktop 4K · 16:9](https://github.com/EDY075/EDY-Portfolio/releases/download/portfolio-media-2026-10-02/edy-portfolio-desktop-4k.mp4)** · **[Instagram · 9:16](https://github.com/EDY075/EDY-Portfolio/releases/download/portfolio-media-2026-10-02/edy-portfolio-instagram.mp4)** · **[Todos os formatos, capas e legenda](https://github.com/EDY075/EDY-Portfolio/releases/tag/portfolio-media-2026-10-02)**
-
-Trilha: “Dreams Become Real” — Kevin MacLeod ([Incompetech](https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500027)), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Trecho editado, com ajuste de volume e fades. [Detalhes e créditos](docs/assets/github/video/README.md).
+https://github.com/user-attachments/assets/7668f4da-9530-4102-8719-9fa3e71c3e60
 
 ## Sobre o projeto
 

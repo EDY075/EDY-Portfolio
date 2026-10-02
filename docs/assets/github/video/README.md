@@ -15,7 +15,7 @@ Os MP4s ficam nos assets da [release de apresentação](https://github.com/EDY07
 
 Todos têm 20 segundos, 30 fps, H.264 e AAC estéreo. A composição e a tipografia foram renderizadas em 4K; screenshots e gravações mantêm o detalhe disponível na fonte real. O layout vertical foi reorganizado para leitura no celular.
 
-`portfolio-preview.jpg` é uma cópia da capa desktop escolhida em uma cena estabilizada do vídeo. A capa mostra a exploração de projetos no desktop e a interface real mobile. No README principal, ela funciona como link para o MP4. A reprodução pode ocorrer no navegador ou após download, conforme o aplicativo utilizado.
+O README principal contém apenas o player nativo do GitHub, via anexo de vídeo: https://github.com/user-attachments/assets/7668f4da-9530-4102-8719-9fa3e71c3e60. A cópia para reprodução tem 3840 × 2160, 20 segundos e aproximadamente 5 MB, codificada em H.264 para respeitar o limite de anexos. A trilha foi copiada sem recodificação. Os masters aprovados permanecem na release. `portfolio-preview.jpg` continua arquivada como capa real da apresentação.
 
 ## Música e atribuição
 
