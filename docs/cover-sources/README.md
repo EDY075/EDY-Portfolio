@@ -21,3 +21,6 @@ Para regenerar as capas, execute `node scripts/build-project-covers.mjs` com as 
 Atualização da entrada: `war-room-entrance-2026-10-03.png` é captura real da hero revisada em viewport 1440 × 900, DPR 2 (2880 × 1800), sem alterar a interface para exportar. As novas variantes `war-room-entrance-{640,1080,1600}.webp` usam resolução suficiente para reduzir sem ampliar. O novo nome de arquivo evita reutilizar uma capa anterior em cache. As imagens internas de mapa/narração permanecem as já verificadas.
 
 Capturas reais do projeto de Edmilson Gomes: página inicial, cartografia e player de narração do NotPetya. Originais: `WAR_ROOM/assets/screenshots/experience/hero-desktop.png`, `map-desktop.png` e `WAR_ROOM/assets/screenshots/narration/notpetya-desktop.png`. As variantes WebP apenas redimensionam/comprimem as capturas; não são reconstituições. [Projeto e créditos](https://github.com/EDY075/WAR_ROOM).
+
+
+Entrada galáctica: `war-room-galaxy-2026-10-03.png` é captura real em DPR 2 (2880×1800) da hero publicada em WAR ROOM `648ef97`, com galáxia ilustrativa identificada como IA e rede interativa. Novas variantes WebP 640/1080/1600 recebem nome próprio para invalidar a capa anterior em cache. A captura não altera layout/conteúdo, só remove foco via clique em espaço livre. Demais cases, mapa/narração e o pacote promocional anterior ficam preservados.
