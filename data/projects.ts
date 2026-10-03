@@ -151,6 +151,28 @@ export const featuredProjects: Project[] = [
 
 export const technicalProjects: Project[] = [
   {
+    slug: 'war-room', title: 'WAR ROOM', displayTitle: 'WAR ROOM',
+    subtitle: 'Investigação histórica em uma experiência documental.',
+    summary: 'Experiência cinematográfica sobre incidentes e conflitos cibernéticos. Reúne 17 dossiês em seis capítulos cada, cartografia, análise, referências públicas e cerca de 42 minutos de narração baseada na voz do autor, com síntese autorizada.',
+    status: 'Publicado no GitHub Pages; 17 dossiês e 102 capítulos com leitura e áudio.',
+    keywords: ['Documentário', 'Threat Intelligence', 'Web'],
+    features: ['17 dossiês e 102 capítulos documentais', 'Abas de resumo, história, análise, mídia e fontes', 'Busca, filtros, mapa e cronologia sincronizados', 'Links diretos e contexto restaurado no histórico', 'Narração autorizada por episódio ou capítulo', 'Leitura independente de áudio e efeitos reduzidos'],
+    stack: ['HTML', 'CSS', 'JavaScript', 'Canvas', 'GitHub Pages'],
+    problem: 'Uma coleção de incidentes precisa conectar contexto, fontes e consequências sem fragmentar a leitura ou perder a clareza sobre atribuições e estimativas.',
+    solution: 'Um dossiê com cinco abas organiza a investigação. Os seis capítulos têm avanço manual, imagens creditadas e mapas de contexto; a navegação preserva seleção, filtros e histórico.',
+    outcome: 'Os 17 casos têm leitura completa e narração prolongada com síntese autorizada da voz do autor. A mídia carrega por escolha, e efeitos reduzidos interrompem os loops decorativos. É um arquivo histórico e educacional, sem telemetria ao vivo.',
+    links: [
+      { label: 'Explorar WAR ROOM', href: 'https://edy075.github.io/WAR_ROOM/' },
+      { label: 'Ouvir os 17 casos', href: 'https://edy075.github.io/WAR_ROOM/assets/media/narrations/' },
+      { label: 'Ver código', href: 'https://github.com/EDY075/WAR_ROOM' },
+    ],
+    image: { src: '/images/projects/covers/war-room-1600.webp', alt: 'Página inicial real do WAR ROOM com identidade preto e dourado', width: 1600, height: 1000 },
+    caseImage: { src: '/images/projects/cases/war-room-map.webp', alt: 'Mapa investigativo do WAR ROOM com cartografia e seleção de dossiês', width: 1440, height: 900, fit: 'contain' },
+    caseImageTitle: 'Cartografia e investigação',
+    caseImageContext: 'Captura da interface. Os pontos situam o contexto geográfico dos casos; não representam telemetria nem rotas comprovadas de propagação.',
+    caseGallery: [{ title: 'Episódios narrados', caption: 'Player real do dossiê NotPetya. Todos os 17 casos têm áudio prolongado e por capítulo, com síntese autorizada baseada na voz do autor e referências para leitura.', image: { src: '/images/projects/cases/war-room-narration.webp', alt: 'Player de narração prolongada do NotPetya na aba Mídia', width: 1440, height: 900, fit: 'contain' } }],
+  },
+  {
     slug: 'edy-verdict', title: 'EDY VERDICT', displayTitle: 'VERDICT',
     subtitle: 'Verificação de segurança local para Windows.',
     summary: 'Workbench local para verificar repositórios, arquivos, binários, aplicativos instalados e URLs de forma passiva. Os resultados registram evidência, cobertura, risco, confiança e proveniência.',

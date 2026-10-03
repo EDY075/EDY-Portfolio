@@ -14,7 +14,7 @@ https://github.com/user-attachments/assets/7668f4da-9530-4102-8719-9fa3e71c3e60
 
 ## Sobre o projeto
 
-EDY — GOMES é o portfólio pessoal de Edmilson Gomes. O projeto combina direção visual editorial, fotografia aprovada e capturas autênticas de produto para apresentar seis sistemas nas áreas de suporte, segurança, automação e análise.
+EDY — GOMES é o portfólio pessoal de Edmilson Gomes. O projeto combina direção visual editorial, fotografia aprovada e capturas autênticas de produto para apresentar doze cases nas áreas de suporte, segurança, automação e análise.
 
 Desktop e mobile possuem composições próprias. A experiência preserva hierarquia, legibilidade e navegação narrativa em cada formato, sem tratar o mobile como uma simples redução do layout amplo.
 
@@ -22,6 +22,7 @@ Desktop e mobile possuem composições próprias. A experiência preserva hierar
 
 | Projeto | Categoria | Visão geral |
 |---|---|---|
+| [WAR ROOM](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/war-room) | Documentário · Threat Intelligence | 17 dossiês, 102 capítulos, cartografia e narração autorizada baseada na voz do autor. |
 | [EDY SHADOWCAT](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-shadowcat) | Cybersecurity · Automation | Orquestração modular de reconnaissance, evidências e relatórios. |
 | [EDY VERDICT](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-verdict) | Security Analysis | Avaliação estruturada para decisões baseadas em evidências. |
 | [EDY RECON](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-recon) | OSINT | Coleta e organização de inteligência de fontes abertas. |
@@ -77,7 +78,7 @@ O mobile recompõe tipografia, retrato, navegação e mídia para `390×844`, ma
 
 ## Performance
 
-Último baseline validado em produção:
+Baseline histórico anterior à integração do WAR ROOM (não mede a atualização de 03/10/2026):
 
 | Métrica | Desktop | Mobile |
 |---|---:|---:|
@@ -91,6 +92,8 @@ O mobile recompõe tipografia, retrato, navegação e mídia para `390×844`, ma
 O perfil de rolagem validado registrou **0 long tasks**.
 
 ## Qualidade e validação
+
+Os itens abaixo pertencem ao baseline anterior. A validação da publicação atual está registrada em [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 - 11/11 rotas públicas verificadas.
 - 0 vulnerabilidades conhecidas em dependências de produção no baseline validado.

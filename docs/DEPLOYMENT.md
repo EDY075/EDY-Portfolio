@@ -40,3 +40,11 @@ O pacote usa os arquivos de `dist/`; `.next`, `.vinext`, `.wrangler`, `node_modu
 ```
 
 `--keep-vars` preserva variáveis já definidas no painel. Após a publicação, conferir a página inicial, projetos, cases, navegação por toque e teclado, `robots.txt`, `sitemap.xml`, canonical e os links externos. Um domínio personalizado pode ser ligado depois no Cloudflare; gere novo build com `SITE_URL` do domínio antes de apontar o link de bio para ele.
+
+## Integração WAR ROOM · 03/10/2026
+
+Publicação solicitada explicitamente pelo proprietário. O checkout oficial já tinha alterações e o runtime publicado de onze cases; foi preservado sem reset, stash ou edições. A integração é preparada no worktree `codex/portfolio-war-room-release`, baseado em `origin/main` e preservando também os commits remotos de README/vídeo. O runtime já publicado é registrado primeiro para evitar regressão ao publicar esta atualização.
+
+WAR ROOM entra como o décimo segundo case, na pesquisa e na galeria 3D, com duas capturas reais, capa responsiva 640/1080/1600, links para GitHub, GitHub Pages e os 17 episódios narrados. Não cria serviço ou dependência nova. Build com o SITE_URL atual, lint, tipagem, ensaio Wrangler, capas em cinco formatos, galerias dos 12 cases em desktop/390/320, transição, navegação por teclado, Escape/foco e sitemap/noindex passaram em Edge headless. Chrome DevTools MCP não estava disponível; Playwright/Edge foi a ferramenta de navegador real.
+
+Deployment em preparação; confirmar versão e endereço público antes de registrar sucesso. Os números Lighthouse anteriores são históricos, sem nova medição desta integração.

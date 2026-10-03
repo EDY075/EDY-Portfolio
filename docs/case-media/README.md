@@ -17,3 +17,7 @@ As imagens em `public/images/projects/cases/` são versões WebP otimizadas. `no
 | Assistente Personalizado | `assistant-fichas-illustration.webp` e `assistant-documents-illustration.webp` | `social/assistente-personalizado-7x7-2026-09/export/feed-03-fichas.png` e `feed-05-documentos.png` | Artes ilustrativas com dados fictícios; não são capturas da conversa privada. |
 
 As galerias têm duas imagens por case. Nenhum repositório privado, registro real de treino ou demonstração não publicada foi incluído. As legendas públicas em `data/projects.ts` registram o contexto de cada captura.
+
+## WAR ROOM · 03/10/2026
+
+Capturas reais do projeto de Edmilson Gomes: página inicial, cartografia e player de narração do NotPetya. Originais: `WAR_ROOM/assets/screenshots/experience/hero-desktop.png`, `map-desktop.png` e `WAR_ROOM/assets/screenshots/narration/notpetya-desktop.png`. As variantes WebP apenas redimensionam/comprimem as capturas; não são reconstituições. [Projeto e créditos](https://github.com/EDY075/WAR_ROOM).

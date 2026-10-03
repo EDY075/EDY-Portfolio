@@ -15,3 +15,7 @@ As imagens desta pasta documentam a origem das capas em `public/images/projects/
 HelpDesk, Shield e SIEM usam capturas reais já presentes no portfólio. As composições editoriais colocam essas capturas em um quadro com título e cor; os painéis originais continuam disponíveis dentro dos cases.
 
 Para regenerar as capas, execute `node scripts/build-project-covers.mjs` com as dependências instaladas. A imagem de contato é salva em `outputs/project-covers-contact-sheet.png`.
+
+## WAR ROOM · 03/10/2026
+
+Capturas reais do projeto de Edmilson Gomes: página inicial, cartografia e player de narração do NotPetya. Originais: `WAR_ROOM/assets/screenshots/experience/hero-desktop.png`, `map-desktop.png` e `WAR_ROOM/assets/screenshots/narration/notpetya-desktop.png`. As variantes WebP apenas redimensionam/comprimem as capturas; não são reconstituições. [Projeto e créditos](https://github.com/EDY075/WAR_ROOM).
