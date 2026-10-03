@@ -2,7 +2,7 @@
 
 O checkout oficial é `D:\EDY-Projects\EDY-Portfolio`. O site foi publicado no Cloudflare Workers em 28/09/2026 como `edy-gomes-portfolio`, na URL `https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/`. Para a prévia local, inicie `npm run dev` e use a URL exibida pelo servidor.
 
-Versão pública atual verificada: `5a5bc460-a0b5-4bb6-a58d-a13eb80211dc` (03/10/2026). Versão anterior preservada no histórico: `4657e186-a92f-4579-9127-0919f03660ea` (02/10/2026).
+Versão pública atual verificada: `7f40d6c8-619f-470f-b6f7-f089745dc59d` (03/10/2026). Versão anterior preservada no histórico: `4657e186-a92f-4579-9127-0919f03660ea` (02/10/2026).
 
 ## Estado e próximas decisões
 
@@ -52,3 +52,7 @@ Publicado no Worker existente: `5a5bc460-a0b5-4bb6-a58d-a13eb80211dc`, fonte de 
 Conferência pós-deploy concluída no endereço público: navegação para o novo case, três links corretos, canonical e sitemap com WAR ROOM, `noindex`/exclusão dos dois cases privados, teclado, Escape/foco, galeria 3D, 12 galerias em desktop/390/320, transição, decodificação das imagens e hashes SHA-256 das cinco variantes novas no navegador. O acesso por urllib foi bloqueado por HTTP 403 do Cloudflare; a conferência real no Edge passou, sem contornar a proteção. Capturas atuais em `docs/assets/github/screenshots/war-room-case-desktop.webp` e `war-room-case-mobile.webp`. Os 276 arquivos de runtime do checkout original mantêm zero diferenças SHA-256. Logs/saídas/cache permanecem ignorados.
 
 Os números Lighthouse anteriores são históricos, sem nova medição desta integração. Não há teste novo em aparelho físico.
+
+### Transição do novo case · publicação final
+
+O WAR ROOM foi registrado no mapa existente de nomes da transição de páginas, com capa ao abrir e posição inicial restaurada, mantendo as demais rotas. Runtime `dac04fc`, Worker `7f40d6c8-619f-470f-b6f7-f089745dc59d`; a versão `5a5bc460-a0b5-4bb6-a58d-a13eb80211dc` é o primeiro deploy desta integração. Lint, tipagem, rebuild e dry-run passaram. O preview Wrangler local foi encerrado antes do rebuild: no Windows, seu processo mantinha `dist` ocupado e causava EPERM. A suíte específica agora confere a transição real em desktop/mobile, além da integração, galeria 3D, teclado/foco, metadados e imagens.
