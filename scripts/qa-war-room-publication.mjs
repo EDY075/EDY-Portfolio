@@ -17,6 +17,7 @@ try {
     const caseLink = page.locator('.project-entry a[href="/work/war-room"]').first();
     await caseLink.click();
     await page.waitForURL('**/work/war-room');
+    await page.locator('.page-transition-content[data-navigation-ready="true"]').waitFor();
     await page.locator('.case-art img').evaluate(image => image.decode());
     await page.waitForFunction(() => getComputedStyle(document.querySelector('.site-nav .nav-primary a')).color === 'rgb(217, 215, 204)');
     assert.equal(await page.locator('h1').innerText(), 'WAR ROOM');
@@ -54,6 +55,19 @@ try {
       assert.match(await page.locator('meta[name="robots"]').getAttribute('content'), /noindex/);
     }
     console.log(`PASS: WAR ROOM integration, keyboard, gallery, Escape/focus and metadata ${name} at ${base}`);
+    await context.close();
+  }
+  for (const width of [1440, 390]) {
+    const context = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference', hasTouch: width < 901, isMobile: width < 901 });
+    const page = await context.newPage();
+    await page.goto(`${base}/work`, { waitUntil: 'networkidle' });
+    await page.locator('.project-entry a[href="/work/war-room"]').first().click();
+    await page.locator('.page-transition-cover').waitFor({ state: 'visible' });
+    await page.waitForURL('**/work/war-room');
+    await page.locator('.page-transition-content[data-navigation-ready="true"]').waitFor();
+    await page.waitForFunction(() => scrollY < 24);
+    assert.equal(await page.locator('h1').innerText(), 'WAR ROOM');
+    console.log(`PASS: WAR ROOM cover transition and arrival position at ${width}px`);
     await context.close();
   }
 } finally { await browser.close(); }

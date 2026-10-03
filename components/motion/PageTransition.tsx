@@ -13,6 +13,7 @@ const pageNames: Record<string, string> = {
   '/work': 'PROJETOS',
   '/capabilities': 'COMPETÊNCIAS',
   '/contact': 'CONTATO',
+  '/work/war-room': 'WAR ROOM',
   '/work/andrea-tur': 'Andréa Tur',
   '/work/edy-scanurl-family': 'EDY ScanURL Family',
   '/work/edy-helpdesk': 'EDY HelpDesk',

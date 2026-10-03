@@ -54,11 +54,11 @@ try {
   const page = await context.newPage();
   await page.goto(`${base}/work`, { waitUntil: 'networkidle' });
   await page.locator('.home-entry').waitFor({ state: 'hidden', timeout: 8000 }).catch(() => {});
-  await page.locator('.project-entry a[href="/work/edy-siem"]').first().click();
+  await page.locator('.project-entry a[href="/work/war-room"]').first().click();
   await page.locator('.page-transition-cover').waitFor({ state: 'visible' });
   await page.waitForTimeout(180);
   await page.screenshot({ path: `outputs/cover-transition-${transitionMobile ? 'mobile' : 'desktop'}.png` });
-  await page.waitForURL('**/work/edy-siem');
+  await page.waitForURL('**/work/war-room');
   await page.locator('.case-hero').waitFor({ state: 'visible' });
   console.log('PASS: project cover appears during case transition');
   await context.close();
