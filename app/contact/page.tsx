@@ -24,7 +24,7 @@ export default function ContactPage() {
     <SiteFrame showFooter={false}>
       <main className="contact-page">
         <section className="contact-hero">
-          <p className="page-kicker"><span>04 / CONTATO</span><span>Aberto a trabalhos com propósito</span></p>
+          <p className="page-kicker"><span>CONTATO</span><span>Aberto a trabalhos com propósito</span></p>
           <div className="contact-composition">
             <TextReveal ariaLabel="Vamos construir algo útil" lines={['VAMOS', <em key="something">CONSTRUIR</em>, 'ALGO ÚTIL']} />
             <div className="contact-aside">

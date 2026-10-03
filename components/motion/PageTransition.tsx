@@ -9,13 +9,21 @@ import { useHydratedReducedMotion } from './useHydratedReducedMotion';
 
 const pageNames: Record<string, string> = {
   '/': 'EDY — GOMES',
-  '/about': 'ABOUT',
-  '/work': 'SELECTED WORK',
-  '/capabilities': 'CAPABILITIES',
-  '/contact': 'CONTACT',
-  '/work/edy-shadowcat': 'EDY SHADOWCAT', '/work/edy-verdict': 'EDY VERDICT',
-  '/work/edy-recon': 'EDY RECON', '/work/edy-scanurl-family': 'EDY ScanURL Family',
-  '/work/edy-helpdesk': 'EDY HelpDesk', '/work/edy-soc-analytics': 'EDY SOC Analytics',
+  '/about': 'SOBRE',
+  '/work': 'PROJETOS',
+  '/capabilities': 'COMPETÊNCIAS',
+  '/contact': 'CONTATO',
+  '/work/andrea-tur': 'Andréa Tur',
+  '/work/edy-scanurl-family': 'EDY ScanURL Family',
+  '/work/edy-helpdesk': 'EDY HelpDesk',
+  '/work/edy-shield': 'EDY Shield',
+  '/work/edy-siem': 'EDY SIEM',
+  '/work/edy-soc-analytics': 'EDY SOC Analytics',
+  '/work/edy-verdict': 'EDY VERDICT',
+  '/work/edy-recon': 'EDY RECON',
+  '/work/cr-fitness': 'CR Fitness',
+  '/work/assistente-personalizado': 'Assistente Personalizado',
+  '/work/edy-shadowcat': 'EDY SHADOWCAT',
 };
 const covered = 'inset(0 0 0% 0)';
 const cleared = 'inset(0 0 100% 0)';
@@ -33,6 +41,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   const scrollSettleFrame = useRef(0);
   const scrollSettleTimer = useRef(0);
   const [destination, setDestination] = useState<string | null>(null);
+  const [cover, setCover] = useState<{ src: string } | null>(null);
   const [settledPath, setSettledPath] = useState<string | null>(null);
 
   useLayoutEffect(() => {
@@ -55,6 +64,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         busy.current = false;
         setSettledPath(pathname);
         setDestination(null);
+        setCover(null);
         if (resetTopOnArrival.current) {
           const settleAtTop = () => window.dispatchEvent(new Event('edy:scroll-to-top'));
           settleAtTop();
@@ -99,6 +109,9 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
       // Navigation still works when browser storage is unavailable.
     }
     setDestination(pageNames[url.pathname]);
+    const image = url.pathname.startsWith('/work/') ? anchor.querySelector<HTMLImageElement>('img') : null;
+    const coverSrc = image?.currentSrc || image?.src || anchor.dataset.coverSrc;
+    setCover(coverSrc && !reduce ? { src: coverSrc } : null);
     void content.start({ opacity: reduce ? 1 : .2, transition: { duration: reduce ? 0 : .2 } });
     await curtain.start({ clipPath: covered, transition: { duration: reduce ? 0 : .26, ease: editorialEase } });
     // SmoothScrollProvider owns the final position. Disabling the router's
@@ -120,6 +133,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
       busy.current = false;
       resetTopOnArrival.current = false;
       setDestination(null);
+      setCover(null);
       void content.start({ opacity: 1 });
       void curtain.start({ clipPath: cleared });
     }, 8000);
@@ -133,6 +147,9 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         animate={curtain}
         aria-hidden="true"
       >
+        {cover && <motion.img className="page-transition-cover" src={cover.src} alt="" aria-hidden="true"
+          initial={{ opacity: 0, scale: 1.045 }} animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: .42, ease: editorialEase }} />}
         <span>{destination ?? pageNames[pathname] ?? 'EDY — GOMES'}</span>
       </motion.div>
       <motion.div

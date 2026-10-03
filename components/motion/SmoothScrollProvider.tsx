@@ -42,6 +42,19 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   }, []);
 
   useEffect(() => {
+    const alignProjectGallery = (event: Event) => {
+      const target = (event as CustomEvent<HTMLElement>).detail;
+      if (!target?.isConnected) return;
+      if (lenisRef.current) {
+        lenisRef.current.resize();
+        lenisRef.current.scrollTo(target, { immediate: true, force: true });
+      } else target.scrollIntoView({ behavior: 'instant', block: 'start' });
+    };
+    window.addEventListener('edy:align-project-gallery', alignProjectGallery);
+    return () => window.removeEventListener('edy:align-project-gallery', alignProjectGallery);
+  }, []);
+
+  useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const coarse = window.matchMedia('(pointer: coarse)').matches;
     const compact = window.matchMedia('(max-width: 767px)').matches;
@@ -49,9 +62,9 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     const lenis = new Lenis({
       autoRaf: false,
-      lerp: 0.28,
+      lerp: 0.12,
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 0.78,
       syncTouch: false,
       anchors: true,
     });

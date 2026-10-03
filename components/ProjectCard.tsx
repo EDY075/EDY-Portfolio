@@ -7,21 +7,19 @@ import { DeferredProjectVisual } from './DeferredProjectVisual';
 
 export function ProjectCard({ project, index = 0, sequence = false }: { project: Project; index?: number; sequence?: boolean }) {
   const visual = (
-    <div className={`project-art project-art-real project-art-${(index % 6) + 1}`}>
+    <div className={`project-art project-art-real project-art-${(index % 9) + 1}`}>
       <DeferredProjectVisual
         image={project.image}
         sizes="(max-width: 560px) 100vw, (max-width: 900px) 92vw, (max-width: 1440px) 88vw, 1260px"
       />
-      <span className="project-art-index">{project.number}</span>
     </div>
   );
   const content = (
-      <Link href={`/work/${project.slug}`} prefetch={false} className="project-link">
+      <Link href={`/work/${project.slug}`} prefetch={false} className="project-link" data-cover-src={project.image.src}>
         {sequence ? <div className="image-reveal">{visual}</div> : <ImageReveal>{visual}</ImageReveal>}
         <div className="project-copy">
-          <span className="project-number">{project.number}</span>
           <div>
-            <h2>{project.title}</h2>
+            <h3>{project.title}</h3>
             <p>{project.subtitle}</p>
           </div>
           <ArrowUpRight aria-hidden="true" />
@@ -32,6 +30,6 @@ export function ProjectCard({ project, index = 0, sequence = false }: { project:
       </Link>
   );
   return sequence
-    ? <div className="project-entry project-entry-sequence">{content}</div>
+    ? <div className={`project-entry project-entry-sequence${index >= 6 ? ' project-entry-new' : ''}`}>{content}</div>
     : <PageReveal className="project-entry" delay={(index % 2) * 0.08}>{content}</PageReveal>;
 }

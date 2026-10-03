@@ -1,4 +1,18 @@
 {
+  "/images/projects/covers/andrea-tur-1600.webp": { "avif": "", "webp": "/images/projects/covers/andrea-tur-640.webp 640w, /images/projects/covers/andrea-tur-1080.webp 1080w, /images/projects/covers/andrea-tur-1600.webp 1600w" },
+  "/images/projects/covers/cr-fitness-1600.webp": { "avif": "", "webp": "/images/projects/covers/cr-fitness-640.webp 640w, /images/projects/covers/cr-fitness-1080.webp 1080w, /images/projects/covers/cr-fitness-1600.webp 1600w" },
+  "/images/projects/covers/edy-scanurl-family-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-scanurl-family-640.webp 640w, /images/projects/covers/edy-scanurl-family-1080.webp 1080w, /images/projects/covers/edy-scanurl-family-1600.webp 1600w" },
+  "/images/projects/covers/edy-helpdesk-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-helpdesk-640.webp 640w, /images/projects/covers/edy-helpdesk-1080.webp 1080w, /images/projects/covers/edy-helpdesk-1600.webp 1600w" },
+  "/images/projects/covers/edy-shield-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-shield-640.webp 640w, /images/projects/covers/edy-shield-1080.webp 1080w, /images/projects/covers/edy-shield-1600.webp 1600w" },
+  "/images/projects/covers/edy-siem-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-siem-640.webp 640w, /images/projects/covers/edy-siem-1080.webp 1080w, /images/projects/covers/edy-siem-1600.webp 1600w" },
+  "/images/projects/covers/edy-soc-analytics-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-soc-analytics-640.webp 640w, /images/projects/covers/edy-soc-analytics-1080.webp 1080w, /images/projects/covers/edy-soc-analytics-1600.webp 1600w" },
+  "/images/projects/covers/edy-verdict-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-verdict-640.webp 640w, /images/projects/covers/edy-verdict-1080.webp 1080w, /images/projects/covers/edy-verdict-1600.webp 1600w" },
+  "/images/projects/covers/edy-recon-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-recon-640.webp 640w, /images/projects/covers/edy-recon-1080.webp 1080w, /images/projects/covers/edy-recon-1600.webp 1600w" },
+  "/images/projects/covers/edy-shadowcat-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-shadowcat-640.webp 640w, /images/projects/covers/edy-shadowcat-1080.webp 1080w, /images/projects/covers/edy-shadowcat-1600.webp 1600w" },
+  "/images/projects/andrea-tur-ocean.webp": {
+    "avif": "",
+    "webp": "/images/optimized/andrea-tur-ocean-640.webp 640w, /images/optimized/andrea-tur-ocean-1080.webp 1080w, /images/projects/andrea-tur-ocean.webp 1920w"
+  },
   "/images/edy-portrait-retouched.png": {
     "avif": "/images/optimized/edy-portrait-retouched-640.avif 640w, /images/optimized/edy-portrait-retouched-828.avif 828w, /images/optimized/edy-portrait-retouched-1122.avif 1122w",
     "webp": "/images/optimized/edy-portrait-retouched-640.webp 640w, /images/optimized/edy-portrait-retouched-828.webp 828w, /images/optimized/edy-portrait-retouched-1122.webp 1122w"
@@ -31,13 +45,17 @@
     "avif": "",
     "webp": "/images/optimized/scanurl-home-640.webp 640w, /images/optimized/scanurl-home-1080.webp 1080w, /images/optimized/scanurl-home-1440.webp 1440w, /images/optimized/scanurl-home-1892.webp 1892w"
   },
+  "/images/projects/shield-endpoint-integrity.png": {
+    "avif": "",
+    "webp": "/images/optimized/shield-endpoint-integrity-640.webp 640w, /images/optimized/shield-endpoint-integrity-1080.webp 1080w, /images/optimized/shield-endpoint-integrity-1920.webp 1920w"
+  },
+  "/images/projects/assistente-personalizado-editorial.png": {
+    "avif": "",
+    "webp": "/images/optimized/assistente-personalizado-editorial-640.webp 640w, /images/optimized/assistente-personalizado-editorial-941.webp 941w"
+  },
   "/images/projects/scanurl-result.jpg": {
     "avif": "/images/optimized/scanurl-result-640.avif 640w, /images/optimized/scanurl-result-1080.avif 1080w, /images/optimized/scanurl-result-1440.avif 1440w, /images/optimized/scanurl-result-1905.avif 1905w",
     "webp": "/images/optimized/scanurl-result-640.webp 640w, /images/optimized/scanurl-result-1080.webp 1080w, /images/optimized/scanurl-result-1440.webp 1440w, /images/optimized/scanurl-result-1905.webp 1905w"
-  },
-  "/images/projects/shadowcat-dashboard.webp": {
-    "avif": "",
-    "webp": "/images/optimized/shadowcat-dashboard-640.webp 640w, /images/optimized/shadowcat-dashboard-1080.webp 1080w, /images/optimized/shadowcat-dashboard-1440.webp 1440w, /images/projects/shadowcat-dashboard.webp 1920w"
   },
   "/images/projects/soc-command-center.png": {
     "avif": "",

@@ -16,9 +16,9 @@ export default function CapabilitiesPage() {
     <SiteFrame>
       <main className="capabilities-page">
         <section className="capabilities-hero">
-          <p className="page-kicker"><span>03 / COMPETÊNCIAS</span><span>Tecnologia que funciona para pessoas</span></p>
+          <p className="page-kicker"><span>COMPETÊNCIAS</span><span>Tecnologia que funciona para pessoas</span></p>
           <TextReveal
-            ariaLabel="IT Support, Cybersecurity, Systems, Automation, Data and Analysis, Documentation"
+            ariaLabel={capabilities.map((capability) => capability.title).join(', ')}
             lines={capabilities.map((capability, index) => <span key={capability.title} className={index % 2 ? 'capability-offset' : ''}>{capability.title}</span>)}
           />
           <p className="capability-quote">Resolver. Organizar.<br />Automatizar. Melhorar.</p>
@@ -26,7 +26,6 @@ export default function CapabilitiesPage() {
         <section className="capability-details">
           {capabilities.map((capability, index) => (
             <PageReveal className="capability-column" key={capability.title} delay={(index % 3) * .06}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
               <h2>{capability.title}</h2>
               <ul>{capability.items.map((item) => <li key={item}>{item}</li>)}</ul>
             </PageReveal>
