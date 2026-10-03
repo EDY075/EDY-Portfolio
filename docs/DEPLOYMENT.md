@@ -2,7 +2,7 @@
 
 O checkout oficial é `D:\EDY-Projects\EDY-Portfolio`. O site foi publicado no Cloudflare Workers em 28/09/2026 como `edy-gomes-portfolio`, na URL `https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/`. Para a prévia local, inicie `npm run dev` e use a URL exibida pelo servidor.
 
-Versão pública verificada: `4657e186-a92f-4579-9127-0919f03660ea` (02/10/2026).
+Versão pública atual verificada: `5a5bc460-a0b5-4bb6-a58d-a13eb80211dc` (03/10/2026). Versão anterior preservada no histórico: `4657e186-a92f-4579-9127-0919f03660ea` (02/10/2026).
 
 ## Estado e próximas decisões
 
@@ -47,4 +47,8 @@ Publicação solicitada explicitamente pelo proprietário. O checkout oficial j�
 
 WAR ROOM entra como o décimo segundo case, na pesquisa e na galeria 3D, com duas capturas reais, capa responsiva 640/1080/1600, links para GitHub, GitHub Pages e os 17 episódios narrados. Não cria serviço ou dependência nova. Build com o SITE_URL atual, lint, tipagem, ensaio Wrangler, capas em cinco formatos, galerias dos 12 cases em desktop/390/320, transição, navegação por teclado, Escape/foco e sitemap/noindex passaram em Edge headless. Chrome DevTools MCP não estava disponível; Playwright/Edge foi a ferramenta de navegador real.
 
-Deployment em preparação; confirmar versão e endereço público antes de registrar sucesso. Os números Lighthouse anteriores são históricos, sem nova medição desta integração.
+Publicado no Worker existente: `5a5bc460-a0b5-4bb6-a58d-a13eb80211dc`, fonte de runtime `1206ee0`. Case: https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/war-room. `--keep-vars` preservou as variáveis já configuradas. Repositório atualizado por fast-forward sem force push; README/vídeo remoto e histórico permanecem preservados.
+
+Conferência pós-deploy concluída no endereço público: navegação para o novo case, três links corretos, canonical e sitemap com WAR ROOM, `noindex`/exclusão dos dois cases privados, teclado, Escape/foco, galeria 3D, 12 galerias em desktop/390/320, transição, decodificação das imagens e hashes SHA-256 das cinco variantes novas no navegador. O acesso por urllib foi bloqueado por HTTP 403 do Cloudflare; a conferência real no Edge passou, sem contornar a proteção. Capturas atuais em `docs/assets/github/screenshots/war-room-case-desktop.webp` e `war-room-case-mobile.webp`. Os 276 arquivos de runtime do checkout original mantêm zero diferenças SHA-256. Logs/saídas/cache permanecem ignorados.
+
+Os números Lighthouse anteriores são históricos, sem nova medição desta integração. Não há teste novo em aparelho físico.

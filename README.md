@@ -30,6 +30,15 @@ Desktop e mobile possuem composições próprias. A experiência preserva hierar
 | [EDY HelpDesk](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-helpdesk) | IT Support | Fluxo operacional para tickets, produtividade e conhecimento. |
 | [EDY SOC Analytics](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-soc-analytics) | Security Analytics | Visualização de dados SOC para leitura e investigação mais rápidas. |
 
+## WAR ROOM · edição documental
+
+[Abra o case atualizado](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/war-room) para explorar a cartografia, os capítulos e os 17 episódios completos com narração autorizada baseada na voz do autor. As imagens abaixo são capturas do portfólio publicado em 03/10/2026.
+
+<p>
+  <img src="docs/assets/github/screenshots/war-room-case-desktop.webp" alt="Case WAR ROOM publicado no portfólio em desktop" width="68%">
+  <img src="docs/assets/github/screenshots/war-room-case-mobile.webp" alt="Case WAR ROOM publicado no portfólio em celular" width="27%">
+</p>
+
 ## Experiência desktop
 
 Direção visual de alto contraste, tipografia editorial e projetos apresentados com espaço para contexto.

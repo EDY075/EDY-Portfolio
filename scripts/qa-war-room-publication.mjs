@@ -25,7 +25,9 @@ try {
     assert.equal(await page.getByRole('link', { name: 'Ouvir os 17 casos' }).getAttribute('href'), 'https://edy075.github.io/WAR_ROOM/assets/media/narrations/');
     await page.getByRole('link', { name: 'Ouvir os 17 casos' }).focus();
     assert.equal(await page.getByRole('link', { name: 'Ouvir os 17 casos' }).evaluate(e => e === document.activeElement), true);
-    await page.locator('.case-hero').screenshot({ path: `outputs/war-room-case-${name}.png` });
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+    await page.waitForFunction(() => document.querySelector('.site-nav').dataset.scrollState === 'top' && document.querySelector('.site-nav').dataset.surface === 'dark');
+    await page.screenshot({ path: `outputs/war-room-case-${name}.png` });
     await page.locator('.case-gallery').scrollIntoViewIfNeeded();
     await page.getByRole('button', { name: 'Próxima imagem' }).focus();
     await page.keyboard.press('Enter');
@@ -37,6 +39,8 @@ try {
     await page.waitForURL('**/work');
     await page.locator('#explorar-3d summary').click();
     assert.equal(await page.locator('#explorar-3d').getAttribute('open'), '');
+    assert.equal(await page.locator('.project-wheel-index a').count(), 12);
+    assert.equal(await page.locator('.project-wheel-index a[href="/work/war-room#detalhes"]').count(), 1);
     await page.keyboard.press('Escape');
     assert.equal(await page.locator('#explorar-3d').getAttribute('open'), null);
     assert.equal(await page.locator('#explorar-3d summary').evaluate(e => e === document.activeElement), true);
