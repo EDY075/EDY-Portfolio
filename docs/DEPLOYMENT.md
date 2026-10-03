@@ -55,4 +55,6 @@ Os números Lighthouse anteriores são históricos, sem nova medição desta int
 
 ### Transição do novo case · publicação final
 
+Nova entrada WAR ROOM: o proprietário solicitou hero/preloader mais leves e uma nova publicação do projeto. A capa do case foi sincronizada com uma captura real da hero revisada, exportada em DPR 2 e reduzida para três variantes WebP com novos nomes de arquivo. Apenas a fonte/capas, os registros de imagem e a documentação foram alterados no worktree; o checkout original permanece preservado. Os demais cases, a transição, mapa e player continuam iguais. Publicação da capa será registrada após build/ensaio e conferência pública.
+
 O WAR ROOM foi registrado no mapa existente de nomes da transição de páginas, com capa ao abrir e posição inicial restaurada, mantendo as demais rotas. Runtime `dac04fc`, Worker `7f40d6c8-619f-470f-b6f7-f089745dc59d`; a versão `5a5bc460-a0b5-4bb6-a58d-a13eb80211dc` é o primeiro deploy desta integração. Lint, tipagem, rebuild e dry-run passaram. O preview Wrangler local foi encerrado antes do rebuild: no Windows, seu processo mantinha `dist` ocupado e causava EPERM. A suíte específica agora confere a transição real em desktop/mobile, além da integração, galeria 3D, teclado/foco, metadados e imagens.

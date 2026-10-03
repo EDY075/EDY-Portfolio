@@ -166,7 +166,7 @@ export const technicalProjects: Project[] = [
       { label: 'Ouvir os 17 casos', href: 'https://edy075.github.io/WAR_ROOM/assets/media/narrations/' },
       { label: 'Ver código', href: 'https://github.com/EDY075/WAR_ROOM' },
     ],
-    image: { src: '/images/projects/covers/war-room-1600.webp', alt: 'Página inicial real do WAR ROOM com identidade preto e dourado', width: 1600, height: 1000 },
+    image: { src: '/images/projects/covers/war-room-entrance-1600.webp', alt: 'Página inicial real do WAR ROOM com identidade preto e dourado', width: 1600, height: 1000 },
     caseImage: { src: '/images/projects/cases/war-room-map.webp', alt: 'Mapa investigativo do WAR ROOM com cartografia e seleção de dossiês', width: 1440, height: 900, fit: 'contain' },
     caseImageTitle: 'Cartografia e investigação',
     caseImageContext: 'Captura da interface. Os pontos situam o contexto geográfico dos casos; não representam telemetria nem rotas comprovadas de propagação.',

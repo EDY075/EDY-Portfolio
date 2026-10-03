@@ -45,6 +45,8 @@ Portfólio editorial orientado a projetos reais. A interface combina tipografia 
 
 ## Checklist para reutilização
 
+Ao sincronizar uma capa após uma revisão de produto, capturar a interface real em DPR 2 e exportar variantes menores com nomes novos para evitar cache da capa anterior. Preservar as imagens internas quando a mudança afeta somente a entrada; não reconstruir capturas com arte gerada.
+
 - Conferir títulos e serifas em 390, 430, 1366, 1440 e 1920 px.
 - Confirmar ausência de overflow horizontal.
 - Verificar menu completo nas capturas de produto.
