@@ -53,6 +53,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               image={project.heroImage ?? project.image}
               sizes="(max-width: 900px) 90vw, 58vw"
             />
+            {project.coverNote && <p className="case-cover-note">{project.coverNote}</p>}
           </ImageReveal>
         </section>
 
@@ -63,11 +64,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             {project.links.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>)}
           </div>}
           <nav className="case-detail-nav" aria-label="Seções do projeto">
+            {project.origin && <a href="#origem">Origem</a>}
+            {caseSlides.length > 0 && <a href="#galeria">Imagens do projeto</a>}
             <a href="#desafio">Problema e solução</a>
             <a href="#recursos">Recursos</a>
             <a href="#tecnologias">Tecnologias e estado</a>
           </nav>
         </section>
+
+        {project.origin && <section id="origem" className="case-origin section-pad">
+          <PageReveal><span className="section-index">CONTEXTO DE CRIAÇÃO</span><h2>A origem.</h2></PageReveal>
+          <PageReveal className="case-origin-copy"><p>{project.origin}</p></PageReveal>
+        </section>}
 
         {caseSlides.length > 0 && <CaseGallery title={project.title} slides={caseSlides} />}
 

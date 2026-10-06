@@ -19,6 +19,8 @@ export type Project = {
   displayTitle: string;
   subtitle: string;
   summary: string;
+  origin?: string;
+  coverNote?: string;
   status: string;
   keywords: string[];
   features: string[];
@@ -37,6 +39,7 @@ export type Project = {
 
 export const crmProject: Project = {
   slug: 'edy-crm', title: 'EDY CRM', displayTitle: 'CRM',
+  origin: 'O CRM parte do trabalho de pesquisar uma empresa e transformar as informações em uma proposta visual. A base ProspectOS foi adaptada para manter briefs, materiais, escolhas e versões no mesmo fluxo, com a atribuição MIT preservada. O case público demonstra essa jornada com empresas fictícias.',
   subtitle: 'Da pesquisa de uma empresa à prévia versionada.',
   summary: 'Workspace local para organizar empresas, fontes e materiais, revisar briefs, compor propostas visuais e construir prévias versionadas. Desenvolvido por EDY GOMES a partir do ProspectOS, com atribuição MIT preservada. O case público inclui código executável e demonstração isolada com dados fictícios.',
   status: 'Código público e demonstração local com dados fictícios.',
@@ -51,12 +54,17 @@ export const crmProject: Project = {
   caseImage: { src: '/images/projects/cases/edy-crm-dashboard.webp', alt: 'Dashboard real do EDY CRM com empresas e oportunidades fictícias', width: 1295, height: 863, fit: 'contain' },
   caseImageTitle: 'Visão do trabalho',
   caseImageContext: 'Captura do aplicativo local com dados fictícios do case público. Indicadores descrevem a demonstração, sem estimar vendas ou resultados comerciais.',
-  caseGallery: [{ title: 'Composição por seção', caption: 'Montagem de uma proposta na demonstração pública. Composição escolhida, prévia disponível e aprovação de publicação são etapas distintas.', image: { src: '/images/projects/cases/edy-crm-montagem.webp', alt: 'Estúdio de montagem por seção do EDY CRM com materiais fictícios', width: 1574, height: 1762, fit: 'contain' } }],
+  caseGallery: [
+    { title: 'Composição por seção', caption: 'Montagem real de uma proposta na demonstração pública. A composição guarda escolhas por seção, separadas da execução da prévia e da aprovação para publicar.', image: { src: '/images/projects/cases/edy-crm-montagem.webp', alt: 'Estúdio de montagem por seção do EDY CRM com materiais fictícios', width: 1574, height: 1762, fit: 'contain' } },
+    { title: 'Prévia versionada', caption: 'Prévia real do template demonstrativo Casa Aurora. Mostra a passagem da proposta para um HTML local associado à versão; este exemplo é determinístico e não comprova geração por um modelo externo.', image: { src: '/images/projects/cases/crm-preview-20261006.webp', alt: 'Prévia HTML local do exemplo fictício Casa Aurora no EDY CRM', width: 1732, height: 809, fit: 'contain' } },
+    { title: 'Materiais e escolhas', caption: 'Galeria real da demonstração. Reúne materiais visuais para seleção e composição, mantendo o contexto da proposta em vez de espalhar arquivos entre etapas.', image: { src: '/images/projects/cases/crm-gallery-20261006.webp', alt: 'Galeria de materiais da demonstração pública do EDY CRM', width: 1574, height: 1973, fit: 'contain' } },
+  ],
 };
 
-export const featuredProjects: Project[] = [
+const operationalProjects: Project[] = [
   {
     slug: 'andrea-tur', title: 'Andréa Tur', displayTitle: 'Andréa Tur',
+    origin: 'O ponto de partida foi organizar viagens e destinos em um site que a responsável pudesse manter atualizado. A apresentação pública conecta descoberta, informações e contato; a confirmação de uma reserva continua sendo feita diretamente com Andréa.',
     subtitle: 'Viagens e destinos em uma experiência editorial.',
     summary: 'Site responsivo de turismo com viagens, agenda, destinos, galeria e perguntas frequentes. O conteúdo é gerenciado por um painel privado; reservas são combinadas e confirmadas com Andréa pelo WhatsApp.',
     status: 'Site de turismo desenvolvido para cliente.',
@@ -75,6 +83,7 @@ export const featuredProjects: Project[] = [
   },
   {
     slug: 'edy-scanurl-family', title: 'EDY ScanURL Family', displayTitle: 'ScanURL Family',
+    origin: 'A proposta parte da dificuldade de interpretar sinais técnicos antes de comprar em uma loja online. O projeto traduz verificações públicas em motivos, cobertura e recomendações compreensíveis, sem transformar uma análise em promessa de segurança.',
     subtitle: 'Sinais públicos para avaliar um link antes de comprar.',
     summary: 'Aplicação defensiva em português: analisa sinais públicos de uma loja e apresenta conclusão, motivos, recomendações e cobertura da verificação. Uma análise reduz riscos, mas não garante a segurança da compra.',
     status: 'Web/PWA publicada; confirmação física final do Android pendente.',
@@ -96,6 +105,7 @@ export const featuredProjects: Project[] = [
   },
   {
     slug: 'edy-helpdesk', title: 'EDY HelpDesk', displayTitle: 'HelpDesk',
+    origin: 'O projeto reúne necessidades recorrentes de suporte: chamados, histórico, SLA, ativos e conhecimento. A demonstração local organiza esses elementos em um fluxo operacional comum, com registros sintéticos para apresentar o trabalho sem expor um ambiente de atendimento real.',
     subtitle: 'Service Desk local para chamados, SLA e ativos.',
     summary: 'Aplicação local para gestão de chamados, SLA, ativos e suporte a endpoints Windows. A demonstração de portfólio usa dados sintéticos e é iniciada no computador do usuário; não há demo hospedada.',
     status: 'Release pública v1.0.1; demonstração local.',
@@ -114,6 +124,7 @@ export const featuredProjects: Project[] = [
   },
   {
     slug: 'edy-shield', title: 'EDY Shield', displayTitle: 'Shield',
+    origin: 'A proposta parte da necessidade de acompanhar a integridade de arquivos e reunir evidências locais de alteração. O Shield organiza essa verificação em um endpoint e documenta uma integração opcional com o SIEM, sem exigir uma plataforma hospedada.',
     subtitle: 'Integridade de arquivos e investigação local de alertas.',
     summary: 'Ferramenta defensiva local em Python para estabelecer baselines, detectar alterações em arquivos, analisar hashes e investigar alertas. A entrega de eventos ao EDY SIEM é opcional e mantém uma fila local durável.',
     status: 'Release pública v2.3.0; execução local.',
@@ -132,6 +143,7 @@ export const featuredProjects: Project[] = [
   },
   {
     slug: 'edy-siem', title: 'EDY SIEM', displayTitle: 'SIEM',
+    origin: 'O ponto de partida é transformar eventos e alertas dispersos em decisões que tenham prioridade, responsável e evidência. A aplicação local conecta ingestão, investigação e casos, preservando o estado de cada etapa da operação.',
     subtitle: 'Detecção, investigação e resposta para operações SOC.',
     summary: 'Workspace SOC com backend Python e interface React. A versão documentada organiza eventos, fila de decisões, investigação com evidências, responsáveis, SLA e casos; pode ser iniciada localmente com dados de demonstração.',
     status: 'Release pública v0.3.0; aplicação local.',
@@ -150,6 +162,8 @@ export const featuredProjects: Project[] = [
   },
   {
     slug: 'edy-soc-analytics', title: 'EDY SOC Analytics', displayTitle: 'SOC Analytics',
+    origin: 'O relatório foi estruturado para ir além da contagem de alertas: a proposta é compreender prioridade, backlog, SLA e o ciclo de vida de um incidente. As dez páginas do Power BI usam um modelo dimensional e dados inteiramente sintéticos, permitindo estudar a operação e a qualidade das fontes sem expor um SOC real.',
+    coverNote: 'Arte conceitual de divulgação',
     subtitle: 'Análise de operações de segurança em Power BI.',
     summary: 'Relatório Power BI de dez páginas com dados inteiramente sintéticos. Organiza a jornada de evento, alerta e incidente com backlog, SLA, contexto MITRE ATT&CK e qualidade das fontes.',
     status: 'Release pública v1.1.0; sem publicação no Power BI Service.',
@@ -164,14 +178,19 @@ export const featuredProjects: Project[] = [
     caseImage: { src: '/images/projects/soc-operations.png', alt: 'Visão de operações do EDY SOC Analytics com dados sintéticos', width: 2672, height: 1640, fit: 'contain' },
     caseImageTitle: 'Visão de operações',
     caseImageContext: 'Visão de operações do relatório Power BI com dados inteiramente sintéticos.',
-    caseGallery: [{ title: 'Detalhe de incidente', caption: 'Página de investigação do relatório. Valores e ocorrências exibidos são exemplos sintéticos.', image: { src: '/images/projects/cases/soc-incident.webp', alt: 'Página de detalhe de incidente do EDY SOC Analytics com dados sintéticos', width: 1600, height: 1201, fit: 'contain' } }],
+    caseGallery: [
+      { title: 'Detalhe de incidente', caption: 'Página real de investigação do relatório. Conecta o incidente ao contexto da análise; valores e ocorrências exibidos são inteiramente sintéticos.', image: { src: '/images/projects/cases/soc-incident.webp', alt: 'Página de detalhe de incidente do EDY SOC Analytics com dados sintéticos', width: 1600, height: 1201, fit: 'contain' } },
+      { title: 'Command Center', caption: 'Visão real do Power BI para priorizar a leitura da operação, relacionando alertas, incidentes e estado da fila. Não representa uma central monitorando um ambiente real.', image: { src: '/images/projects/cases/soc-command-20261006.webp', alt: 'Command Center real do relatório Power BI com dataset sintético', width: 1800, height: 1105, fit: 'contain' } },
+      { title: 'Qualidade das fontes', caption: 'Página real dedicada à qualidade dos dados. Expõe a cobertura e as limitações das fontes para que a leitura dos indicadores não seja confundida com certeza operacional.', image: { src: '/images/projects/cases/soc-quality-20261006.webp', alt: 'Página Data Quality do EDY SOC Analytics com dados sintéticos', width: 1800, height: 1105, fit: 'contain' } },
+    ],
   },
   crmProject,
 ];
 
-export const technicalProjects: Project[] = [
+const researchProjects: Project[] = [
   {
     slug: 'war-room', title: 'WAR ROOM', displayTitle: 'WAR ROOM',
+    origin: 'O WAR ROOM organiza incidentes históricos em uma investigação documental, conectando contexto, fontes e consequências. A coleção reúne 17 dossiês com seis capítulos cada, cartografia e narração autorizada, em vez de apresentar cada evento como uma notícia isolada.',
     subtitle: 'Investigação histórica em uma experiência documental.',
     summary: 'Experiência cinematográfica sobre incidentes e conflitos cibernéticos. Reúne 17 dossiês em seis capítulos cada, cartografia, análise, referências públicas e cerca de 42 minutos de narração baseada na voz do autor, com síntese autorizada.',
     status: 'Publicado no GitHub Pages; 17 dossiês e 102 capítulos com leitura e áudio.',
@@ -194,6 +213,7 @@ export const technicalProjects: Project[] = [
   },
   {
     slug: 'edy-verdict', title: 'EDY VERDICT', displayTitle: 'VERDICT',
+    origin: 'A proposta parte de uma distinção essencial: não ter verificado algo não significa que esse item esteja seguro. O workbench registra cobertura, evidência e proveniência em verificações locais, para que uma conclusão possa ser revisada com contexto.',
     subtitle: 'Verificação de segurança local para Windows.',
     summary: 'Workbench local para verificar repositórios, arquivos, binários, aplicativos instalados e URLs de forma passiva. Os resultados registram evidência, cobertura, risco, confiança e proveniência.',
     status: 'Código público em release candidate 1.0.0-rc.1; sem instalador distribuído.',
@@ -212,6 +232,8 @@ export const technicalProjects: Project[] = [
   },
   {
     slug: 'edy-recon', title: 'EDY RECON', displayTitle: 'RECON',
+    origin: 'O toolkit organiza consultas OSINT e relatórios que, sem uma sessão comum, ficam dispersos entre fontes e ferramentas. A proposta é reunir fluxos em um terminal local com orientação explícita de escopo e autorização. A distribuição pública demonstra os menus e os fluxos offline; integrações de rede ainda dependem de validação real.',
+    coverNote: 'Arte de capa ilustrativa',
     subtitle: 'OSINT e reconhecimento para uso autorizado.',
     summary: 'Ferramenta Python de OSINT e reconhecimento para profissionais com escopo e autorização formal. A release pública valida inicialização e fluxos offline; integrações externas e operações de rede ainda aguardam validação real.',
     status: 'Release pública v1.1.0; validação pública offline.',
@@ -222,7 +244,7 @@ export const technicalProjects: Project[] = [
     solution: 'A ferramenta reúne fluxos de consulta e relatórios em uma interface de terminal, com orientação explícita para uso autorizado.',
     outcome: 'A versão pública tem testes offline; não atribui resultados reais a integrações externas ou módulos de rede.',
     links: [{ label: 'Ver repositório e limites', href: 'https://github.com/EDY075/EDY-RECON' }],
-    image: { src: '/images/projects/covers/edy-recon-1600.webp', alt: 'Terminal verde do EDY RECON na captura fornecida pelo criador', width: 1600, height: 1000, fit: 'contain' },
+    image: { src: '/images/projects/covers/edy-recon-cinematic-20261006-1600.webp', alt: 'Arte cinematográfica do EDY RECON com uma lupa sobre um mapa; não é captura da aplicação', width: 1600, height: 1000, fit: 'contain' },
     caseImage: { src: '/images/projects/recon-menu.png', alt: 'Menu principal do EDY RECON em demonstração offline', width: 1400, height: 820, fit: 'contain' },
     caseImageTitle: 'Menu offline',
     caseImageContext: 'Menu principal demonstrado offline. Módulos externos ainda aguardam validação real.',
@@ -230,6 +252,7 @@ export const technicalProjects: Project[] = [
   },
   {
     slug: 'edy-shadowcat', title: 'EDY SHADOWCAT', displayTitle: 'SHADOWCAT',
+    origin: 'A proposta do SHADOWCAT é coordenar uma investigação sem perder a origem de cada descoberta. O pipeline local reúne 13 etapas, evidências com hash, entidades e relatórios para revisão em contextos autorizados. O case utiliza somente a demonstração sintética aprovada; a aplicação e o repositório continuam privados.',
     subtitle: 'Investigação autorizada com evidências e contexto.',
     summary: 'Plataforma local de investigação autorizada. Organiza um pipeline de 13 etapas, preserva a origem das evidências, correlaciona entidades e reúne descobertas em relatórios locais. O repositório e a aplicação não são públicos.',
     status: 'Projeto local e privado; sem demonstração pública.',
@@ -244,13 +267,19 @@ export const technicalProjects: Project[] = [
     caseImage: { src: '/images/projects/covers/shadowcat-dashboard.webp', alt: 'Interface real do SHADOWCAT com investigação de demonstração e dados sintéticos', width: 1800, height: 942, fit: 'contain' },
     caseImageTitle: 'Ambiente de investigação',
     caseImageContext: 'Interface de demonstração com banco e dados sintéticos; a aplicação permanece privada.',
-    caseGallery: [{ title: 'Etapas da investigação', caption: 'Arte de divulgação aprovada com uma investigação de demonstração. Não representa acesso público à aplicação.', image: { src: '/images/projects/cases/shadowcat-pipeline.webp', alt: 'Etapas do pipeline do EDY SHADOWCAT em demonstração sintética', width: 1600, height: 837, fit: 'contain' } }],
+    caseGallery: [
+      { title: 'Etapas da investigação', caption: 'Composição de divulgação aprovada com uma investigação sintética. Organiza as etapas e o estado do pipeline; não representa acesso público à aplicação.', image: { src: '/images/projects/cases/shadowcat-pipeline.webp', alt: 'Etapas do pipeline do EDY SHADOWCAT em demonstração sintética', width: 1600, height: 837, fit: 'contain' } },
+      { title: 'IA e evidências', caption: 'Composição aprovada de duas telas reais do banco independente de demonstração. Mostra consultas ancoradas nas evidências disponíveis, sem expor investigações ou credenciais reais.', image: { src: '/images/projects/cases/shadowcat-evidence-20261006.webp', alt: 'Composição de duas telas reais do SHADOWCAT com IA e evidências sintéticas', width: 1800, height: 942, fit: 'contain' } },
+      { title: 'Ferramentas e relatórios', caption: 'Composição aprovada de duas telas reais da demonstração sintética. Apresenta o contexto das ferramentas e a organização de relatórios locais; a aplicação continua privada.', image: { src: '/images/projects/cases/shadowcat-reports-20261006.webp', alt: 'Composição de duas telas reais de ferramentas e relatórios do SHADOWCAT com dados sintéticos', width: 1800, height: 942, fit: 'contain' } },
+    ],
   },
 ];
 
-export const privateProjects: Project[] = [
+const commissionedProjects: Project[] = [
   {
     slug: 'cr-fitness', title: 'CR Fitness', displayTitle: 'CR Fitness',
+    origin: 'O site reúne as informações que uma pessoa precisa para conhecer a academia: modalidades, planos, horários e localização. A identidade preto e amarelo conecta essa apresentação ao posicionamento da CR Fitness, com composições próprias para desktop e celular. As imagens da galeria são capturas do site, não fotografias documentais da unidade.',
+    coverNote: 'Arte de capa ilustrativa',
     subtitle: 'Site institucional responsivo para uma academia.',
     summary: 'Site institucional que apresenta a unidade, modalidades, planos, horários e localização em uma experiência responsiva.',
     status: 'Site de cliente publicado em Cloudflare Pages.',
@@ -261,14 +290,20 @@ export const privateProjects: Project[] = [
     solution: 'Página institucional responsiva com navegação por seções e identidade visual consistente.',
     outcome: 'Site institucional publicado para acesso público. A capa mostra a versão online verificada em 29/09/2026.',
     links: [{ label: 'Acessar site da academia', href: 'https://cr-fitness-academia.pages.dev/' }],
-    image: { src: '/images/projects/covers/cr-fitness-1600.webp', alt: 'Captura da versão atual do site CR Fitness com a mensagem Disciplina transforma', width: 1600, height: 1000 },
+    image: { src: '/images/projects/covers/cr-fitness-cinematic-20261006-1600.webp', alt: 'Arte cinematográfica CR Fitness com halteres e luz amarela; não é fotografia da academia', width: 1600, height: 1000 },
     caseImage: { src: '/images/projects/covers/cr-fitness-mobile.webp', alt: 'Captura da versão atual do site CR Fitness no celular', width: 390, height: 844, fit: 'contain' },
     caseImageTitle: 'Site no celular',
     caseImageContext: 'Versão para celular do site público verificada em 29/09/2026.',
-    caseGallery: [{ title: 'Página inicial no desktop', caption: 'Captura do site publicado em 29/09/2026, com a identidade visual atual da academia.', image: { src: '/images/projects/cases/cr-fitness-public.webp', alt: 'Página inicial da versão atual do site CR Fitness no desktop', width: 1440, height: 900, fit: 'contain' } }],
+    caseGallery: [
+      { title: 'Página inicial no desktop', caption: 'Captura do site publicado em 29/09/2026. Apresenta a identidade e o caminho para conhecer a academia; as imagens de divulgação do site não são fotografias documentais da unidade.', image: { src: '/images/projects/cases/cr-fitness-public.webp', alt: 'Página inicial do site CR Fitness no desktop capturada em 29/09/2026', width: 1440, height: 900, fit: 'contain' } },
+      { title: 'Modalidades', caption: 'Seção do site público capturada em 06/10/2026. Organiza as opções de treino com descrição e acesso ao contato. As imagens de divulgação são ilustrativas.', image: { src: '/images/projects/cases/fitness-modalities-20261006.webp', alt: 'Seção Nossas modalidades do site público CR Fitness', width: 1440, height: 877, fit: 'contain' } },
+      { title: 'Planos e condições', caption: 'Seção do site público capturada em 06/10/2026. Facilita a comparação dos planos apresentados naquela data; condições e valores devem ser confirmados diretamente com a academia.', image: { src: '/images/projects/cases/fitness-plans-20261006.webp', alt: 'Seção Nossos planos do site público CR Fitness capturada em 06/10/2026', width: 1440, height: 686, fit: 'contain' } },
+    ],
   },
   {
     slug: 'assistente-personalizado', title: 'Assistente Personalizado', displayTitle: 'Assistente Personalizado',
+    origin: 'O assistente parte das rotinas de uma profissional de treinos: consultar registros autorizados, encontrar o último treino e preparar documentos com contexto. O PostgreSQL mantém a fonte dos registros e o Telegram oferece o canal privado de acesso. As imagens públicas são demonstrações ilustrativas com dados fictícios, não capturas de conversas ou fichas reais.',
+    coverNote: 'Arte de capa ilustrativa',
     subtitle: 'Assistente privada para rotinas de uma personal trainer.',
     summary: 'Caso real de assistente privado pelo Telegram para uma profissional de treinos. Consulta fichas e o último treino registrado, gera documentos a partir de dados autorizados e organiza lembretes confirmados. O PostgreSQL é a fonte dos registros.',
     status: 'Em uso privado; sem demonstração pública.',
@@ -279,8 +314,7 @@ export const privateProjects: Project[] = [
     solution: 'Canal privado no Telegram ligado a consultas e geração de documentos com regras de acesso.',
     outcome: 'Assistente em uso privado pelo Telegram; não há demonstração pública para visitantes. As interfaces ilustrativas das postagens usam somente dados fictícios.',
     links: [],
-    image: { src: '/images/projects/assistente-personalizado-gallery.webp', alt: 'Ilustração editorial de uma profissional de treinos e informações organizadas; não é captura do aplicativo', width: 941, height: 650, position: 'center' },
-    heroImage: { src: '/images/projects/assistente-personalizado-editorial.png', alt: 'Ilustração editorial do Assistente Personalizado; não é captura do aplicativo', width: 941, height: 1672, fit: 'cover', position: 'center 43%' },
+    image: { src: '/images/projects/covers/assistente-personalizado-cinematic-20261006-1600.webp', alt: 'Arte cinematográfica do Assistente Personalizado com uma atleta fictícia e materiais de organização; não é foto da cliente nem captura da aplicação', width: 1600, height: 1000, position: 'center' },
     caseGallery: [
       { title: 'Consulta de fichas', caption: 'Interface fictícia para explicar a consulta controlada de fichas. Nenhum registro real da profissional aparece nesta imagem.', image: { src: '/images/projects/cases/assistant-fichas-illustration.webp', alt: 'Ilustração fictícia de uma consulta de ficha no Assistente Personalizado', width: 900, height: 1125, fit: 'contain' } },
       { title: 'Geração de documentos', caption: 'Visualização ilustrativa da preparação de documentos a partir de dados autorizados; não é captura da conversa privada.', image: { src: '/images/projects/cases/assistant-documents-illustration.webp', alt: 'Ilustração fictícia de geração de documentos no Assistente Personalizado', width: 900, height: 1125, fit: 'contain' } },
@@ -288,5 +322,20 @@ export const privateProjects: Project[] = [
   },
 ];
 
-export const projects: Project[] = [...featuredProjects, ...technicalProjects, ...privateProjects];
+const catalog = [...operationalProjects, ...researchProjects, ...commissionedProjects];
+const selectProjects = (slugs: string[]): Project[] => slugs.map((slug) => {
+  const project = catalog.find((item) => item.slug === slug);
+  if (!project) throw new Error(`Unknown project in portfolio selection: ${slug}`);
+  return project;
+});
+
+export const featuredProjects = selectProjects([
+  'edy-crm', 'cr-fitness', 'edy-soc-analytics', 'assistente-personalizado',
+  'edy-shadowcat', 'edy-recon', 'war-room',
+]);
+export const technicalProjects = selectProjects([
+  'edy-verdict', 'edy-siem', 'edy-shield', 'edy-scanurl-family', 'edy-helpdesk',
+]);
+export const clientProjects = selectProjects(['andrea-tur']);
+export const projects: Project[] = [...featuredProjects, ...technicalProjects, ...clientProjects];
 export const getProject = (slug: string) => projects.find((project) => project.slug === slug);

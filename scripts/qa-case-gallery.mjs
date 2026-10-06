@@ -26,7 +26,8 @@ try {
       await page.goto(`${base}/work/${slug}`, { waitUntil: 'networkidle' });
       await page.locator('.home-entry').waitFor({ state: 'hidden', timeout: 8000 }).catch(() => {});
       const slides = page.locator('.case-gallery-slide');
-      assert.equal(await slides.count(), 2, `${name} ${slug}: two distinct case images`);
+      const expected = ['edy-crm', 'cr-fitness', 'edy-soc-analytics', 'edy-shadowcat'].includes(slug) ? 4 : 2;
+      assert.equal(await slides.count(), expected, `${name} ${slug}: distinct case images`);
       await slides.first().scrollIntoViewIfNeeded();
       const firstImage = slides.first().locator('img');
       await firstImage.evaluate(image => image.decode());
@@ -39,6 +40,14 @@ try {
       await secondImage.evaluate(image => image.decode());
       assert(await secondImage.evaluate(image => image.naturalWidth > 0), `${name} ${slug}: second image failed`);
       assert.equal(await page.getByRole('button', { name: 'Ver imagem:' }).nth(1).getAttribute('aria-current'), 'true', `${name} ${slug}: gallery next`);
+      for (let index = 2; index < expected; index++) {
+        await page.getByRole('button', { name: 'Ver imagem:' }).nth(index).click();
+        await page.waitForTimeout(450);
+        await slides.nth(index).scrollIntoViewIfNeeded();
+        await slides.nth(index).locator('img').evaluate(image => image.decode());
+        assert.equal(await page.getByRole('button', { name: 'Ver imagem:' }).nth(index).getAttribute('aria-current'), 'true', `${name} ${slug}: gallery image ${index + 1}`);
+      }
+      assert(await next.isDisabled(), `${name} ${slug}: next is disabled at the final image`);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), false, `${name} ${slug}: horizontal overflow`);
       if (['edy-siem', 'cr-fitness', 'assistente-personalizado'].includes(slug) && name !== 'narrow') {
         await page.locator('.case-gallery').screenshot({ path: `outputs/case-gallery-${slug}-${name}.png` });

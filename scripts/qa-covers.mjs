@@ -17,7 +17,7 @@ try {
     await page.goto(`${base}/work`, { waitUntil: 'networkidle' });
     await page.locator('.home-entry').waitFor({ state: 'hidden', timeout: 8000 }).catch(() => {});
     const cards = page.locator('.project-entry');
-    assert.equal(await cards.count(), 14, `${name}: seven featured, four technical, three client cards`);
+    assert.equal(await cards.count(), 13, `${name}: seven featured, five technical, one client; no duplicate cases`);
     for (const entry of await cards.all()) {
       await entry.scrollIntoViewIfNeeded();
       const card = entry.locator('img').first();

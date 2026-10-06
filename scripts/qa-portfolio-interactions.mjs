@@ -24,7 +24,7 @@ try {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   await openGallery(page);
   await page.locator('#project-wheel-0').click();
-  await page.waitForURL('**/work/andrea-tur#detalhes', { timeout: 5000 });
+  await page.waitForURL('**/work/edy-crm#detalhes', { timeout: 5000 });
   console.log('PASS: clicar diretamente na capa 3D abre o case');
 
   await openGallery(page);
@@ -39,9 +39,9 @@ try {
   await page.mouse.up();
   await page.waitForTimeout(1100);
   assert.equal(new URL(page.url()).pathname, '/work', 'arrastar não deve abrir o case');
-  assert.match(await page.locator('.project-wheel-current h3').textContent(), /ScanURL Family/);
+  assert.match(await page.locator('.project-wheel-current h3').textContent(), /CR Fitness/);
   await page.locator('#project-wheel-1').click();
-  await page.waitForURL('**/work/edy-scanurl-family#detalhes');
+  await page.waitForURL('**/work/cr-fitness#detalhes');
   console.log('PASS: arrastar gira a galeria e o clique seguinte abre o projeto');
 
   await openGallery(page);
@@ -59,7 +59,7 @@ try {
   await page.locator('#project-wheel-0').focus();
   await page.waitForTimeout(1100);
   await page.keyboard.press('Enter');
-  await page.waitForURL('**/work/andrea-tur#detalhes');
+  await page.waitForURL('**/work/edy-crm#detalhes');
   console.log('PASS: teclado abre a capa em foco');
   await page.close();
 
@@ -69,7 +69,7 @@ try {
   await phone.getByRole('button', { name: 'Próximo projeto' }).filter({ visible: true }).tap();
   await phone.waitForTimeout(1100);
   await phone.locator('#project-wheel-0').tap();
-  await phone.waitForURL('**/work/andrea-tur#detalhes');
+  await phone.waitForURL('**/work/edy-crm#detalhes');
   console.log('PASS: toque na capa abre o case no celular');
   await phone.close();
 } finally {

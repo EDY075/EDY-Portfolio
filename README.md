@@ -23,13 +23,14 @@ Desktop e mobile possuem composições próprias. A experiência preserva hierar
 | Projeto | Categoria | Visão geral |
 |---|---|---|
 | [EDY CRM](https://github.com/EDY075/EDY-CRM) | Prospecção · Composição visual | Workspace local com briefs versionados, montagem por seção e prévias; demonstração pública com dados fictícios. |
+| [CR Fitness](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/cr-fitness) | Site institucional · Cliente | Identidade, modalidades, planos e informações da academia em um site publicado. |
+| [EDY SOC Analytics](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-soc-analytics) | Power BI · Security Analytics | Dez páginas analíticas com prioridades, SLA e qualidade das fontes; dados sintéticos. |
+| [Assistente Personalizado](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/assistente-personalizado) | Automação · Caso real privado | Consultas autorizadas, documentos e lembretes pelo Telegram; sem acesso público ao assistente. |
+| [EDY SHADOWCAT](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-shadowcat) | Investigação · Evidências | Pipeline local de 13 etapas, proveniência e relatórios; case com demonstração sintética aprovada. |
+| [EDY RECON](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-recon) | OSINT · Python | Toolkit de reconhecimento autorizado; a distribuição pública demonstra os fluxos offline. |
 | [WAR ROOM](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/war-room) | Documentário · Threat Intelligence | 17 dossiês, 102 capítulos, cartografia e narração autorizada baseada na voz do autor. |
-| [EDY SHADOWCAT](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-shadowcat) | Cybersecurity · Automation | Orquestração modular de reconnaissance, evidências e relatórios. |
-| [EDY VERDICT](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-verdict) | Security Analysis | Avaliação estruturada para decisões baseadas em evidências. |
-| [EDY RECON](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-recon) | OSINT | Coleta e organização de inteligência de fontes abertas. |
-| [EDY ScanURL Family](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-scanurl-family) | Web Security | Análise de URLs e websites com resultados claros e acionáveis. |
-| [EDY HelpDesk](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-helpdesk) | IT Support | Fluxo operacional para tickets, produtividade e conhecimento. |
-| [EDY SOC Analytics](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-soc-analytics) | Security Analytics | Visualização de dados SOC para leitura e investigação mais rápidas. |
+
+Treze cases únicos compõem o catálogo completo. A [curadoria cinematográfica](docs/PORTFOLIO_CURATION_2026-10-06.md) apresenta a nova seleção, três artes de capa e oito imagens adicionais dos projetos. Os cases separam origem, problema, solução, funcionalidades e imagens internas; artes ilustrativas não são apresentadas como capturas reais.
 
 ## WAR ROOM · edição documental
 

@@ -31,7 +31,7 @@ export function CaseGallery({ title, slides }: { title: string; slides: CaseSlid
   };
 
   return (
-    <section className="case-gallery section-pad" aria-label={`Imagens do projeto ${title}`}>
+    <section id="galeria" className="case-gallery section-pad" aria-label={`Imagens do projeto ${title}`}>
       <div className="case-gallery-heading">
         <div><span className="section-index">O PROJETO POR DENTRO</span><h2>Veja de perto.</h2><p>Imagens e detalhes do projeto.</p></div>
         <div className="case-gallery-controls" aria-label="Navegação das imagens">

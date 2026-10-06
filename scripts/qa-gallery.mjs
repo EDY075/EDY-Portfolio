@@ -29,9 +29,9 @@ try {
   const wheel = async (delta, pause = 850) => { await page.mouse.wheel(0, delta); await page.waitForTimeout(pause); };
 
   await wheel(140);
-  assert.match(await activeTitle(), /Andréa Tur/);
+  assert.match(await activeTitle(), /EDY CRM/);
   await wheel(140, 1200);
-  assert.match(await activeTitle(), /ScanURL Family/);
+  assert.match(await activeTitle(), /CR Fitness/);
   console.log('PASS: roda avança mesmo após uma pausa longa');
 
   // A sequência de pequenos eventos não pode estender indefinidamente o intervalo.
@@ -39,7 +39,7 @@ try {
   for (let i = 0; i < 5; i++) { await page.mouse.wheel(0, 140); await page.waitForTimeout(150); }
   await page.mouse.wheel(0, 140);
   await page.waitForTimeout(900);
-  assert.notEqual(await activeTitle(), 'EDY ScanURL Family', 'continuous wheel events must not freeze progress');
+  assert.notEqual(await activeTitle(), 'CR Fitness', 'continuous wheel events must not freeze progress');
   console.log('PASS: touchpad contínuo não congela a galeria');
 
   // O limite deve liberar a página e aceitar a direção contrária sem reabrir o painel.
@@ -77,12 +77,12 @@ try {
   const phone = await mobile.newPage();
   await openGallery(phone);
   await phone.getByRole('button', { name: 'Próximo projeto' }).click();
-  assert.match(await phone.locator('.project-wheel-current h3').textContent(), /Andréa Tur/);
+  assert.match(await phone.locator('.project-wheel-current h3').textContent(), /EDY CRM/);
   await phone.locator('.project-wheel-current a').click();
-  await phone.waitForURL(/\/work\/andrea-tur#detalhes$/);
+  await phone.waitForURL(/\/work\/edy-crm#detalhes$/);
   await phone.locator('#detalhes').waitFor({ state: 'visible', timeout: 10000 });
   assert(await phone.getByText('O desafio').isVisible());
-  assert.equal((await phone.locator('.case-links a').first().textContent())?.trim(), 'Endereço do site');
+  assert.equal((await phone.locator('.case-links a').first().textContent())?.trim(), 'Ver código e demonstração');
   assert(!(await phone.locator('body').innerText()).includes('fora do ar'), 'Andréa Tur case must use the neutral status copy');
   assert(!(await phone.locator('body').innerText()).includes('reativado'), 'Andréa Tur case must not discuss the upcoming reactivation');
   await phone.waitForTimeout(850);

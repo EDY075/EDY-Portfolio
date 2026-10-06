@@ -460,6 +460,11 @@ button, input, textarea, select { color: inherit; font: inherit; }
 .case-duo > div { border-top: 1px solid var(--line-strong); padding-top: 1.4rem; }
 .case-duo h2 { margin: 4rem 0 1rem; font-family: var(--font-display), Georgia, serif; font-size: clamp(2.6rem, 5vw, 5.5rem); font-weight: 500; }
 .case-duo p { max-width: 600px; color: var(--cream-soft); font-size: 1rem; line-height: 1.7; }
+.case-origin { display: grid; grid-template-columns: 1fr 1.4fr; gap: 8vw; border-top: 1px solid var(--line); scroll-margin-top: 1rem; }
+.case-origin h2 { margin: 1.5rem 0 0; font-family: var(--font-display), Georgia, serif; font-size: 3rem; font-weight: 500; line-height: 1; }
+.case-origin-copy p { max-width: 65ch; color: var(--cream-soft); font-size: 1rem; line-height: 1.75; }
+.case-art > .case-cover-note { padding: .4rem .55rem; background: rgba(5,6,5,.88); letter-spacing: 0; text-transform: none; }
+@media (max-width: 900px) { .case-origin { grid-template-columns: minmax(0, 1fr); gap: 2rem; } }
 .case-features { display: grid; grid-template-columns: 1.3fr 1fr; gap: 9vw; background: var(--paper); color: var(--ink); }
 .feature-heading h2 { font-size: clamp(4rem, 8vw, 8rem); }
 .feature-list { align-self: end; }

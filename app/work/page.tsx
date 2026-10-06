@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { SiteFrame } from '@/components/SiteFrame';
 import { ProjectExplorer } from '@/components/ProjectExplorer';
 import { ProjectCard } from '@/components/ProjectCard';
-import { featuredProjects, privateProjects, technicalProjects } from '@/data/projects';
+import { clientProjects, featuredProjects, technicalProjects } from '@/data/projects';
 import { pageSocialMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -41,8 +41,8 @@ export default function WorkPage() {
         <section id="pesquisa" className="work-technical section-pad" aria-labelledby="work-technical-title">
           <div className="work-section-heading">
             <span className="section-index">GALERIA TÉCNICA</span>
-            <h2 id="work-technical-title">Pesquisa e verificação</h2>
-            <p>Ferramentas e pesquisa com escopo e estágio de validação descritos em cada case.</p>
+            <h2 id="work-technical-title">Segurança e operação</h2>
+            <p>Verificação, análise, proteção de endpoints e suporte, com escopo e estágio de validação descritos em cada case.</p>
           </div>
           <div className="project-grid portfolio-grid">
             {technicalProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + featuredProjects.length} sequence />)}
@@ -52,11 +52,10 @@ export default function WorkPage() {
           <div className="work-section-heading">
             <span className="section-index">TRABALHOS REAIS</span>
             <h2 id="work-private-title">Projetos para pessoas reais</h2>
-            <p>Andréa Tur e CR Fitness são sites desenvolvidos para clientes. Assistente Personalizado é um caso real de uso privado, apresentado sem link externo.</p>
+            <p>Turismo, destinos e contato direto com a responsável pelas reservas.</p>
           </div>
           <div className="project-grid portfolio-grid">
-            <ProjectCard project={featuredProjects[0]} index={featuredProjects.length + technicalProjects.length} sequence />
-            {privateProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + featuredProjects.length + technicalProjects.length + 1} sequence />)}
+            {clientProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + featuredProjects.length + technicalProjects.length} sequence />)}
           </div>
         </section>
         <ProjectExplorer />

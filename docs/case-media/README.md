@@ -16,7 +16,7 @@ As imagens em `public/images/projects/cases/` são versões WebP otimizadas. `no
 | CR Fitness | `cr-fitness-public.webp` | `docs/cover-sources/cr-fitness-live-2026-09-29.png` | Captura da versão pública atual em 29/09/2026. Não usar as capturas locais antigas. |
 | Assistente Personalizado | `assistant-fichas-illustration.webp` e `assistant-documents-illustration.webp` | `social/assistente-personalizado-7x7-2026-09/export/feed-03-fichas.png` e `feed-05-documentos.png` | Artes ilustrativas com dados fictícios; não são capturas da conversa privada. |
 
-As galerias têm duas imagens por case. Nenhum repositório privado, registro real de treino ou demonstração não publicada foi incluído. As legendas públicas em `data/projects.ts` registram o contexto de cada captura.
+As galerias combinam interfaces reais, demonstrações sintéticas e materiais ilustrativos explicitamente identificados. Nenhum repositório privado, registro real de treino ou demonstração não aprovada foi incluído. As legendas públicas em `data/projects.ts` registram o contexto de cada imagem.
 
 ## WAR ROOM · 03/10/2026
 
@@ -25,3 +25,7 @@ Capturas reais do projeto de Edmilson Gomes: página inicial, cartografia e play
 ## EDY CRM · 06/10/2026
 
 Capturas reais do workspace local com dados fictícios da demonstração pública. A origem, atribuição MIT e variantes estão documentadas em [edy-crm/README.md](../cover-sources/edy-crm/README.md). O script `scripts/build-crm-media.mjs` gera a capa responsiva e as duas imagens internas.
+
+## Curadoria e galerias ampliadas · 06/10/2026
+
+CRM, CR Fitness, SOC Analytics e SHADOWCAT agora têm quatro imagens internas por case. As oito fontes adicionais estão documentadas em [curation-20261006/README.md](curation-20261006/README.md), com dimensões, caráter sintético e limites de divulgação. O script `scripts/build-curation-media.mjs` gera as variantes WebP sem cortar ou reconstruir as telas. Assistente Personalizado mantém demonstrações ilustrativas, pois não há captura real aprovada para publicação.

@@ -28,3 +28,7 @@ Entrada galáctica: `war-room-galaxy-2026-10-03.png` é captura real em DPR 2 (2
 ## EDY CRM · 06/10/2026
 
 Capturas reais do workspace local com dados fictícios da demonstração pública. A origem, atribuição MIT e variantes estão documentadas em [edy-crm/README.md](edy-crm/README.md). O script `scripts/build-crm-media.mjs` gera a capa responsiva e as duas imagens internas.
+
+## Capas cinematográficas · 06/10/2026
+
+RECON, CR Fitness e Assistente Personalizado passam a utilizar novas artes ilustrativas. Os originais, referências e prompts da ferramenta built-in `image_gen` estão em [cinematic-20261006/README.md](cinematic-20261006/README.md). `scripts/build-curation-media.mjs` gera WebPs responsivos com nomes versionados. As capas antigas permanecem preservadas; o terminal aprovado do RECON continua na galeria interna, e o site real da CR Fitness aparece em suas capturas públicas.

@@ -18,8 +18,10 @@ try {
   page.on('pageerror', error => errors.push(error.message));
   const response = await page.goto(`${base}/work`, { waitUntil: 'networkidle' });
   assert.equal(response.status(), 200);
-  assert.equal(await page.locator('.project-entry').count(), 14);
-  assert.equal(await page.locator('.project-entry .project-case-label').filter({ hasText: 'Ver case' }).count(), 14);
+  assert.equal(await page.locator('.project-entry').count(), 13);
+  assert.equal(await page.locator('.project-entry .project-case-label').filter({ hasText: 'Ver case' }).count(), 13);
+  assert.deepEqual(await page.locator('#destaques .project-entry a').evaluateAll(nodes => nodes.map(node => new URL(node.href).pathname)),
+    ['edy-crm', 'cr-fitness', 'edy-soc-analytics', 'assistente-personalizado', 'edy-shadowcat', 'edy-recon', 'war-room'].map(slug => `/work/${slug}`));
   const casePaths = await page.locator('.project-entry a').evaluateAll(nodes => [...new Set(nodes.map(node => new URL(node.href).pathname))]);
   assert.equal(casePaths.length, 13);
   assert(casePaths.includes('/work/edy-crm'));
@@ -34,7 +36,13 @@ try {
       return back.top >= kicker.bottom + 8;
     }), `${path}: back link must not overlap the project kicker`);
     assert.equal(await page.locator('#detalhes').count(), 1, `${path}: details`);
-    assert.equal(await page.locator('.case-gallery-slide').count(), 2, `${path}: images`);
+    const expectedImages = ['/work/edy-crm', '/work/cr-fitness', '/work/edy-soc-analytics', '/work/edy-shadowcat'].includes(path) ? 4 : 2;
+    assert.equal(await page.locator('.case-gallery-slide').count(), expectedImages, `${path}: project images`);
+    assert.equal(await page.locator('#origem').count(), 1, `${path}: origin`);
+    for (const image of await page.locator('.case-gallery-slide img').all()) {
+      await image.scrollIntoViewIfNeeded();
+      await image.evaluate(node => node.decode());
+    }
     await page.locator('.case-art img').evaluate(image => image.decode());
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), canonicalBase + path);
     assert.equal(await page.locator('a [class*="lucide-arrow"], button [class*="lucide-arrow"]').count(), 0);
@@ -42,6 +50,8 @@ try {
     assert(clickableLabels.every(label => !/[↗→←]/.test(label)), `${path}: decorative arrows in controls`);
     if (path === '/work/edy-crm') {
       assert.equal(await page.locator('.case-links a').getAttribute('href'), 'https://github.com/EDY075/EDY-CRM');
+      await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+      await page.waitForTimeout(350);
       await page.locator('.case-hero').screenshot({ path: `${output}/crm-desktop.png` });
     }
     results.push({ path, status: caseResponse.status() });
