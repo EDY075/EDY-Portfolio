@@ -103,6 +103,8 @@ O perfil de rolagem validado registrou **0 long tasks**.
 
 ## Qualidade e validação
 
+Revisão de 06/10/2026: [relatório de escopo, testes e pendências](docs/PORTFOLIO_REVIEW_2026-10-06.md). O EDY CRM, as ações `Ver case` e as correções da galeria estão integrados. Build, lint, tipagem e inspeção responsiva de 320 a 2560 px passaram. A auditoria de dependências mantém seis alertas altos na cadeia de ferramentas de build do Vinext, sem versão corrigida disponível para `braces`.
+
 Os itens abaixo pertencem ao baseline anterior. A validação da publicação atual está registrada em [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 - 11/11 rotas públicas verificadas.

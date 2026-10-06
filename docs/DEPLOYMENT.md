@@ -70,8 +70,18 @@ WAR ROOM runtime `648ef97` / Pages build `37155681649` trouxe primeira tela inte
 
 Capa galáctica publicada: runtime `66d5d15`, Worker `acb96424-b85d-4cc0-ae6f-77c64130ea13`, domínio existente preservado com `--keep-vars`. Conferência pública: capa responsiva real decodificada em 1440/390/320/2560, alt e hashes SHA-256 dos três WebPs iguais aos locais; integração, links, teclado, Escape/foco, metadados, galeria e transição desktop/mobile passaram. Fonte original permanece com 276 hashes idênticos.
 
-## Atualização em preparação · 06/10/2026
+## EDY CRM e revisão responsiva · 06/10/2026
 
 O proprietário autorizou a atualização do portfólio principal e do GitHub após validação. A entrega adiciona o EDY CRM com imagens reais de demonstração, corrige o clique dos projetos na galeria 3D, remove setas dos controles e melhora espaçamentos responsivos. O WAR ROOM e seu histórico publicado foram preservados na integração de `origin/main`.
 
-A rota `/experience` e seus assets continuam como trabalho local pausado e ficam fora do commit e do pacote desta publicação. A validação final e a nova versão do Worker serão registradas após build, inspeção e publicação.
+A rota `/experience` e seus assets continuam como trabalho local pausado e ficaram fora do commit e do pacote desta publicação. Os arquivos locais do proprietário foram preservados.
+
+Runtime `505696d`, extraído por `git archive` para um pacote isolado no próprio projeto. Lint, tipagem, build, dry-run e inspeção de navegador passaram antes do deploy. Matriz de cinco páginas em nove larguras de 320 a 2560 px: 45 combinações e quatro galerias; treze cases em desktop/celular: 26 visitas. Reteste final em tablet/DPR 2: 43 visitas. Todos os quatorze links externos retornaram HTTP 200 com identidade e destinos conferidos. Detalhes e a pendência explícita de seis alertas altos na cadeia de build estão em [PORTFOLIO_REVIEW_2026-10-06.md](PORTFOLIO_REVIEW_2026-10-06.md); `npm audit` não é declarado aprovado.
+
+Publicado no Worker existente, com `--keep-vars`, versão `651db85a-5e35-4803-83e8-59b750458d27`. Endereço preservado: https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/. Versão anterior: `acb96424-b85d-4cc0-ae6f-77c64130ea13`.
+
+Conferência pública: os treze cases responderam HTTP 200, CRM em cinco viewports passou, canonical/sitemap/robots corretos e experimento ausente (`404`). A suíte WAR ROOM passou em desktop/celular com teclado, Escape/foco, galeria e transições. As cinco imagens novas do CRM têm SHA-256 idêntico aos arquivos locais. Headers HTTPS CSP, Permissions Policy, HSTS, `nosniff`, DENY e Referrer Policy foram confirmados na home, Projetos, CRM e WAR ROOM.
+
+A suíte pública de rolagem da galeria passou com pausas, deltas contínuos, liberação da página no limite e retorno à galeria. CTA e detalhes dos treze cases, controles em celular, formato 320 px e redirecionamento antigo passaram. Os cartões públicos de CRM e WAR ROOM foram inspecionados em 1380 e 390 px: `Ver case` legível, sem sobreposição.
+
+A suíte pública de interação confirmou clique direto nas treze capas, arrasto sem navegação acidental, clique posterior, Enter e toque no celular. O histórico remoto foi integrado sem force push; o commit de documentação acompanha o runtime aprovado, sem incluir a experiência pausada.
