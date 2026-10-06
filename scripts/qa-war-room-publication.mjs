@@ -41,7 +41,7 @@ try {
     await page.locator('#explorar-3d summary').click();
     assert.equal(await page.locator('#explorar-3d').getAttribute('open'), '');
     await page.locator('.project-wheel-index a').first().waitFor();
-    assert.equal(await page.locator('.project-wheel-index a').count(), 12);
+    assert.equal(await page.locator('.project-wheel-index a').count(), 13);
     assert.equal(await page.locator('.project-wheel-index a[href="/work/war-room#detalhes"]').count(), 1);
     await page.keyboard.press('Escape');
     assert.equal(await page.locator('#explorar-3d').getAttribute('open'), null);

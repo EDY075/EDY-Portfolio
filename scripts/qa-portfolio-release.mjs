@@ -28,12 +28,18 @@ try {
     const caseResponse = await page.goto(base + path, { waitUntil: 'networkidle' });
     assert.equal(caseResponse.status(), 200, `${path}: status`);
     assert.equal(await page.locator('h1').count(), 1, `${path}: heading`);
+    assert(await page.locator('.case-hero').evaluate(hero => {
+      const kicker = hero.querySelector('.page-kicker').getBoundingClientRect();
+      const back = hero.querySelector('.back-link').getBoundingClientRect();
+      return back.top >= kicker.bottom + 8;
+    }), `${path}: back link must not overlap the project kicker`);
     assert.equal(await page.locator('#detalhes').count(), 1, `${path}: details`);
     assert.equal(await page.locator('.case-gallery-slide').count(), 2, `${path}: images`);
     await page.locator('.case-art img').evaluate(image => image.decode());
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), canonicalBase + path);
     assert.equal(await page.locator('a [class*="lucide-arrow"], button [class*="lucide-arrow"]').count(), 0);
-    assert(!/[↗→←]/.test(await page.locator('main').innerText()), `${path}: decorative arrows`);
+    const clickableLabels = await page.locator('main a, main button, main summary').allTextContents();
+    assert(clickableLabels.every(label => !/[↗→←]/.test(label)), `${path}: decorative arrows in controls`);
     if (path === '/work/edy-crm') {
       assert.equal(await page.locator('.case-links a').getAttribute('href'), 'https://github.com/EDY075/EDY-CRM');
       await page.locator('.case-hero').screenshot({ path: `${output}/crm-desktop.png` });
@@ -64,10 +70,15 @@ try {
       await image.evaluate(node => node.decode());
       assert(await image.evaluate(node => node.naturalWidth > 0));
     }
-    await phone.getByRole('button', { name: 'Imagem anterior' }).click();
+    await phone.getByRole('button', { name: 'Ver imagem:' }).first().click();
+    await phone.waitForTimeout(550);
+    assert.equal(await phone.getByRole('button', { name: 'Ver imagem:' }).first().getAttribute('aria-current'), 'true');
     await phone.getByRole('button', { name: 'Próxima imagem' }).click();
     await phone.waitForTimeout(550);
     assert.equal(await phone.getByRole('button', { name: 'Ver imagem:' }).nth(1).getAttribute('aria-current'), 'true');
+    await phone.getByRole('button', { name: 'Imagem anterior' }).click();
+    await phone.waitForTimeout(550);
+    assert.equal(await phone.getByRole('button', { name: 'Ver imagem:' }).first().getAttribute('aria-current'), 'true');
     await phone.locator('.case-hero').screenshot({ path: `${output}/crm-${width}.png` });
     await phone.close();
   }

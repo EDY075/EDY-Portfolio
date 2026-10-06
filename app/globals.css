@@ -504,6 +504,7 @@ button, input, textarea, select { color: inherit; font: inherit; }
 }
 
 @media (min-width: 901px) {
+  .about-hero { min-height: max(780px, min(1040px, calc(100svh - 24px))); }
   .home-hero { min-height: max(820px, calc(100svh - 28px)); }
   .hero-name { top: 24%; left: 3.3vw; right: auto; width: 40%; font-size: clamp(6rem, min(14vw, 24svh), 16rem); line-height: .85; }
   .hero-name .hero-gomes { margin-top: .12em; text-align: left; font-size: .68em; }
@@ -525,6 +526,7 @@ button, input, textarea, select { color: inherit; font: inherit; }
   .motion-heading { line-height: .88 !important; }
   .values-heading h2 { line-height: .84; }
   .case-hero { min-height: max(800px, calc(100svh - 28px)); }
+  .case-hero .back-link { top: 11rem; }
   .case-hero > div > h1 { width: 34vw; max-width: 34vw; margin-top: 8vh; font-size: clamp(5.4rem, 7.4vw, 9rem); line-height: .7; }
   .case-hero h1 small { margin-bottom: .3em; font-size: .44em; }
   .case-subtitle { width: min(430px, 31vw); margin-top: 2rem; }
