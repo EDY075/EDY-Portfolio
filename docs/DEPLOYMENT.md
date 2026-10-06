@@ -2,7 +2,7 @@
 
 O checkout oficial é `D:\EDY-Projects\EDY-Portfolio`. O site foi publicado no Cloudflare Workers em 28/09/2026 como `edy-gomes-portfolio`, na URL `https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/`. Para a prévia local, inicie `npm run dev` e use a URL exibida pelo servidor.
 
-Versão pública verificada: `4657e186-a92f-4579-9127-0919f03660ea` (02/10/2026).
+Versão pública atual verificada: `acb96424-b85d-4cc0-ae6f-77c64130ea13` (03/10/2026). Versão anterior preservada no histórico: `4657e186-a92f-4579-9127-0919f03660ea` (02/10/2026).
 
 ## Estado e próximas decisões
 
@@ -40,3 +40,38 @@ O pacote usa os arquivos de `dist/`; `.next`, `.vinext`, `.wrangler`, `node_modu
 ```
 
 `--keep-vars` preserva variáveis já definidas no painel. Após a publicação, conferir a página inicial, projetos, cases, navegação por toque e teclado, `robots.txt`, `sitemap.xml`, canonical e os links externos. Um domínio personalizado pode ser ligado depois no Cloudflare; gere novo build com `SITE_URL` do domínio antes de apontar o link de bio para ele.
+
+## Integração WAR ROOM · 03/10/2026
+
+Publicação solicitada explicitamente pelo proprietário. O checkout oficial já tinha alterações e o runtime publicado de onze cases; foi preservado sem reset, stash ou edições. A integração é preparada no worktree `codex/portfolio-war-room-release`, baseado em `origin/main` e preservando também os commits remotos de README/vídeo. O runtime já publicado é registrado primeiro para evitar regressão ao publicar esta atualização.
+
+WAR ROOM entra como o décimo segundo case, na pesquisa e na galeria 3D, com duas capturas reais, capa responsiva 640/1080/1600, links para GitHub, GitHub Pages e os 17 episódios narrados. Não cria serviço ou dependência nova. Build com o SITE_URL atual, lint, tipagem, ensaio Wrangler, capas em cinco formatos, galerias dos 12 cases em desktop/390/320, transição, navegação por teclado, Escape/foco e sitemap/noindex passaram em Edge headless. Chrome DevTools MCP não estava disponível; Playwright/Edge foi a ferramenta de navegador real.
+
+Publicado no Worker existente: `5a5bc460-a0b5-4bb6-a58d-a13eb80211dc`, fonte de runtime `1206ee0`. Case: https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/war-room. `--keep-vars` preservou as variáveis já configuradas. Repositório atualizado por fast-forward sem force push; README/vídeo remoto e histórico permanecem preservados.
+
+Conferência pós-deploy concluída no endereço público: navegação para o novo case, três links corretos, canonical e sitemap com WAR ROOM, `noindex`/exclusão dos dois cases privados, teclado, Escape/foco, galeria 3D, 12 galerias em desktop/390/320, transição, decodificação das imagens e hashes SHA-256 das cinco variantes novas no navegador. O acesso por urllib foi bloqueado por HTTP 403 do Cloudflare; a conferência real no Edge passou, sem contornar a proteção. Capturas atuais em `docs/assets/github/screenshots/war-room-case-desktop.webp` e `war-room-case-mobile.webp`. Os 276 arquivos de runtime do checkout original mantêm zero diferenças SHA-256. Logs/saídas/cache permanecem ignorados.
+
+Os números Lighthouse anteriores são históricos, sem nova medição desta integração. Não há teste novo em aparelho físico.
+
+### Transição do novo case · publicação final
+
+Nova entrada WAR ROOM: o proprietário solicitou hero/preloader mais leves e uma nova publicação do projeto. A capa do case foi sincronizada com uma captura real da hero revisada, exportada em DPR 2 e reduzida para três variantes WebP com novos nomes de arquivo. Apenas a fonte/capas, os registros de imagem, a documentação e a espera explícita do índice 3D na suíte de QA foram alterados no worktree; o checkout original permanece preservado. Os demais cases, a transição, mapa e player continuam iguais. Runtime `01af7f2`, Worker `85c20a35-3a11-4be5-9bf5-5e7f8c3e0b30`; lint, tipagem, build e dry-run passaram, assim como QA local desktop/mobile, links, galeria, foco/Escape e transição. Conferência SHA-256 do checkout original: 276 arquivos, zero diferenças.
+
+Auditoria adicional `npm audit --omit=dev` desta entrega: 12 avisos existentes (10 high / 2 moderate), incluindo dependências transitivas de shadcn/Vinext e ferramentas de build. `package.json` e lockfile não foram alterados. Não foi executado `npm audit fix --force`, que propõe mudança incompatível de shadcn; tratamento de dependências requer uma atualização separada com validação do stack. Estes avisos não são apresentados como um teste aprovado, nem como introduzidos pela troca da capa. A publicação usa o mesmo stack do runtime anterior.
+
+Conferência pública da nova capa concluída no Edge: integração WAR ROOM em desktop/mobile, teclado, galeria, índice 3D, Escape/foco, canonical/sitemap/noindex e transição passaram. As três variantes novas retornam HTTP 200 e os SHA-256 calculados no navegador são idênticos aos arquivos locais. A suíte aguarda o primeiro link do índice 3D antes de contar os 12 itens, respeitando a montagem assíncrona existente. Nenhum runtime do checkout original foi modificado.
+
+O WAR ROOM foi registrado no mapa existente de nomes da transição de páginas, com capa ao abrir e posição inicial restaurada, mantendo as demais rotas. Runtime `dac04fc`, Worker `7f40d6c8-619f-470f-b6f7-f089745dc59d`; a versão `5a5bc460-a0b5-4bb6-a58d-a13eb80211dc` é o primeiro deploy desta integração. Lint, tipagem, rebuild e dry-run passaram. O preview Wrangler local foi encerrado antes do rebuild: no Windows, seu processo mantinha `dist` ocupado e causava EPERM. A suíte específica agora confere a transição real em desktop/mobile, além da integração, galeria 3D, teclado/foco, metadados e imagens.
+
+
+### Capa galáctica · 03/10/2026
+
+WAR ROOM runtime `648ef97` / Pages build `37155681649` trouxe primeira tela inteira, galáxia ilustrativa original creditada, rede interativa e nova abertura/reload. Sincronização limitada à capa do case: captura real 2880×1800, variantes WebP 640/1080/1600 com novos nomes e alt fiel. Demais cases, mapas, áudios, transições, dependências e variáveis ficam preservados. Lint/tipagem/build e Wrangler dry-run com `--keep-vars` passaram. QA local aprovou desktop/mobile, três links, navegação, galeria/3D, teclado/foco/Escape, canonical/sitemap/noindex e transição de entrada. Original preservado: 276 hashes, zero diferenças. As auditorias antigas de dependências continuam históricas; esta alteração não atualiza pacotes. Conferência pública e Worker exatos registrados após deploy.
+
+Capa galáctica publicada: runtime `66d5d15`, Worker `acb96424-b85d-4cc0-ae6f-77c64130ea13`, domínio existente preservado com `--keep-vars`. Conferência pública: capa responsiva real decodificada em 1440/390/320/2560, alt e hashes SHA-256 dos três WebPs iguais aos locais; integração, links, teclado, Escape/foco, metadados, galeria e transição desktop/mobile passaram. Fonte original permanece com 276 hashes idênticos.
+
+## Atualização em preparação · 06/10/2026
+
+O proprietário autorizou a atualização do portfólio principal e do GitHub após validação. A entrega adiciona o EDY CRM com imagens reais de demonstração, corrige o clique dos projetos na galeria 3D, remove setas dos controles e melhora espaçamentos responsivos. O WAR ROOM e seu histórico publicado foram preservados na integração de `origin/main`.
+
+A rota `/experience` e seus assets continuam como trabalho local pausado e ficam fora do commit e do pacote desta publicação. A validação final e a nova versão do Worker serão registradas após build, inspeção e publicação.

@@ -5,7 +5,7 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const base = process.env.BASE_URL || 'http://localhost:4175';
-const slugs = ['andrea-tur', 'edy-scanurl-family', 'edy-helpdesk', 'edy-shield', 'edy-siem', 'edy-soc-analytics', 'edy-verdict', 'edy-recon', 'edy-shadowcat', 'cr-fitness', 'assistente-personalizado'];
+const slugs = ['edy-crm', 'war-room', 'andrea-tur', 'edy-scanurl-family', 'edy-helpdesk', 'edy-shield', 'edy-siem', 'edy-soc-analytics', 'edy-verdict', 'edy-recon', 'edy-shadowcat', 'cr-fitness', 'assistente-personalizado'];
 await mkdir('outputs', { recursive: true });
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 
@@ -45,7 +45,7 @@ try {
       }
     }
     assert.deepEqual(errors, [], `${name}: browser errors`);
-    console.log(`PASS: 11 galleries and section links ${name}`);
+    console.log(`PASS: 13 galleries and section links ${name}`);
     await context.close();
   }
 

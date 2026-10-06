@@ -15,3 +15,16 @@ As imagens desta pasta documentam a origem das capas em `public/images/projects/
 HelpDesk, Shield e SIEM usam capturas reais já presentes no portfólio. As composições editoriais colocam essas capturas em um quadro com título e cor; os painéis originais continuam disponíveis dentro dos cases.
 
 Para regenerar as capas, execute `node scripts/build-project-covers.mjs` com as dependências instaladas. A imagem de contato é salva em `outputs/project-covers-contact-sheet.png`.
+
+## WAR ROOM · 03/10/2026
+
+Atualização da entrada: `war-room-entrance-2026-10-03.png` é captura real da hero revisada em viewport 1440 × 900, DPR 2 (2880 × 1800), sem alterar a interface para exportar. As novas variantes `war-room-entrance-{640,1080,1600}.webp` usam resolução suficiente para reduzir sem ampliar. O novo nome de arquivo evita reutilizar uma capa anterior em cache. As imagens internas de mapa/narração permanecem as já verificadas.
+
+Capturas reais do projeto de Edmilson Gomes: página inicial, cartografia e player de narração do NotPetya. Originais: `WAR_ROOM/assets/screenshots/experience/hero-desktop.png`, `map-desktop.png` e `WAR_ROOM/assets/screenshots/narration/notpetya-desktop.png`. As variantes WebP apenas redimensionam/comprimem as capturas; não são reconstituições. [Projeto e créditos](https://github.com/EDY075/WAR_ROOM).
+
+
+Entrada galáctica: `war-room-galaxy-2026-10-03.png` é captura real em DPR 2 (2880×1800) da hero publicada em WAR ROOM `648ef97`, com galáxia ilustrativa identificada como IA e rede interativa. Novas variantes WebP 640/1080/1600 recebem nome próprio para invalidar a capa anterior em cache. A captura não altera layout/conteúdo, só remove foco via clique em espaço livre. Demais cases, mapa/narração e o pacote promocional anterior ficam preservados.
+
+## EDY CRM · 06/10/2026
+
+Capturas reais do workspace local com dados fictícios da demonstração pública. A origem, atribuição MIT e variantes estão documentadas em [edy-crm/README.md](edy-crm/README.md). O script `scripts/build-crm-media.mjs` gera a capa responsiva e as duas imagens internas.

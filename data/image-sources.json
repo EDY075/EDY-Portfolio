@@ -1,14 +1,52 @@
 {
-  "/images/projects/covers/andrea-tur-1600.webp": { "avif": "", "webp": "/images/projects/covers/andrea-tur-640.webp 640w, /images/projects/covers/andrea-tur-1080.webp 1080w, /images/projects/covers/andrea-tur-1600.webp 1600w" },
-  "/images/projects/covers/cr-fitness-1600.webp": { "avif": "", "webp": "/images/projects/covers/cr-fitness-640.webp 640w, /images/projects/covers/cr-fitness-1080.webp 1080w, /images/projects/covers/cr-fitness-1600.webp 1600w" },
-  "/images/projects/covers/edy-scanurl-family-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-scanurl-family-640.webp 640w, /images/projects/covers/edy-scanurl-family-1080.webp 1080w, /images/projects/covers/edy-scanurl-family-1600.webp 1600w" },
-  "/images/projects/covers/edy-helpdesk-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-helpdesk-640.webp 640w, /images/projects/covers/edy-helpdesk-1080.webp 1080w, /images/projects/covers/edy-helpdesk-1600.webp 1600w" },
-  "/images/projects/covers/edy-shield-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-shield-640.webp 640w, /images/projects/covers/edy-shield-1080.webp 1080w, /images/projects/covers/edy-shield-1600.webp 1600w" },
-  "/images/projects/covers/edy-siem-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-siem-640.webp 640w, /images/projects/covers/edy-siem-1080.webp 1080w, /images/projects/covers/edy-siem-1600.webp 1600w" },
-  "/images/projects/covers/edy-soc-analytics-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-soc-analytics-640.webp 640w, /images/projects/covers/edy-soc-analytics-1080.webp 1080w, /images/projects/covers/edy-soc-analytics-1600.webp 1600w" },
-  "/images/projects/covers/edy-verdict-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-verdict-640.webp 640w, /images/projects/covers/edy-verdict-1080.webp 1080w, /images/projects/covers/edy-verdict-1600.webp 1600w" },
-  "/images/projects/covers/edy-recon-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-recon-640.webp 640w, /images/projects/covers/edy-recon-1080.webp 1080w, /images/projects/covers/edy-recon-1600.webp 1600w" },
-  "/images/projects/covers/edy-shadowcat-1600.webp": { "avif": "", "webp": "/images/projects/covers/edy-shadowcat-640.webp 640w, /images/projects/covers/edy-shadowcat-1080.webp 1080w, /images/projects/covers/edy-shadowcat-1600.webp 1600w" },
+  "/images/projects/covers/war-room-galaxy-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/war-room-galaxy-640.webp 640w, /images/projects/covers/war-room-galaxy-1080.webp 1080w, /images/projects/covers/war-room-galaxy-1600.webp 1600w"
+  },
+  "/images/projects/covers/war-room-entrance-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/war-room-entrance-640.webp 640w, /images/projects/covers/war-room-entrance-1080.webp 1080w, /images/projects/covers/war-room-entrance-1600.webp 1600w"
+  },
+  "/images/projects/covers/andrea-tur-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/andrea-tur-640.webp 640w, /images/projects/covers/andrea-tur-1080.webp 1080w, /images/projects/covers/andrea-tur-1600.webp 1600w"
+  },
+  "/images/projects/covers/cr-fitness-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/cr-fitness-640.webp 640w, /images/projects/covers/cr-fitness-1080.webp 1080w, /images/projects/covers/cr-fitness-1600.webp 1600w"
+  },
+  "/images/projects/covers/edy-scanurl-family-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/edy-scanurl-family-640.webp 640w, /images/projects/covers/edy-scanurl-family-1080.webp 1080w, /images/projects/covers/edy-scanurl-family-1600.webp 1600w"
+  },
+  "/images/projects/covers/edy-helpdesk-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/edy-helpdesk-640.webp 640w, /images/projects/covers/edy-helpdesk-1080.webp 1080w, /images/projects/covers/edy-helpdesk-1600.webp 1600w"
+  },
+  "/images/projects/covers/edy-shield-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/edy-shield-640.webp 640w, /images/projects/covers/edy-shield-1080.webp 1080w, /images/projects/covers/edy-shield-1600.webp 1600w"
+  },
+  "/images/projects/covers/edy-siem-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/edy-siem-640.webp 640w, /images/projects/covers/edy-siem-1080.webp 1080w, /images/projects/covers/edy-siem-1600.webp 1600w"
+  },
+  "/images/projects/covers/edy-soc-analytics-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/edy-soc-analytics-640.webp 640w, /images/projects/covers/edy-soc-analytics-1080.webp 1080w, /images/projects/covers/edy-soc-analytics-1600.webp 1600w"
+  },
+  "/images/projects/covers/edy-verdict-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/edy-verdict-640.webp 640w, /images/projects/covers/edy-verdict-1080.webp 1080w, /images/projects/covers/edy-verdict-1600.webp 1600w"
+  },
+  "/images/projects/covers/edy-recon-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/edy-recon-640.webp 640w, /images/projects/covers/edy-recon-1080.webp 1080w, /images/projects/covers/edy-recon-1600.webp 1600w"
+  },
+  "/images/projects/covers/edy-shadowcat-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/edy-shadowcat-640.webp 640w, /images/projects/covers/edy-shadowcat-1080.webp 1080w, /images/projects/covers/edy-shadowcat-1600.webp 1600w"
+  },
   "/images/projects/andrea-tur-ocean.webp": {
     "avif": "",
     "webp": "/images/optimized/andrea-tur-ocean-640.webp 640w, /images/optimized/andrea-tur-ocean-1080.webp 1080w, /images/projects/andrea-tur-ocean.webp 1920w"
@@ -69,12 +107,12 @@
     "avif": "/images/optimized/verdict-home-640.avif 640w, /images/optimized/verdict-home-1080.avif 1080w, /images/optimized/verdict-home-1440.avif 1440w, /images/optimized/verdict-home-1920.avif 1920w",
     "webp": "/images/optimized/verdict-home-640.webp 640w, /images/optimized/verdict-home-1080.webp 1080w, /images/optimized/verdict-home-1440.webp 1440w, /images/optimized/verdict-home-1920.webp 1920w"
   },
-  "/images/projects/covers/edy-crm-1600.webp": {
-    "avif": "",
-    "webp": "/images/projects/covers/edy-crm-640.webp 640w, /images/projects/covers/edy-crm-1080.webp 1080w, /images/projects/covers/edy-crm-1600.webp 1600w"
-  },
   "/images/projects/verdict-investigations.png": {
     "avif": "/images/optimized/verdict-investigations-640.avif 640w, /images/optimized/verdict-investigations-1080.avif 1080w, /images/optimized/verdict-investigations-1440.avif 1440w, /images/optimized/verdict-investigations-1920.avif 1920w",
     "webp": "/images/optimized/verdict-investigations-640.webp 640w, /images/optimized/verdict-investigations-1080.webp 1080w, /images/optimized/verdict-investigations-1440.webp 1440w, /images/optimized/verdict-investigations-1920.webp 1920w"
+  },
+  "/images/projects/covers/edy-crm-1600.webp": {
+    "avif": "",
+    "webp": "/images/projects/covers/edy-crm-640.webp 640w, /images/projects/covers/edy-crm-1080.webp 1080w, /images/projects/covers/edy-crm-1600.webp 1600w"
   }
 }
