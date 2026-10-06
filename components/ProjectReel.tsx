@@ -37,6 +37,7 @@ function ProjectFilm({ project }: { project: Project }) {
           <h3>{project.title}</h3>
           <p>{project.subtitle}</p>
         </div>
+        <span className="project-case-label">Ver case</span>
       </div>
     </Link>
   );

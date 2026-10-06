@@ -23,10 +23,10 @@ export default function WorkPage() {
           </div>
         </section>
         <nav className="work-jump-nav" aria-label="Ir para uma área dos projetos">
-          <a href="#destaques">Destaques</a>
-          <a href="#pesquisa">Pesquisa</a>
-          <a href="#trabalhos-reais">Projetos reais</a>
-          <a href="#explorar-3d">Galeria 3D</a>
+          <a href="#destaques">Destaques<span className="project-case-label">Ver</span></a>
+          <a href="#pesquisa">Pesquisa<span className="project-case-label">Ver</span></a>
+          <a href="#trabalhos-reais">Projetos reais<span className="project-case-label">Ver</span></a>
+          <a href="#explorar-3d">Galeria 3D<span className="project-case-label">Abrir</span></a>
         </nav>
         <section id="destaques" className="work-featured section-pad" aria-labelledby="work-featured-title">
           <div className="work-section-heading">

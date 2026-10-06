@@ -1,3 +1,4 @@
+import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
 
@@ -12,7 +13,7 @@ const casesOnly = process.env.QA_CASES_ONLY === '1';
 const routes = casesOnly
   ? ['andrea-tur', 'edy-scanurl-family', 'edy-helpdesk', 'edy-shield', 'edy-siem', 'edy-soc-analytics', 'edy-crm', 'war-room', 'edy-verdict', 'edy-recon', 'edy-shadowcat', 'cr-fitness', 'assistente-personalizado'].map(slug => `/work/${slug}`)
   : ['/', '/about', '/work', '/capabilities', '/contact'];
-const sizes = casesOnly ? [[390, 844], [1440, 900]] : [[320, 720], [390, 844], [768, 1024], [1024, 768], [1440, 900], [1920, 1080]];
+const sizes = casesOnly ? [[390, 844], [1440, 900]] : [[320, 720], [390, 844], [768, 1024], [1024, 600], [1280, 720], [1366, 768], [1440, 900], [1920, 1080], [2560, 1440]];
 
 try {
   for (const [width, height] of sizes) {
@@ -88,6 +89,8 @@ try {
     await page.close();
   }
   await fs.writeFile(`${output}/${casesOnly ? 'case-layout' : 'layout'}.json`, JSON.stringify(results, null, 2));
+  const failures = results.filter(row => !row.gallery && (row.status !== 200 || row.errors.length || row.overflow.length || row.overlap.length || row.arrows.length));
+  assert.deepEqual(failures, [], 'layout review must have no page errors, text overlap, clipped text or arrows');
 } finally {
   await browser.close();
 }

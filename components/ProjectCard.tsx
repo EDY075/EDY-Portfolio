@@ -21,6 +21,7 @@ export function ProjectCard({ project, index = 0, sequence = false }: { project:
             <h3>{project.title}</h3>
             <p>{project.subtitle}</p>
           </div>
+          <span className="project-case-label">Ver case</span>
         </div>
         <div className="project-tags" aria-label="Áreas do projeto">
           {project.keywords.map((keyword) => <span key={keyword}>{keyword}</span>)}

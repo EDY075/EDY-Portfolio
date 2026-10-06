@@ -331,7 +331,7 @@ export function ProjectCollection() {
                     sizes="(max-width: 767px) 82vw, (max-width: 1200px) 46vw, 640px"
                     style={{ objectFit: 'contain', objectPosition: project.image.position ?? 'center' }}
                   />
-                  <span className="project-wheel-action">Ver projeto</span>
+                  <span className="project-wheel-action">Ver case</span>
                 </span>
               </Link>
             ))}
@@ -359,6 +359,7 @@ export function ProjectCollection() {
                 aria-current={index === active ? 'true' : undefined}
               >
                 <span>{project.displayTitle}</span>
+                <span className="project-case-label">Ver case</span>
               </Link>
             ))}
           </nav>
@@ -367,7 +368,7 @@ export function ProjectCollection() {
             <span>Em foco</span>
             <h3>{activeProject.title}</h3>
             <p>{activeProject.subtitle}</p>
-            <Link href={`/work/${activeProject.slug}#detalhes`} prefetch={false} data-cover-src={activeProject.image.src}>Ver projeto</Link>
+            <Link href={`/work/${activeProject.slug}#detalhes`} prefetch={false} data-cover-src={activeProject.image.src}>Ver case</Link>
           </div>
         </aside>
       </div>

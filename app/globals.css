@@ -164,6 +164,7 @@ button, input, textarea, select { color: inherit; font: inherit; }
 .project-art-word { position: absolute; z-index: 2; left: 3%; bottom: 2%; font-family: var(--font-display), Georgia, serif; font-size: clamp(3.3rem, 7vw, 7.8rem); line-height: .7; letter-spacing: -.06em; }
 .project-orbit { position: absolute; z-index: 1; width: 48%; aspect-ratio: 1; right: 11%; top: 14%; border: 1px solid rgba(241,238,228,.35); border-radius: 50%; box-shadow: 0 0 0 34px rgba(241,238,228,.025), 0 0 0 80px rgba(241,238,228,.018); }
 .project-copy { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 22px 4px 16px; align-items: start; }
+.project-case-label { flex: none; white-space: nowrap; font-family: var(--font-sans), Arial, sans-serif; font-size: .7rem; font-weight: 500; line-height: 1.5; padding-top: .25rem; }
 .project-copy h2 { margin: 0; font-family: var(--font-display), Georgia, serif; font-weight: 600; font-size: clamp(1.7rem, 2.6vw, 2.8rem); line-height: .95; transition: transform .35s var(--ease-editorial); }
 .project-copy p { margin: 6px 0 0; color: #4d4c48; font-size: .82rem; line-height: 1.45; }
 .project-copy svg { width: 20px; transform-origin: left center; transition: transform .35s var(--ease-editorial); }
