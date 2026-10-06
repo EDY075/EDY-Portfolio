@@ -841,6 +841,7 @@ html[data-preloading='true'] { overflow: hidden; }
   .site-nav:not([data-scroll-state='top']) .desktop-nav:is(:hover, :focus-within) a { opacity: 1; }
 }
 @media (min-width: 561px) and (max-width: 900px) {
+  .case-hero .back-link { top: 7.5rem; }
   .capabilities-hero h1 { font-size: 4.25rem; line-height: 1; }
   .capabilities-hero .capability-offset { margin-left: 0; }
   .capabilities-hero h1 > .motion-line-mask { margin-left: -.06em; }
