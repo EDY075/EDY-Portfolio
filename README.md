@@ -1,139 +1,99 @@
-![EDY — GOMES — Portfolio de Edmilson Gomes](docs/assets/github/banner.webp)
+![EDY — GOMES — Portfólio de Edmilson Gomes](docs/assets/github/banner.webp)
 
 # EDY — GOMES
 
-Portfólio editorial de **Edmilson Gomes** dedicado a projetos reais de **IT Support**, **Cybersecurity** e **Systems & Automation**.
+Portfólio editorial de **Edmilson Gomes** para trabalhos em suporte de TI, segurança, sistemas e análise de dados. A identidade usa preto e creme, tipografia de alto contraste, fotografia e capturas de projetos reais.
 
-Uma experiência responsiva, cinematográfica e orientada a case studies — construída para apresentar problemas, decisões técnicas e resultados com clareza.
+**[Site publicado](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/)** · **[Repositório](https://github.com/EDY075/EDY-Portfolio)** · **[LinkedIn](https://www.linkedin.com/in/edmilsongomes21/)**
 
-**[LIVE DEMO](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/)** · **[GITHUB](https://github.com/EDY075/EDY-Portfolio)** · **[LINKEDIN](https://www.linkedin.com/in/edmilsongomes21/)**
+## Apresentação em vídeo
 
-## Sobre o projeto
+https://github.com/user-attachments/assets/7668f4da-9530-4102-8719-9fa3e71c3e60
 
-EDY — GOMES é o portfólio pessoal de Edmilson Gomes. O projeto combina direção visual editorial, fotografia aprovada e capturas autênticas de produto para apresentar seis sistemas nas áreas de suporte, segurança, automação e análise.
+> A versão com capas atualizadas, galerias visuais e navegação móvel foi publicada na URL acima em 29/09/2026. Um domínio personalizado ainda será escolhido.
 
-Desktop e mobile possuem composições próprias. A experiência preserva hierarquia, legibilidade e navegação narrativa em cada formato, sem tratar o mobile como uma simples redução do layout amplo.
+## Projetos
 
-## Projetos em destaque
+Os seis destaques aparecem primeiro. VERDICT, RECON e SHADOWCAT compõem a galeria técnica. Andréa Tur e CR Fitness também aparecem na seção de projetos para pessoas reais como sites desenvolvidos para clientes. Assistente Personalizado aparece como trabalho de uso privado, com nome, imagem e conteúdo aprovados pelo proprietário, sem link externo.
 
-| Projeto | Categoria | Visão geral |
+As páginas do Assistente Personalizado e do SHADOWCAT ficam fora do sitemap e usam `noindex, nofollow`. Elas continuam acessíveis pela galeria e por URL direta; essa marcação não as torna confidenciais.
+
+| Seleção | Projeto | Estado apresentado |
 |---|---|---|
-| [EDY SHADOWCAT](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-shadowcat) | Cybersecurity · Automation | Orquestração modular de reconnaissance, evidências e relatórios. |
-| [EDY VERDICT](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-verdict) | Security Analysis | Avaliação estruturada para decisões baseadas em evidências. |
-| [EDY RECON](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-recon) | OSINT | Coleta e organização de inteligência de fontes abertas. |
-| [EDY ScanURL Family](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-scanurl-family) | Web Security | Análise de URLs e websites com resultados claros e acionáveis. |
-| [EDY HelpDesk](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-helpdesk) | IT Support | Fluxo operacional para tickets, produtividade e conhecimento. |
-| [EDY SOC Analytics](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-soc-analytics) | Security Analytics | Visualização de dados SOC para leitura e investigação mais rápidas. |
+| Destaque e trabalho real | Andréa Tur | Site de turismo desenvolvido para cliente; repositório privado |
+| Destaque | EDY ScanURL Family | Web/PWA publicada; confirmação física final do Android pendente |
+| Destaque | EDY HelpDesk | Release pública v1.0.1; demonstração local com dados sintéticos |
+| Destaque | EDY Shield | Release pública v2.3.0; execução local |
+| Destaque | EDY SIEM | Release pública v0.3.0; execução local |
+| Destaque | EDY SOC Analytics | Release pública v1.1.0; Power BI Desktop, sem publicação no Service |
+| Galeria técnica | EDY VERDICT | Código público em release candidate 1.0.0-rc.1; sem instalador distribuído |
+| Galeria técnica | EDY RECON | Release pública v1.1.0; validação pública offline |
+| Galeria técnica | EDY SHADOWCAT | Plataforma local e privada de investigação autorizada |
+| Trabalho real | CR Fitness | Site institucional público em Cloudflare Pages |
+| Trabalho privado | Assistente Personalizado | Assistente privado pelo Telegram; sem demo pública |
 
-## Experiência desktop
+Descrições, estados, imagens e links de cada case ficam em [data/projects.ts](data/projects.ts). O site só aponta para páginas públicas verificadas; nenhum repositório privado aparece como CTA. As capas em [public/images/projects/covers](public/images/projects/covers) combinam capturas atuais e artes aprovadas; interfaces e imagens de demonstração aparecem dentro dos cases. A [proveniência das capas](docs/cover-sources/README.md) registra cada origem, inclusive a captura do RECON fornecida pelo proprietário. As novas imagens internas têm [origem e contexto documentados](docs/case-media/README.md).
 
-Direção visual de alto contraste, tipografia editorial e projetos apresentados com espaço para contexto.
+## Experiência
 
-![Home do EDY — GOMES em desktop](docs/assets/github/screenshots/desktop-01-home.webp)
+A página inicial apresenta os seis destaques em cartões legíveis. A página de projetos reúne destaques, galeria técnica e trabalhos para pessoas reais; a apresentação em 3D é secundária e opcional. Um índice de seções permite pular diretamente para cada grupo, especialmente no celular. No computador, a roda fica enquadrada na janela: a rolagem percorre um projeto por vez, mantém a página estável e volta a mover a página nos extremos. No celular, gestos horizontais avançam os projetos enquanto a rolagem vertical permanece nativa. Botões, índice e Escape oferecem caminhos adicionais. Cada case apresenta duas imagens com contexto, troca por toque ou setas e acesso à imagem ampliada. Os cases também explicam problema, solução, recursos, tecnologias e estado atual. A interface respeita preferência por movimento reduzido.
 
-<table>
-  <tr>
-    <td width="50%"><img src="docs/assets/github/screenshots/desktop-03-work.webp" alt="Galeria de projetos do EDY — GOMES em desktop"></td>
-    <td width="50%"><img src="docs/assets/github/screenshots/desktop-04-shadowcat.webp" alt="Case study EDY SHADOWCAT em desktop"></td>
-  </tr>
-  <tr>
-    <td align="center"><sub>Selected Work</sub></td>
-    <td align="center"><sub>Case Study</sub></td>
-  </tr>
-</table>
+A primeira abertura mostra uma apresentação tipográfica curta enquanto a fonte e a imagem inicial terminam de carregar. A espera mínima é de 1,25 segundo, com limite para não prender a navegação em conexão lenta. Ao abrir um projeto pelo card, a transição editorial mostra sua capa durante a entrada do case; movimento reduzido mantém a navegação direta.
 
-## Experiência mobile
+O fundo usa partículas leves que flutuam e desaparecem perto do cursor ou do toque, sem cobrir o retrato. Um shader WebGL desenha apenas faíscas na posição do cursor no desktop e em toques ou arrastos no celular: douradas nas áreas escuras e pretas nas áreas claras, sem halo circular. No celular, a quantidade de faíscas e a resolução do canvas são menores; o efeito respeita economia de dados, movimento reduzido e a área do retrato. Os projetos entram suavemente na tela e a galeria aceita gestos horizontais, com rolagem vertical nativa preservada e controles legíveis abaixo da imagem.
 
-O mobile recompõe tipografia, retrato, navegação e mídia para `390×844`, mantém scroll nativo e entrega assets responsivos adequados ao viewport.
+As páginas Sobre e Competências mantêm o conteúdo dos cartões sempre visível, com destaque visual ao passar o mouse. Nas áreas claras, o fundo usa o mesmo bege editorial da página de projetos. A numeração decorativa foi retirada dos cartões e dos títulos de seção. A rolagem da galeria 3D foi ajustada para avançar um pouco mais devagar.
 
-<p align="center">
-  <img src="docs/assets/github/screenshots/mobile-01-home.webp" alt="Home do EDY — GOMES em mobile" width="31%">
-  <img src="docs/assets/github/screenshots/mobile-03-work.webp" alt="Galeria de projetos do EDY — GOMES em mobile" width="31%">
-  <img src="docs/assets/github/screenshots/mobile-04-shadowcat.webp" alt="Case study EDY SHADOWCAT em mobile" width="31%">
-</p>
+Capturas em [docs/assets/github/screenshots](docs/assets/github/screenshots) registram versões anteriores do site. As galerias dos cases e o índice móvel estão disponíveis no endereço público acima.
+
+## Artes para divulgação
+
+O pacote [Assistente Personalizado: 7 stories + 7 feeds](social/assistente-personalizado-7x7-2026-09/assistente-personalizado-7-stories-7-feeds.zip) contém PNGs em 2160×3840 e 2160×2700 px. As interfaces são ilustrativas, usam dados fictícios e não revelam a identidade da profissional atendida. Roteiro e instruções estão em [social/assistente-personalizado-7x7-2026-09/README.md](social/assistente-personalizado-7x7-2026-09/README.md).
 
 ## Stack
 
-- React 19 e TypeScript 5.9
-- Vinext 1.0 beta, Vite 8 e App Router
-- Tailwind CSS 4
-- Framer Motion 12
-- GSAP 3 com ScrollTrigger
-- Lenis no desktop; scroll nativo no mobile
-- Cloudflare Workers no ambiente de produção
-
-## Motion e UX
-
-- Revelações editoriais e transições de página com Framer Motion.
-- Sequências controladas com GSAP e ScrollTrigger.
-- Lenis restrito ao desktop e a dispositivos de ponteiro preciso.
-- Navegação sequencial com **Next Chapter** e **Next Project**.
-- Hover suspenso durante o momentum de scroll para evitar competição visual.
-- Suporte a `prefers-reduced-motion`, teclado e foco visível.
-
-## Performance
-
-Último baseline validado em produção:
-
-| Métrica | Desktop | Mobile |
-|---|---:|---:|
-| Lighthouse Performance | **100** | **92** |
-| Largest Contentful Paint | **646 ms** | **3,114 s** |
-| Accessibility | **100** | **100** |
-| Best Practices | **100** | **100** |
-| SEO | **100** | **100** |
-| Cumulative Layout Shift | **0** | **0** |
-
-O perfil de rolagem validado registrou **0 long tasks**.
-
-## Qualidade e validação
-
-- 11/11 rotas públicas verificadas.
-- 0 vulnerabilidades conhecidas em dependências de produção no baseline validado.
-- Auditoria de segredos e headers de segurança: PASS.
-- QA visual desktop e mobile: PASS.
-- Teste físico em Poco X5 Pro: PASS.
-- Viewports cobertos: `390×844`, `430×932`, `1440×900`, `1920×1080` e `2560×1440`.
+- React 19, TypeScript 5.9, Vinext 1.0 beta e Vite 8
+- Tailwind CSS 4, Framer Motion 12 e GSAP 3
+- Lenis no desktop; rolagem nativa no celular
+- Cloudflare Workers para a versão publicada
 
 ## Desenvolvimento local
 
-Requisitos: Node.js 22.13 ou superior.
+Requer Node.js 22.13 ou superior.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Use a URL exibida pelo servidor. Gates locais disponíveis:
+Use a URL exibida pelo servidor. Gates disponíveis:
 
 ```bash
 npm run lint
 npm run typecheck
 npm run build
-npm audit --omit=dev
 ```
 
-## Estrutura do projeto
+Para gerar o pacote de produção, defina `SITE_URL` com o endereço que receberá esta versão. O valor entra no Worker e alimenta canonical, sitemap e robots. A implantação e a ligação de um domínio estão descritas em [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
+Esta atualização passou por lint, checagem de tipos, build e revisão visual local e pública em desktop e celular. Nenhum número de Lighthouse ou auditoria de versão anterior é apresentado como resultado atual.
+
+## Estrutura
 
 ```text
-app/          rotas, layouts e metadata
-components/   interface, navegação e motion
-data/         textos, projetos, bio e links
-lib/          SEO, GSAP, scroll e utilitários
-public/       retratos e assets responsivos do site
-docs/         documentação e apresentação do repositório
+app/          rotas, layouts, estilos e metadata
+components/   interface, navegação e animações
+data/         projetos, biografia e links
+lib/          SEO e utilitários
+public/       imagens e outros assets
+docs/         documentação histórica
 ```
 
-## Editando conteúdo
+## Conteúdo e documentação
 
-- Textos gerais, localização e links: `data/site.ts`
-- Projetos e case studies: `data/projects.ts`
-- Biografia, valores e capacidades: `data/about.ts`
-- Retratos e imagens responsivas: `public/images/`
-- Estilos e tokens: `app/globals.css`
-- Metadata global: `app/layout.tsx`
-
-## Documentação
-
+- Textos gerais e links: [data/site.ts](data/site.ts)
+- Projetos e cases: [data/projects.ts](data/projects.ts)
+- Biografia e competências: [data/about.ts](data/about.ts)
+- Estilos: [app/globals.css](app/globals.css)
 - [Aprendizados do projeto](docs/PROJECT_LEARNINGS.md)
 - [Playbook de design, motion, performance e QA](docs/CODEX_WEB_PROJECT_MEMORY.md)

@@ -47,4 +47,5 @@ next-env.d.ts
 /work/
 /.qa-chrome/
 /artifacts/
+/.impeccable/
 *.tsbuildinfo

@@ -23,6 +23,13 @@
     "typeCheck": true
   },
   "ignorePatterns": [
+    "**/node_modules/**",
+    ".cache/**",
+    "work/**",
+    "outputs/**",
+    "brag-output/**",
+    "archive/**",
+    "scrollcraft/**",
     ".next/**",
     ".vinext/**",
     "out/**",

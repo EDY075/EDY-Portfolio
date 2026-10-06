@@ -3,19 +3,18 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useCallback, useEffect, useRef } from 'react';
-import { ArrowUpRight } from 'lucide-react';
 
-type Chapter = { eyebrow: string; number?: string; title: string; subtitle?: string; href: string };
+type Chapter = { eyebrow: string; title: string; subtitle?: string; href: string };
 
 const chapters: Record<string, Chapter> = {
-  '/': { eyebrow: 'PRÓXIMO CAPÍTULO', number: '02 / 05', title: 'SOBRE', subtitle: 'Conheça\nEdmilson Gomes.', href: '/about' },
-  '/about': { eyebrow: 'PRÓXIMO CAPÍTULO', number: '03 / 05', title: 'PROJETOS', subtitle: 'Sistemas, ferramentas\ne experimentos.', href: '/work' },
-  '/work': { eyebrow: 'PRÓXIMO CAPÍTULO', number: '04 / 05', title: 'COMPETÊNCIAS', subtitle: 'Suporte. Segurança.\nSistemas. Automação.', href: '/capabilities' },
-  '/capabilities': { eyebrow: 'PRÓXIMO CAPÍTULO', number: '05 / 05', title: 'CONTATO', subtitle: 'Vamos construir\nalgo útil.', href: '/contact' },
+  '/': { eyebrow: 'PRÓXIMO CAPÍTULO', title: 'SOBRE', subtitle: 'Conheça\nEdmilson Gomes.', href: '/about' },
+  '/about': { eyebrow: 'PRÓXIMO CAPÍTULO', title: 'PROJETOS', subtitle: 'Sistemas, ferramentas\ne experimentos.', href: '/work' },
+  '/work': { eyebrow: 'PRÓXIMO CAPÍTULO', title: 'COMPETÊNCIAS', subtitle: 'Suporte. Segurança.\nSistemas. Automação.', href: '/capabilities' },
+  '/capabilities': { eyebrow: 'PRÓXIMO CAPÍTULO', title: 'CONTATO', subtitle: 'Vamos construir\nalgo útil.', href: '/contact' },
   '/contact': { eyebrow: 'VOLTAR AO INÍCIO', title: 'EDY — GOMES', href: '/' },
 };
 
-export function NextChapter({ eyebrow, number, title, subtitle, href }: Chapter) {
+export function NextChapter({ eyebrow, title, subtitle, href }: Chapter) {
   const root = useRef<HTMLElement>(null);
   const prefetched = useRef(false);
   const router = useRouter();
@@ -39,8 +38,8 @@ export function NextChapter({ eyebrow, number, title, subtitle, href }: Chapter)
   return (
     <section ref={root} className="next-chapter" aria-label={eyebrow}>
       <Link className="next-chapter-link" href={href} prefetch={false} onPointerEnter={prefetch} onFocus={prefetch}>
-        <span className="next-chapter-meta"><span>{eyebrow}</span><span>{number}</span></span>
-        <span className="next-chapter-main"><span className="next-chapter-title">{title}</span><ArrowUpRight aria-hidden="true" /></span>
+        <span className="next-chapter-meta">{eyebrow}</span>
+        <span className="next-chapter-main"><span className="next-chapter-title">{title}</span></span>
         {subtitle && <span className="next-chapter-subtitle">{subtitle}</span>}
       </Link>
     </section>

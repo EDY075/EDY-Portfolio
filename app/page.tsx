@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { ArrowDownRight, ArrowRight } from 'lucide-react';
 import { SiteFrame } from '@/components/SiteFrame';
 import { HeroPortrait } from '@/components/HeroPortrait';
 import { PageReveal } from '@/components/PageReveal';
@@ -7,7 +6,7 @@ import { ProjectCard } from '@/components/ProjectCard';
 import { SectionHeading } from '@/components/SectionHeading';
 import { HomeMotion } from '@/components/motion/HomeMotion';
 import { MagneticLink } from '@/components/motion/MagneticLink';
-import { projects } from '@/data/projects';
+import { featuredProjects } from '@/data/projects';
 import { site } from '@/data/site';
 
 export default function Home() {
@@ -36,6 +35,8 @@ export default function Home() {
       <HomeMotion>
         <section className="home-hero" aria-labelledby="hero-title">
           <div className="hero-atmosphere" aria-hidden="true" />
+          <div className="hero-aperture" aria-hidden="true" />
+          <div className="hero-frame-line" aria-hidden="true" />
           <p className="hero-note note-left">Tecnologia<br />constrói<br />liberdade</p>
           <p className="hero-note note-right">Disciplina transforma<br />ideias em realidade</p>
           <h1 id="hero-title" className="hero-name hero-name-back" aria-label="Edy Gomes">
@@ -43,14 +44,13 @@ export default function Home() {
             <span className="hero-gomes">GOMES</span>
           </h1>
           <HeroPortrait className="home-portrait" priority reveal={false} />
-          <div className="hero-name hero-name-front" aria-hidden="true">
-            <span className="hero-edy">EDY</span>
-            <span className="hero-gomes">GOMES</span>
-          </div>
           <div className="hero-intro">
             <span className="eyebrow">EDMILSON GOMES / SÃO PAULO</span>
             <p>Tecnologia útil, sistemas seguros e automação para transformar problemas reais em soluções claras.</p>
-            <Link href="/work" prefetch={false} className="text-link">Ver projetos <ArrowDownRight aria-hidden="true" /></Link>
+            <div className="hero-actions">
+              <Link href="#selected-work" className="text-link">Ver projetos</Link>
+              <Link href="/contact" prefetch={false} className="text-link hero-contact-link">Iniciar uma conversa</Link>
+            </div>
           </div>
           <div className="hero-bottom">
             {site.disciplines.map((discipline) => <span key={discipline}>{discipline}</span>)}
@@ -58,33 +58,34 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="selected-work" className="selected-preview section-pad">
+          <PageReveal>
+            <SectionHeading kicker="Uma seleção de trabalho real, com contexto e estado atual">Projetos</SectionHeading>
+          </PageReveal>
+          <div className="project-grid home-project-grid featured-grid">
+            {featuredProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} sequence />)}
+          </div>
+          <PageReveal className="all-work-row">
+            <p>{featuredProjects.length} destaques.<br />Diferentes contextos, trabalho verificável.</p>
+            <MagneticLink href="/work" className="outline-link">Ver galeria completa</MagneticLink>
+          </PageReveal>
+        </section>
+
         <section className="manifesto section-pad">
           <PageReveal className="manifesto-aside">
-            <span className="section-index">01 / PROFILE</span>
+            <span className="section-index">PERFIL</span>
             <p>Pessoas<br />Ideias<br />Sistemas</p>
           </PageReveal>
           <PageReveal className="manifesto-copy">
             <p className="manifesto-lead">Eu construo tecnologia que desaparece no uso — porque o sistema certo não exige atenção, ele devolve tempo.</p>
             <div className="manifesto-detail">
               <p>Edmilson Gomes é um profissional de tecnologia focado em suporte, segurança, organização e automação. O trabalho começa por entender o problema com clareza e termina com algo útil, legível e sustentável.</p>
-              <Link href="/about" prefetch={false} className="text-link">Sobre Edy <ArrowRight aria-hidden="true" /></Link>
+              <Link href="/about" prefetch={false} className="text-link">Sobre Edy</Link>
             </div>
           </PageReveal>
         </section>
 
-        <section id="selected-work" className="selected-preview section-pad">
-          <PageReveal>
-            <SectionHeading index="02" kicker="Uma seleção de sistemas, ferramentas e experimentos">Projetos</SectionHeading>
-          </PageReveal>
-          <div className="project-grid home-project-grid">
-            {projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} sequence />)}
-          </div>
-          <PageReveal className="all-work-row">
-            <p>Six projects.<br />One practical point of view.</p>
-            <MagneticLink href="/work" className="outline-link">Ver todos os projetos <ArrowRight aria-hidden="true" /></MagneticLink>
-          </PageReveal>
-        </section>
       </HomeMotion>
-    </SiteFrame>
+      </SiteFrame>
   );
 }

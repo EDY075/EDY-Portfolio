@@ -42,83 +42,138 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   }, []);
 
   useEffect(() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const coarse = window.matchMedia('(pointer: coarse)').matches;
-    const compact = window.matchMedia('(max-width: 767px)').matches;
-    if (reduced || coarse || compact) return;
-
-    const lenis = new Lenis({
-      autoRaf: false,
-      lerp: 0.28,
-      smoothWheel: true,
-      wheelMultiplier: 0.9,
-      syncTouch: false,
-      anchors: true,
-    });
-    lenisRef.current = lenis;
-
-    const root = document.documentElement;
-    let projectHoverLocked = false;
-    let projectHoverIdleTimer: number | null = null;
-
-    const setProjectHoverLocked = (locked: boolean) => {
-      const nextState = locked ? 'locked' : 'ready';
-      if (projectHoverLocked === locked && root.dataset.projectHover === nextState) return;
-
-      projectHoverLocked = locked;
-      root.dataset.projectHover = nextState;
+    const alignProjectGallery = (event: Event) => {
+      const target = (event as CustomEvent<HTMLElement>).detail;
+      if (!target?.isConnected) return;
+      if (lenisRef.current) {
+        lenisRef.current.resize();
+        lenisRef.current.scrollTo(target, { immediate: true, force: true });
+      } else target.scrollIntoView({ behavior: 'instant', block: 'start' });
     };
+    window.addEventListener('edy:align-project-gallery', alignProjectGallery);
+    return () => window.removeEventListener('edy:align-project-gallery', alignProjectGallery);
+  }, []);
 
-    const clearProjectHoverIdleTimer = () => {
-      if (projectHoverIdleTimer === null) return;
-      window.clearTimeout(projectHoverIdleTimer);
-      projectHoverIdleTimer = null;
+  useEffect(() => {
+    if (pathname !== '/experience') return;
+    const scrollExperience = (event: Event) => {
+      const destination = (event as CustomEvent<number>).detail;
+      if (typeof destination !== 'number' || !Number.isFinite(destination)) return;
+      const top = Math.max(0, destination);
+      if (lenisRef.current) lenisRef.current.scrollTo(top, { immediate: true, force: true });
+      else window.scrollTo({ top, behavior: 'instant' });
     };
+    window.addEventListener('edy:experience-scroll', scrollExperience);
+    return () => window.removeEventListener('edy:experience-scroll', scrollExperience);
+  }, [pathname]);
 
-    const scheduleProjectHoverUnlock = () => {
-      clearProjectHoverIdleTimer();
-      projectHoverIdleTimer = window.setTimeout(() => {
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const coarse = window.matchMedia('(pointer: coarse)');
+    const compact = window.matchMedia('(max-width: 767px)');
+    const mediaQueries = [reduced, coarse, compact];
+    let stopCurrent: (() => void) | null = null;
+    let refreshFrame = 0;
+
+    const startLenis = () => {
+
+      const lenis = new Lenis({
+        autoRaf: false,
+        lerp: 0.12,
+        smoothWheel: true,
+        wheelMultiplier: 0.78,
+        syncTouch: false,
+        anchors: true,
+      });
+      lenisRef.current = lenis;
+
+      const root = document.documentElement;
+      let projectHoverLocked = false;
+      let projectHoverIdleTimer: number | null = null;
+
+      const setProjectHoverLocked = (locked: boolean) => {
+        const nextState = locked ? 'locked' : 'ready';
+        if (projectHoverLocked === locked && root.dataset.projectHover === nextState) return;
+
+        projectHoverLocked = locked;
+        root.dataset.projectHover = nextState;
+      };
+
+      const clearProjectHoverIdleTimer = () => {
+        if (projectHoverIdleTimer === null) return;
+        window.clearTimeout(projectHoverIdleTimer);
         projectHoverIdleTimer = null;
-        setProjectHoverLocked(false);
-      }, PROJECT_HOVER_IDLE_DELAY_MS);
+      };
+
+      const scheduleProjectHoverUnlock = () => {
+        clearProjectHoverIdleTimer();
+        projectHoverIdleTimer = window.setTimeout(() => {
+          projectHoverIdleTimer = null;
+          setProjectHoverLocked(false);
+        }, PROJECT_HOVER_IDLE_DELAY_MS);
+      };
+
+      const updateProjectHoverState = (current: Lenis) => {
+        const hasMomentum =
+          Math.abs(current.velocity) > PROJECT_HOVER_VELOCITY_EPSILON ||
+          current.isScrolling !== false;
+
+        if (hasMomentum) {
+          setProjectHoverLocked(true);
+          // Keep renewing the fallback while momentum emits frames. Lenis does
+          // not always emit a final event with `isScrolling === false` after an
+          // immediate route scroll, so the last event must also be able to
+          // release the lock after the approved idle delay.
+          scheduleProjectHoverUnlock();
+          return;
+        }
+
+        if (projectHoverLocked) scheduleProjectHoverUnlock();
+      };
+
+      setProjectHoverLocked(false);
+
+      const update = (time: number) => lenis.raf(time * 1000);
+      const syncTrigger = () => ScrollTrigger.update();
+      const hasScrollTriggers = pathname === '/' || pathname === '/experience';
+      lenis.on('scroll', updateProjectHoverState);
+      if (hasScrollTriggers) lenis.on('scroll', syncTrigger);
+      gsap.ticker.add(update);
+      gsap.ticker.lagSmoothing(0);
+
+      return () => {
+        clearProjectHoverIdleTimer();
+        lenis.off('scroll', updateProjectHoverState);
+        if (hasScrollTriggers) lenis.off('scroll', syncTrigger);
+        gsap.ticker.remove(update);
+        lenis.destroy();
+        lenisRef.current = null;
+        delete root.dataset.projectHover;
+      };
     };
 
-    const updateProjectHoverState = (current: Lenis) => {
-      const hasMomentum =
-        Math.abs(current.velocity) > PROJECT_HOVER_VELOCITY_EPSILON ||
-        current.isScrolling !== false;
+    const configure = () => {
+      const reading = pathname === '/experience' && document.documentElement.dataset.experienceReading === 'true';
+      const enabled = !reduced.matches && !coarse.matches && !compact.matches && !reading;
+      if (enabled === Boolean(stopCurrent)) return;
 
-      if (hasMomentum) {
-        setProjectHoverLocked(true);
-        // Keep renewing the fallback while momentum emits frames. Lenis does
-        // not always emit a final event with `isScrolling === false` after an
-        // immediate route scroll, so the last event must also be able to
-        // release the lock after the approved idle delay.
-        scheduleProjectHoverUnlock();
-        return;
-      }
-
-      if (projectHoverLocked) scheduleProjectHoverUnlock();
+      stopCurrent?.();
+      stopCurrent = enabled ? startLenis() : null;
+      // Native scroll remains the source of truth. Destroying and recreating
+      // Lenis here keeps the current reading position instead of restoring top.
+      window.cancelAnimationFrame(refreshFrame);
+      refreshFrame = window.requestAnimationFrame(() => ScrollTrigger.refresh());
     };
 
-    setProjectHoverLocked(false);
-
-    const update = (time: number) => lenis.raf(time * 1000);
-    const syncTrigger = () => ScrollTrigger.update();
-    const hasScrollTriggers = pathname === '/';
-    lenis.on('scroll', updateProjectHoverState);
-    if (hasScrollTriggers) lenis.on('scroll', syncTrigger);
-    gsap.ticker.add(update);
-    gsap.ticker.lagSmoothing(0);
+    configure();
+    mediaQueries.forEach((query) => query.addEventListener('change', configure));
+    if (pathname === '/experience') window.addEventListener('edy:experience-mode', configure);
 
     return () => {
-      clearProjectHoverIdleTimer();
-      lenis.off('scroll', updateProjectHoverState);
-      if (hasScrollTriggers) lenis.off('scroll', syncTrigger);
-      gsap.ticker.remove(update);
-      lenis.destroy();
-      lenisRef.current = null;
-      delete root.dataset.projectHover;
+      mediaQueries.forEach((query) => query.removeEventListener('change', configure));
+      if (pathname === '/experience') window.removeEventListener('edy:experience-mode', configure);
+      window.cancelAnimationFrame(refreshFrame);
+      stopCurrent?.();
     };
   }, [pathname]);
 

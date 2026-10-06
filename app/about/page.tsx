@@ -18,7 +18,7 @@ export default function AboutPage() {
     <SiteFrame>
       <main>
         <section className="editorial-hero about-hero">
-          <div className="page-kicker"><span>01 / PERFIL</span><span>Disciplina transforma ideias em realidade</span></div>
+          <div className="page-kicker"><span>PERFIL</span><span>Disciplina transforma ideias em realidade</span></div>
           <TextReveal className="about-motion-title" ariaLabel="Sobre Edy" lines={['SOBRE', <em key="edy">EDY</em>]} />
           <HeroPortrait className="about-portrait" priority />
           <div className="about-lead">
@@ -39,13 +39,12 @@ export default function AboutPage() {
 
         <section className="values-section section-pad">
           <PageReveal className="values-heading">
-            <span className="section-index">02 / PRINCÍPIOS</span>
+            <span className="section-index">PRINCÍPIOS</span>
             <h2>O que<br /><em>permanece.</em></h2>
           </PageReveal>
           <div className="values-grid">
             {about.values.map((value, index) => (
-              <PageReveal className="value-item" key={value.number} delay={index * 0.06}>
-                <span>{value.number}</span>
+              <PageReveal className="value-item" key={value.title} delay={index * 0.06}>
                 <h3>{value.title}</h3>
                 <p>{value.text}</p>
               </PageReveal>

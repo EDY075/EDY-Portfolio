@@ -1,0 +1,19 @@
+# Imagens internas dos cases
+
+As imagens em `public/images/projects/cases/` são versões WebP otimizadas. `node scripts/build-case-media.mjs` as recria a partir das fontes locais abaixo. As primeiras imagens de cada galeria já existiam em `public/images/projects/` e estão indicadas em `data/projects.ts`.
+
+| Case | Arquivo gerado | Fonte verificada | Limite de divulgação |
+|---|---|---|---|
+| Andréa Tur | `andrea-destinos.webp` | `../ANDREA-TUR/artifacts/presentation/verification-netlify/all-routes/desktop-1440-04-destinos.png` | Captura histórica de verificação; não representa agenda atual. |
+| ScanURL Family | `scanurl-public.webp` | `docs/cover-sources/scanurl-live-2026-09-29.png` | Site público capturado em 29/09/2026; análise não garante segurança de compra. |
+| EDY HelpDesk | `helpdesk-knowledge.webp` | `../EDY-HelpDesk/docs/screenshots/release-1.0.0/11-knowledge-base-ptbr-operations.png` | Demonstração local com registros sintéticos. |
+| EDY Shield | `shield-siem-handoff.webp` | `../EDY-Shield/docs/screenshots/release-fim-siem-handoff.png` | Integração opcional com o SIEM; uso local. |
+| EDY SIEM | `siem-case-center.webp` | `../EDY-SIEM/assets/screenshots/release-case-center.png` | Captura da release local, sem demo hospedada. |
+| EDY SOC Analytics | `soc-incident.webp` | `../EDY-SOC-Analytics/screenshots/mobile-final-true/9. Incident Drillthrough.png` | Todos os dados do relatório são sintéticos. |
+| EDY VERDICT | `verdict-url.webp` | `../EDY-VERDICT/docs/screenshots/05-web-url.png` | Candidato distribuído como código-fonte; sem instalador público. |
+| EDY RECON | `recon-terminal.webp` | `docs/cover-sources/recon-terminal-approved.png` | Captura fornecida pelo proprietário; números exibidos pertencem à máquina capturada, não à release. |
+| EDY SHADOWCAT | `shadowcat-pipeline.webp` | `../EDY-SHADOWCAT/linkedin-post/03-investigation-pipeline.png` | Arte de divulgação aprovada em `../EDY-SHADOWCAT/docs/security/PUBLICATION_AUDIT.md`; banco demo sintético; aplicação privada. |
+| CR Fitness | `cr-fitness-public.webp` | `docs/cover-sources/cr-fitness-live-2026-09-29.png` | Captura da versão pública atual em 29/09/2026. Não usar as capturas locais antigas. |
+| Assistente Personalizado | `assistant-fichas-illustration.webp` e `assistant-documents-illustration.webp` | `social/assistente-personalizado-7x7-2026-09/export/feed-03-fichas.png` e `feed-05-documentos.png` | Artes ilustrativas com dados fictícios; não são capturas da conversa privada. |
+
+As galerias têm duas imagens por case. Nenhum repositório privado, registro real de treino ou demonstração não publicada foi incluído. As legendas públicas em `data/projects.ts` registram o contexto de cada captura.

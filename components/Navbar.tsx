@@ -29,14 +29,14 @@ export function Navbar() {
     const onScroll = () => {
       if (frame) return;
       frame = window.requestAnimationFrame(() => {
-        update(window.scrollY < 70 ? 'top' : 'scrolling');
+        update(window.scrollY < 24 ? 'top' : 'scrolling');
         window.clearTimeout(idle);
-        idle = window.setTimeout(() => update(window.scrollY < 70 ? 'top' : 'idle'), 180);
+        idle = window.setTimeout(() => update(window.scrollY < 24 ? 'top' : 'idle'), 180);
         frame = 0;
       });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
-    update(window.scrollY < 70 ? 'top' : 'idle');
+    update(window.scrollY < 24 ? 'top' : 'idle');
     return () => {
       window.removeEventListener('scroll', onScroll);
       if (frame) window.cancelAnimationFrame(frame);

@@ -8,6 +8,8 @@ const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   '00000000-0000-4000-8000-000000000000';
 
 const { d1, r2 } = hostingConfig;
+const publicSiteUrl = process.env.SITE_URL?.trim();
+const publicVars: Record<string, string> = publicSiteUrl ? { SITE_URL: publicSiteUrl } : {};
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
@@ -15,6 +17,7 @@ const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
 const localBindingConfig = {
   main: 'vinext/server/fetch-handler',
   compatibility_flags: ['nodejs_compat'],
+  vars: publicVars,
   d1_databases: d1
     ? [
         {
@@ -52,7 +55,7 @@ export default defineConfig(async () => {
     },
     server: {
       watch: {
-        ignored: ['**/.qa-chrome/**', '**/artifacts/**', '**/work/**', '**/outputs/**'],
+        ignored: ['**/.qa-chrome/**', '**/.cache/**', '**/docs/cover-sources/**', '**/artifacts/**', '**/outputs/**', '**/work/**', '**/archive/**', '**/brag-output/**', '**/scrollcraft/**'],
         ...(isCodexSeatbeltSandbox
           ? { useFsEvents: false, usePolling: true }
           : {}),

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import { PageTransition } from '@/components/motion/PageTransition';
 import { SmoothScrollProvider } from '@/components/motion/SmoothScrollProvider';
+import { HomeEntry } from '@/components/HomeEntry';
 import { pageSocialMetadata, siteUrl } from '@/lib/seo';
 import './globals.css';
 
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="pt-BR">
       <body className={`${display.variable} ${sans.variable}`}>
+        <HomeEntry />
         <SmoothScrollProvider>
           <PageTransition>{children}</PageTransition>
         </SmoothScrollProvider>

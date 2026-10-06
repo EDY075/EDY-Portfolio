@@ -20,7 +20,7 @@ export function ProjectVisual({
         sizes={sizes}
         priority={priority}
         className="project-real-image"
-        style={{ objectFit: image.fit, objectPosition: image.position }}
+        style={{ objectFit: image.fit ?? 'contain', objectPosition: image.position ?? 'center' }}
       />
     </div>
   );
