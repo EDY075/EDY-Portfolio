@@ -11,6 +11,20 @@ await fs.mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const results = [];
 
+async function decodeImage(image) {
+  try {
+    await image.page().waitForFunction(node => node.complete && node.naturalWidth > 0,
+      await image.elementHandle(), { timeout: 15000 });
+  } catch (error) {
+    console.error('Image load state:', await image.evaluate(node => ({
+      src: node.currentSrc || node.src, complete: node.complete,
+      naturalWidth: node.naturalWidth, rect: node.getBoundingClientRect().toJSON(),
+    })));
+    throw error;
+  }
+  await image.evaluate(node => node.decode());
+}
+
 try {
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
   const page = await context.newPage();
@@ -27,6 +41,7 @@ try {
   assert(casePaths.includes('/work/edy-crm'));
   assert(casePaths.includes('/work/war-room'));
   for (const path of casePaths) {
+    console.log(`CHECK: ${path}`);
     const caseResponse = await page.goto(base + path, { waitUntil: 'networkidle' });
     assert.equal(caseResponse.status(), 200, `${path}: status`);
     assert.equal(await page.locator('h1').count(), 1, `${path}: heading`);
@@ -39,11 +54,13 @@ try {
     const expectedImages = ['/work/edy-crm', '/work/cr-fitness', '/work/edy-soc-analytics', '/work/edy-shadowcat'].includes(path) ? 4 : 2;
     assert.equal(await page.locator('.case-gallery-slide').count(), expectedImages, `${path}: project images`);
     assert.equal(await page.locator('#origem').count(), 1, `${path}: origin`);
+    await page.getByRole('link', { name: 'Imagens do projeto', exact: true }).click();
+    assert.equal(new URL(page.url()).hash, '#galeria');
     for (const image of await page.locator('.case-gallery-slide img').all()) {
       await image.scrollIntoViewIfNeeded();
-      await image.evaluate(node => node.decode());
+      await decodeImage(image);
     }
-    await page.locator('.case-art img').evaluate(image => image.decode());
+    await decodeImage(page.locator('.case-art img'));
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), canonicalBase + path);
     assert.equal(await page.locator('a [class*="lucide-arrow"], button [class*="lucide-arrow"]').count(), 0);
     const clickableLabels = await page.locator('main a, main button, main summary').allTextContents();
@@ -71,13 +88,15 @@ try {
   await context.close();
 
   for (const [width, height] of [[320, 720], [390, 844], [768, 1024], [1024, 600], [1440, 900]]) {
+    console.log(`CHECK: CRM ${width}x${height}`);
     const phone = await browser.newPage({ viewport: { width, height }, reducedMotion: 'reduce' });
     await phone.goto(`${base}/work/edy-crm`, { waitUntil: 'networkidle' });
-    await phone.locator('.case-art img').evaluate(image => image.decode());
+    await decodeImage(phone.locator('.case-art img'));
     assert(!(await phone.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1)), `${width}: overflow`);
+    await phone.getByRole('link', { name: 'Imagens do projeto', exact: true }).click();
     for (const image of await phone.locator('.case-gallery-slide img').all()) {
       await image.scrollIntoViewIfNeeded();
-      await image.evaluate(node => node.decode());
+      await decodeImage(image);
       assert(await image.evaluate(node => node.naturalWidth > 0));
     }
     await phone.getByRole('button', { name: 'Ver imagem:' }).first().click();

@@ -2,7 +2,7 @@
 
 O checkout oficial é `D:\EDY-Projects\EDY-Portfolio`. O site foi publicado no Cloudflare Workers em 28/09/2026 como `edy-gomes-portfolio`, na URL `https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/`. Para a prévia local, inicie `npm run dev` e use a URL exibida pelo servidor.
 
-Versão pública atual verificada: `acb96424-b85d-4cc0-ae6f-77c64130ea13` (03/10/2026). Versão anterior preservada no histórico: `4657e186-a92f-4579-9127-0919f03660ea` (02/10/2026).
+Versão pública atual: `97549a71-9c73-4ab8-a701-789c925d18dc` (06/10/2026), com runtime `c27dfb7`. Versão anterior preservada no histórico: `651db85a-5e35-4803-83e8-59b750458d27`. As conferências de cada entrega estão registradas abaixo.
 
 ## Estado e próximas decisões
 
@@ -85,3 +85,19 @@ Conferência pública: os treze cases responderam HTTP 200, CRM em cinco viewpor
 A suíte pública de rolagem da galeria passou com pausas, deltas contínuos, liberação da página no limite e retorno à galeria. CTA e detalhes dos treze cases, controles em celular, formato 320 px e redirecionamento antigo passaram. Os cartões públicos de CRM e WAR ROOM foram inspecionados em 1380 e 390 px: `Ver case` legível, sem sobreposição.
 
 A suíte pública de interação confirmou clique direto nas treze capas, arrasto sem navegação acidental, clique posterior, Enter e toque no celular. O histórico remoto foi integrado sem force push; o commit de documentação acompanha o runtime aprovado, sem incluir a experiência pausada.
+
+## Curadoria cinematográfica · 06/10/2026
+
+O proprietário autorizou publicar após modificar, testar e inspecionar. Os sete destaques agora aparecem na mesma ordem na home, em Projetos e na galeria 3D: EDY CRM, CR Fitness, EDY SOC Analytics, Assistente Personalizado, EDY SHADOWCAT, EDY RECON e WAR ROOM. O catálogo mantém treze cases únicos. A troca de setas por rótulos, os cliques na galeria 3D e os ajustes responsivos da entrega anterior permanecem preservados.
+
+RECON, CR Fitness e Assistente Personalizado receberam capas cinematográficas ilustrativas, com variantes WebP responsivas. Oito capturas adicionais ampliam os cases de CRM, CR Fitness, SOC Analytics e SHADOWCAT; o catálogo soma 34 imagens internas, distintas das capas. Todos os cases ganharam contexto de criação. O Assistente mantém demonstrações fictícias identificadas: nenhuma conversa, ficha ou imagem privada foi publicada. Fontes, prompts, restrições e matriz de testes estão em [PORTFOLIO_CURATION_2026-10-06.md](PORTFOLIO_CURATION_2026-10-06.md).
+
+Runtime `c27dfb7`, empacotado por `git archive` em `.cache/release-20261006-curation`, dentro do projeto oficial. Experimentos locais pausados ficaram fora do commit e do runtime. O teste de curadoria passou após reproduzir a ordem antiga; lint, tipagem, build de produção e ensaio Wrangler passaram. A inspeção local validou 45 combinações de páginas/larguras entre 320 e 2560 px, quatro vistas da galeria, 26 visitas aos cases em desktop/celular, galerias completas em 1440/390/320, capas e hero em cinco formatos, curadoria visual, navegação 3D e integração WAR ROOM.
+
+Publicado no Worker existente com `--keep-vars`: versão `97549a71-9c73-4ab8-a701-789c925d18dc`. O endereço público e as variáveis configuradas foram preservados. A suíte de interação pública confirmou clique direto nas treze capas, arrasto sem navegação acidental, clique posterior, Enter e toque. A suíte de galeria pública passou com pausas, rolagem contínua, saída e retorno no limite, CTAs e detalhes dos treze cases, celular, 320 px e redirecionamento antigo.
+
+Conferência pós-deploy concluída no Chrome: treze cases HTTP 200, canonical/sitemap/robots, CRM em cinco viewports, ausência do experimento pausado e ausência de setas nos controles. A inspeção dos sete destaques em 390/1440 validou ordem, títulos e `Ver case` sem colisão, origem, navegação para as imagens, galerias completas e privacidade. As 17 novas imagens WebP responderam HTTP 200 e têm SHA-256 idêntico aos arquivos locais; CSP, HSTS, `nosniff` e DENY foram preservados nas cinco rotas conferidas. A listagem de deployments confirmou 100% do tráfego na versão publicada.
+
+A primeira automação aguardou indefinidamente uma imagem lazy após rolar antes de terminar o ajuste inicial da página; a repetição com espera limitada identificou a imagem fora do viewport. A suíte passou a usar o link real `Imagens do projeto`, mantendo as verificações de carregamento e decodificação, com limite de 15 segundos e diagnóstico de estado. A repetição completa passou, sem alterar o runtime nem omitir uma imagem. Os novos roteiros de conferência de mídia e curadoria visual acompanham a documentação no GitHub. Saídas, screenshots e perfis temporários permanecem no projeto, ignorados pelo Git.
+
+Não houve atualização de dependências nem nova medição Lighthouse. Os seis alertas altos conhecidos da cadeia de build continuam documentados, sem declarar `npm audit` aprovado. Safari e aparelhos físicos não foram testados.
