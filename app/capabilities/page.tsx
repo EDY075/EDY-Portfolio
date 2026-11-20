@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { SiteFrame } from '@/components/SiteFrame';
 import { PageReveal } from '@/components/PageReveal';
 import { capabilities } from '@/data/about';
-import { TextReveal } from '@/components/motion/TextReveal';
 import { pageSocialMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -11,25 +10,41 @@ export const metadata: Metadata = {
   ...pageSocialMetadata('/capabilities', 'Competências — EDY GOMES', 'Capacidades de Edmilson Gomes em suporte, segurança, sistemas, automação, dados e documentação.'),
 };
 
+const sections = capabilities.map(capability => ({
+  ...capability,
+  id: capability.title.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+}));
+
 export default function CapabilitiesPage() {
   return (
     <SiteFrame>
-      <main className="capabilities-page">
-        <section className="capabilities-hero">
-          <p className="page-kicker"><span>COMPETÊNCIAS</span><span>Tecnologia que funciona para pessoas</span></p>
-          <TextReveal
-            ariaLabel={capabilities.map((capability) => capability.title).join(', ')}
-            lines={capabilities.map((capability, index) => <span key={capability.title} className={index % 2 ? 'capability-offset' : ''}>{capability.title}</span>)}
-          />
-          <p className="capability-quote">Resolver. Organizar.<br />Automatizar. Melhorar.</p>
+      <main className="pf-page pf-capabilities">
+        <section className="pf-hero pf-capabilities-hero" data-portfolio-theme="light" aria-labelledby="pf-capabilities-title">
+          <div className="pf-hero-copy">
+            <p className="pf-label">Resolver. Organizar. Automatizar. Melhorar.</p>
+            <h1 id="pf-capabilities-title" className="pf-title">Competências</h1>
+            <p className="pf-lead">Tecnologia que funciona para pessoas.</p>
+          </div>
+          <nav className="pf-discipline-list" aria-label="Áreas de atuação">
+            {sections.map(capability => (
+              <a key={capability.title} href={`#${capability.id}`}>
+                {capability.title}
+              </a>
+            ))}
+          </nav>
         </section>
-        <section className="capability-details">
-          {capabilities.map((capability, index) => (
-            <PageReveal className="capability-column" key={capability.title} delay={(index % 3) * .06}>
-              <h2>{capability.title}</h2>
-              <ul>{capability.items.map((item) => <li key={item}>{item}</li>)}</ul>
-            </PageReveal>
-          ))}
+
+        <section className="pf-section pf-section-dark pf-contour" aria-label="Detalhes das competências">
+          <div className="pf-editorial-grid">
+            {sections.map((capability, index) => (
+              <div id={capability.id} key={capability.title}>
+                <PageReveal className="pf-panel" delay={(index % 3) * .06}>
+                  <h2>{capability.title}</h2>
+                  <ul>{capability.items.map(item => <li key={item}>{item}</li>)}</ul>
+                </PageReveal>
+              </div>
+            ))}
+          </div>
         </section>
       </main>
     </SiteFrame>

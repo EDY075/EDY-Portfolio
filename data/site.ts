@@ -10,6 +10,7 @@ export const site = {
     email: 'edmilsongsousa20@gmail.com',
     github: 'https://github.com/EDY075',
     linkedin: 'https://www.linkedin.com/in/edmilsongomes21/',
+    instagram: 'https://www.instagram.com/edmilson_zn_/',
     location: 'São Paulo — BR',
   },
   navigation: [

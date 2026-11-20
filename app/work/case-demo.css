@@ -1,0 +1,66 @@
+.pf-case-demo-heading {
+  display: grid;
+  gap: .85rem;
+  max-width: 62ch;
+  margin-bottom: clamp(1.4rem, 4vw, 3rem);
+}
+
+.pf-case-demo-heading > p:last-child {
+  color: var(--pf-muted);
+  font-size: clamp(.94rem, 1.4vw, 1.15rem);
+  line-height: 1.55;
+}
+
+.pf-case-demo .pf-case-demo-label {
+  color: var(--eg-accent);
+  font-size: .77rem;
+  font-weight: 850;
+  letter-spacing: .085em;
+  text-transform: uppercase;
+}
+
+.pf-case-demo-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--pf-outline);
+  border-radius: .45rem .45rem 1.6rem .45rem;
+  background: #0c0f11;
+  object-fit: contain;
+}
+
+.pf-case-demo-credit {
+  margin-top: .7rem;
+  color: var(--pf-muted);
+  font-size: .8rem;
+  line-height: 1.45;
+}
+
+.pf-case-demo-credit a { text-decoration: underline; text-underline-offset: .2em; }
+
+.pf-case-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  gap: clamp(.6rem, 1.7vw, 1.35rem);
+  margin: clamp(1.5rem, 4.5vw, 3.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pf-case-swatches li {
+  display: grid;
+  align-content: start;
+  gap: .4rem;
+  min-width: 0;
+}
+
+.pf-case-swatches strong { font-size: .93rem; line-height: 1.25; }
+.pf-case-swatches li > span:last-child { color: #515749; font: .76rem/1.4 ui-monospace, monospace; }
+
+.pf-case-swatch {
+  display: block;
+  min-height: clamp(2.7rem, 6vw, 6rem);
+  border: 1px solid #25291d42;
+  border-radius: .35rem .35rem .9rem .35rem;
+}

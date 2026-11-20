@@ -1,0 +1,112 @@
+.eg-site .pf-about-hero .pf-portrait {
+  --pf-portrait-progress: 0;
+  --pf-portrait-cut: 3.5rem;
+  --pf-portrait-gray: 1;
+  position: relative;
+  align-self: center;
+}
+
+.pf-portrait-crop {
+  overflow: clip;
+  border-radius: .55rem .55rem 0 .55rem;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--pf-portrait-cut)), calc(100% - var(--pf-portrait-cut)) 100%, 0 100%);
+  background: var(--eg-ink);
+}
+
+.eg-site .pf-about-hero .pf-portrait img {
+  filter: grayscale(var(--pf-portrait-gray));
+  transform-origin: 50% 26%;
+}
+
+.eg-site .pf-about-hero .pf-portrait[data-color='true'] { --pf-portrait-gray: 0; }
+
+.pf-portrait-mark {
+  position: absolute;
+  pointer-events: none;
+  width: calc(var(--pf-portrait-cut) + 1.4rem);
+  height: auto;
+  overflow: visible;
+  fill: none;
+  stroke: #667331;
+  opacity: 0;
+}
+
+.pf-portrait-mark path {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1 2;
+}
+
+.pf-portrait-mark-start { top: -.55rem; left: -.55rem; }
+.pf-portrait-mark-end { bottom: -.54rem; right: -.54rem; }
+
+.eg-site .pf-portrait-color {
+  position: absolute;
+  bottom: .75rem;
+  left: .75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 44px;
+  padding: .45rem .7rem;
+  border: 1px solid var(--eg-ink);
+  border-radius: .5rem;
+  background: var(--eg-paper);
+  color: var(--eg-ink);
+  font: 800 .78rem/1.2 var(--eg-sans);
+}
+
+.eg-site .pf-portrait-color[aria-pressed='true'] { background: var(--eg-accent); }
+
+.eg-site .pf-page .pf-about-hero {
+  padding-bottom: clamp(4.5rem, 8vw, 7.5rem);
+}
+
+.pf-about-edge {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: clamp(1.5rem, 6svh, 4.5rem);
+  fill: var(--pf-dark);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .eg-site .pf-about-hero .pf-portrait:hover { --pf-portrait-gray: 0; }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .eg-site .pf-portrait-color:not(:focus):not([aria-pressed='true']) {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .eg-site .pf-about-hero .pf-portrait {
+    --pf-portrait-gray: calc(1 - clamp(0, (var(--pf-portrait-progress) - .08) * 1.25, 1));
+  }
+
+  .eg-site .pf-about-hero .pf-portrait img {
+    transform: translateY(calc(-1.8% * var(--pf-portrait-progress))) scale(calc(1 + var(--pf-portrait-progress) * .09));
+    transition: filter 320ms cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .pf-portrait-mark {
+    --pf-mark-progress: clamp(0, (var(--pf-portrait-progress) - .08) * 1.5, 1);
+    opacity: clamp(0, var(--pf-mark-progress) * 6, 1);
+  }
+
+  .pf-portrait-mark-end { --pf-mark-progress: clamp(0, (var(--pf-portrait-progress) - .19) * 1.4, 1); }
+  .pf-portrait-mark path { stroke-dashoffset: calc(1 - var(--pf-mark-progress)); }
+}
+
+@media (max-width: 700px) {
+  .eg-site .pf-about-hero .pf-portrait { --pf-portrait-cut: 2.65rem; }
+  .pf-portrait-mark { width: calc(var(--pf-portrait-cut) + 1rem); }
+}

@@ -9,12 +9,13 @@ export function ProjectCard({ project, index = 0, sequence = false }: { project:
     <div className={`project-art project-art-real project-art-${(index % 9) + 1}`}>
       <DeferredProjectVisual
         image={project.image}
-        sizes="(max-width: 560px) 100vw, (max-width: 900px) 92vw, (max-width: 1440px) 88vw, 1260px"
+        sizes="(max-width: 700px) 94vw, (max-width: 900px) 46vw, 31vw"
       />
     </div>
   );
   const content = (
-      <Link href={`/work/${project.slug}`} prefetch={false} className="project-link" data-cover-src={project.image.src}>
+    <Link href={`/work/${project.slug}`} prefetch={false} className="project-link" data-cover-src={project.image.src}>
+      <div className="project-preview">
         {sequence ? <div className="image-reveal">{visual}</div> : <ImageReveal>{visual}</ImageReveal>}
         <div className="project-copy">
           <div>
@@ -23,10 +24,11 @@ export function ProjectCard({ project, index = 0, sequence = false }: { project:
           </div>
           <span className="project-case-label">Ver case</span>
         </div>
-        <div className="project-tags" aria-label="Áreas do projeto">
-          {project.keywords.map((keyword) => <span key={keyword}>{keyword}</span>)}
-        </div>
-      </Link>
+      </div>
+      <div className="project-tags" aria-label="Áreas do projeto">
+        {project.keywords.map((keyword) => <span key={keyword}>{keyword}</span>)}
+      </div>
+    </Link>
   );
   return sequence
     ? <div className={`project-entry project-entry-sequence${index >= 6 ? ' project-entry-new' : ''}`}>{content}</div>

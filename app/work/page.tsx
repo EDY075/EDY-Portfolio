@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { SiteFrame } from '@/components/SiteFrame';
 import { ProjectExplorer } from '@/components/ProjectExplorer';
 import { ProjectCard } from '@/components/ProjectCard';
-import { clientProjects, featuredProjects, technicalProjects } from '@/data/projects';
+import { ProjectOrbit } from './ProjectOrbit';
+import { clientProjects, featuredProjects, projects, technicalProjects } from '@/data/projects';
 import { pageSocialMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -11,53 +12,51 @@ export const metadata: Metadata = {
   ...pageSocialMetadata('/work', 'Projetos — EDY GOMES', 'Uma seleção de projetos de suporte, segurança, sistemas, automação e análise.'),
 };
 
+const sections = [
+  { id: 'destaques', title: 'Em destaque', intro: 'Uma seleção de sites, sistemas e ferramentas.', items: featuredProjects },
+  { id: 'pesquisa', title: 'Segurança e operação', intro: 'Verificação, análise, proteção de endpoints e suporte, com escopo e estágio de validação descritos em cada case.', items: technicalProjects },
+  { id: 'trabalhos-reais', title: 'Projetos de cliente', intro: 'Sites, aplicativos e automações desenvolvidos para clientes.', items: clientProjects },
+] as const;
+
+const clientSites = new Set(['cr-fitness', 'andrea-tur']);
+const orbitProjects = projects.map(({ slug, title, image, links }) => ({
+  slug,
+  title,
+  image,
+  siteHref: clientSites.has(slug) ? links?.[0]?.href : undefined,
+}));
+
 export default function WorkPage() {
   return (
     <SiteFrame>
-      <main className="work-page">
-        <section className="work-header">
-          <p className="page-kicker"><span>PROJETOS / 2026</span><span>Trabalho real, contexto claro</span></p>
-          <div className="work-header-composition">
-            <h1><span>PROJETOS</span><em>EM CONTEXTO</em></h1>
-            <p className="work-intro">Sites, sistemas e ferramentas apresentados pelo que fazem e pelo estado em que estão hoje.</p>
+      <main className="pf-page pf-work">
+        <section className="pf-hero pf-work-hero pf-work-hero-orbit" data-portfolio-theme="dark" aria-labelledby="pf-work-title">
+          <div className="pf-hero-copy">
+            <h1 id="pf-work-title" className="pf-title"><em>Projetos</em> <span>em contexto</span></h1>
+            <p className="pf-lead">Sites, sistemas e ferramentas apresentados pelo que fazem e pelo estado em que estão hoje.</p>
           </div>
+          <ProjectOrbit projects={orbitProjects} />
         </section>
-        <nav className="work-jump-nav" aria-label="Ir para uma área dos projetos">
-          <a href="#destaques">Destaques<span className="project-case-label">Ver</span></a>
-          <a href="#pesquisa">Pesquisa<span className="project-case-label">Ver</span></a>
-          <a href="#trabalhos-reais">Projetos reais<span className="project-case-label">Ver</span></a>
-          <a href="#explorar-3d">Galeria 3D<span className="project-case-label">Abrir</span></a>
+
+        <nav className="pf-internal-nav" aria-label="Ir para uma área dos projetos">
+          <a href="#destaques">Destaques</a>
+          <a href="#pesquisa">Segurança e operação</a>
+          <a href="#trabalhos-reais">Projetos de cliente</a>
+          <a href="#explorar-3d">Galeria 3D</a>
         </nav>
-        <section id="destaques" className="work-featured section-pad" aria-labelledby="work-featured-title">
-          <div className="work-section-heading">
-            <span className="section-index">SELEÇÃO</span>
-            <h2 id="work-featured-title">Em destaque</h2>
-            <p>{featuredProjects.length} projetos em diferentes contextos. Abra um case para ver o trabalho e seus limites.</p>
-          </div>
-          <div className="project-grid portfolio-grid">
-            {featuredProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} sequence />)}
-          </div>
-        </section>
-        <section id="pesquisa" className="work-technical section-pad" aria-labelledby="work-technical-title">
-          <div className="work-section-heading">
-            <span className="section-index">GALERIA TÉCNICA</span>
-            <h2 id="work-technical-title">Segurança e operação</h2>
-            <p>Verificação, análise, proteção de endpoints e suporte, com escopo e estágio de validação descritos em cada case.</p>
-          </div>
-          <div className="project-grid portfolio-grid">
-            {technicalProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + featuredProjects.length} sequence />)}
-          </div>
-        </section>
-        <section id="trabalhos-reais" className="work-private section-pad" aria-labelledby="work-private-title">
-          <div className="work-section-heading">
-            <span className="section-index">TRABALHOS REAIS</span>
-            <h2 id="work-private-title">Projetos para pessoas reais</h2>
-            <p>Turismo, destinos e contato direto com a responsável pelas reservas.</p>
-          </div>
-          <div className="project-grid portfolio-grid">
-            {clientProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + featuredProjects.length + technicalProjects.length} sequence />)}
-          </div>
-        </section>
+
+        {sections.map(({ id, title, intro, items }, sectionIndex) => (
+          <section id={id} className="pf-section pf-section-dark pf-work-section" key={id} aria-labelledby={`pf-${id}-title`}>
+            <div className="pf-section-intro">
+              <h2 id={`pf-${id}-title`} className="pf-heading">{title}</h2>
+              <p>{intro}</p>
+            </div>
+            <div className="project-grid pf-project-grid">
+              {items.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + sectionIndex * 3} sequence />)}
+            </div>
+          </section>
+        ))}
+
         <ProjectExplorer />
       </main>
     </SiteFrame>

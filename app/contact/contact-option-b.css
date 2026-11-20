@@ -1,0 +1,152 @@
+.ct-option-b {
+  --ct-b-ground: #11120f;
+  --ct-text: var(--eg-paper);
+  --ct-muted: #c6c6b8;
+  --ct-divider: #dad9c538;
+  --ct-glyph: var(--eg-accent);
+  --ct-link-hover: #e9e8d912;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(15rem, 21vw, 22rem);
+  align-items: end;
+  gap: clamp(2rem, 9vw, 12rem);
+  min-height: 100svh;
+  box-sizing: border-box;
+  padding: clamp(10.5rem, 20vh, 14rem) var(--eg-gutter) clamp(3rem, 10vh, 8rem);
+  color: var(--ct-text);
+  background: var(--ct-b-ground);
+  border-block-end: 1px solid var(--ct-divider);
+}
+
+.ct-b-scene {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: clip;
+  pointer-events: none;
+}
+
+.ct-b-portrait {
+  position: absolute;
+  inset: 0 12% 0 0;
+  overflow: clip;
+}
+
+.ct-b-portrait picture,
+.ct-b-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ct-b-portrait img {
+  object-fit: cover;
+  object-position: 88% 38%;
+  filter: saturate(.55) brightness(.91);
+  transform: scale(1.06);
+  transform-origin: 67% 38%;
+}
+
+.ct-b-scene::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background:
+    linear-gradient(90deg, #11120fe8 0%, #11120f80 26%, #11120f06 56%, #11120f1c 66%, var(--ct-b-ground) 87%),
+    linear-gradient(0deg, var(--ct-b-ground), #11120f28 48%, transparent 74%, #11120fd9);
+}
+
+.ct-b-contour {
+  position: absolute;
+  z-index: 1;
+  inset: -8%;
+  background: url('/preview-assets/contour.svg') center / cover;
+  opacity: .2;
+  mask-image: linear-gradient(100deg, #000, transparent 40%, transparent 64%, #000 92%);
+}
+
+.ct-option-b .ct-intro {
+  min-width: 0;
+  padding-top: 2rem;
+}
+
+.ct-option-b .ct-title {
+  font-size: clamp(3rem, 7.3vw, 8.75rem);
+  overflow-wrap: anywhere;
+  text-shadow: 0 .06em .3em #090a0780;
+}
+
+.ct-option-b .ct-lead {
+  max-width: 33ch;
+}
+
+.ct-b-rail {
+  min-width: 0;
+  padding-inline-start: clamp(.85rem, 1.9vw, 2rem);
+  border-inline-start: 1px solid var(--ct-divider);
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .ct-b-portrait img {
+    transform: translate(calc(var(--ct-b-x, 0) * 18px), calc(var(--ct-b-y, 0) * 13px)) scale(1.06);
+    transition: transform 530ms cubic-bezier(.2, .75, .3, 1);
+  }
+
+  .ct-b-contour {
+    transform: translate(calc(var(--ct-b-x, 0) * -9px), calc(var(--ct-b-y, 0) * -7px));
+    transition: transform 670ms cubic-bezier(.2, .75, .3, 1);
+  }
+}
+
+@media (max-width: 959px) {
+  .ct-option-b {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: end;
+    gap: 2.15rem;
+    padding-block: clamp(16rem, 39svh, 27rem) 3.5rem;
+  }
+
+  .ct-b-portrait {
+    inset: clamp(5.25rem, 12svh, 6.7rem) 0 auto;
+    height: clamp(28rem, 83vw, 44rem);
+    mask-image: linear-gradient(180deg, transparent, #000 8%, #000 54%, transparent 96%);
+  }
+
+  .ct-comparison[data-comparing='true'] .ct-b-portrait {
+    inset-block-start: clamp(7.6rem, 18svh, 9rem);
+  }
+
+  .ct-b-portrait img {
+    object-position: 87% 34%;
+  }
+
+  .ct-b-scene::after {
+    background:
+      linear-gradient(0deg, var(--ct-b-ground), transparent 82%, #11120f9c),
+      linear-gradient(90deg, #11120fa1, transparent 75%);
+  }
+
+  .ct-option-b .ct-intro {
+    padding: 0;
+  }
+
+  .ct-option-b .ct-title {
+    font-size: clamp(2.25rem, 9.5vw, 6rem);
+  }
+
+  .ct-b-rail {
+    padding: 0;
+    border-inline-start: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .ct-b-portrait img {
+    object-position: 50% 5%;
+  }
+
+  .ct-b-scene::after {
+    background: linear-gradient(180deg, #11120fbd, #11120f05 22%, #11120fa6 31%, var(--ct-b-ground) 52%);
+  }
+}

@@ -1,0 +1,162 @@
+.eg-hero-work-scene {
+  position: relative;
+  z-index: 3;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  visibility: hidden;
+  min-width: 0;
+  color: var(--eg-ink);
+  pointer-events: none;
+}
+
+.eg-hero-work-scene h2 {
+  visibility: hidden;
+  margin: 0 0 .55rem;
+  opacity: clamp(0, calc((var(--eg-scene-progress, 0) - .08) * 5), 1);
+  transform: translateY(calc(clamp(0, 1 - var(--eg-scene-reveal, 0) * 2.5, 1) * .65rem));
+}
+
+.eg-hero-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(.55rem, 1.15vw, 1.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eg-hero-work-tile {
+  --eg-tile-start: .10;
+  --eg-tile-x: .9rem;
+  --eg-tile-y: 2.5rem;
+  --eg-tile-fraction: clamp(0, (var(--eg-scene-progress, 0) - var(--eg-tile-start)) * 3.7, 1);
+  --eg-tile-remaining: calc(1 - var(--eg-tile-fraction));
+  visibility: hidden;
+  min-width: 0;
+  opacity: var(--eg-tile-fraction);
+  transform:
+    translate3d(calc(var(--eg-tile-x) * var(--eg-tile-remaining)), calc(var(--eg-tile-y) * var(--eg-tile-remaining)), 0)
+    scale(calc(1 - var(--eg-tile-remaining) * .04));
+}
+
+.eg-hero-work-tile:first-child {
+  grid-column: 1 / -1;
+  transform-origin: 100% 50%;
+}
+
+.eg-hero-work-tile:nth-child(2) {
+  --eg-tile-start: .22;
+  --eg-tile-x: -.75rem;
+}
+
+.eg-hero-work-tile:nth-child(3) {
+  --eg-tile-start: .35;
+  --eg-tile-x: 1.1rem;
+}
+
+.eg-compare-stage:is([data-work-step='1'], [data-work-step='2'], [data-work-step='3']) .eg-hero-work-scene,
+.eg-compare-stage:is([data-work-step='1'], [data-work-step='2'], [data-work-step='3']) .eg-hero-work-scene h2,
+.eg-compare-stage:is([data-work-step='1'], [data-work-step='2'], [data-work-step='3']) .eg-hero-work-tile:first-child,
+.eg-compare-stage:is([data-work-step='2'], [data-work-step='3']) .eg-hero-work-tile:nth-child(2),
+.eg-compare-stage[data-work-step='3'] .eg-hero-work-tile:nth-child(3) {
+  visibility: visible;
+}
+
+.eg-hero-work-link {
+  display: block;
+  overflow: clip;
+  color: var(--eg-paper);
+  background: var(--eg-ink);
+  border: 1px solid var(--eg-ink);
+  border-radius: .6rem;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.eg-preview .eg-hero-work-link:focus-visible {
+  outline-color: var(--eg-ink);
+  outline-offset: 3px;
+}
+
+.eg-hero-work-image {
+  position: relative;
+  height: clamp(4.5rem, 15svh, 9rem);
+  overflow: clip;
+}
+
+.eg-hero-work-tile:first-child .eg-hero-work-image {
+  height: clamp(10rem, 31svh, 19.5rem);
+}
+
+.eg-hero-work-image :is(picture, img) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.eg-hero-work-image img {
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.eg-hero-work-tile:first-child .eg-hero-work-image img { object-position: center top; }
+
+.eg-hero-work-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 0 .65rem;
+  min-height: 2.7rem;
+  padding: .4rem clamp(.65rem, 1.15vw, 1rem);
+  font: 850 clamp(.77rem, 1vw, 1rem)/1.15 var(--eg-sans);
+}
+
+.eg-hero-work-caption span {
+  font-size: .76em;
+  font-weight: 700;
+}
+
+.eg-hero-work-tile:first-child .eg-hero-work-caption,
+.eg-hero-work-link:is(:hover, :focus-visible) .eg-hero-work-caption {
+  background: var(--eg-accent);
+  color: var(--eg-ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-hero-variant='b'] .eg-compare-photo {
+    --eg-work-exit: clamp(0, (var(--eg-scene-reveal, 0) - .055) * 2.2, 1);
+    opacity: calc(1 - var(--eg-work-exit));
+    transform:
+      translate3d(calc(var(--eg-work-exit) * -14%), calc(var(--eg-work-exit) * 6%), 0)
+      scale(calc(1 - var(--eg-work-exit) * .2));
+    transform-origin: 20% 50%;
+  }
+
+  [data-hero-variant='b'] .eg-compare-stage[data-work-step='3'] .eg-compare-photo {
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .eg-hero-work-scene {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .eg-hero-work-scene h2 { margin-bottom: .35rem; }
+
+  .eg-hero-work-image { height: clamp(3rem, 10svh, 6.3rem); }
+
+  .eg-hero-work-tile:first-child .eg-hero-work-image { height: clamp(5.5rem, 18svh, 10.25rem); }
+
+  .eg-hero-work-caption { min-height: 2.15rem; }
+
+  .eg-hero-work-tile:not(:first-child) .eg-hero-work-caption span { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eg-hero-work-scene { display: none; }
+}

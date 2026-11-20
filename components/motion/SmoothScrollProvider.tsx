@@ -75,13 +75,14 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     let stopCurrent: (() => void) | null = null;
     let refreshFrame = 0;
 
-    const startLenis = () => {
+    const isPortfolioHome = pathname === '/' || pathname === '/preview';
 
+    const startLenis = () => {
       const lenis = new Lenis({
         autoRaf: false,
-        lerp: 0.12,
+        lerp: isPortfolioHome ? 0.08 : 0.12,
         smoothWheel: true,
-        wheelMultiplier: 0.78,
+        wheelMultiplier: isPortfolioHome ? 0.86 : 0.78,
         syncTouch: false,
         anchors: true,
       });
@@ -135,7 +136,7 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
       const update = (time: number) => lenis.raf(time * 1000);
       const syncTrigger = () => ScrollTrigger.update();
-      const hasScrollTriggers = pathname === '/' || pathname === '/experience';
+      const hasScrollTriggers = isPortfolioHome || pathname === '/experience';
       lenis.on('scroll', updateProjectHoverState);
       if (hasScrollTriggers) lenis.on('scroll', syncTrigger);
       gsap.ticker.add(update);

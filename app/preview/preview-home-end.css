@@ -1,0 +1,107 @@
+.eg-home-end {
+  color: var(--eg-paper);
+  background: var(--eg-ink);
+}
+
+.eg-home-end .next-chapter {
+  padding-inline: var(--eg-gutter);
+  background:
+    linear-gradient(180deg, var(--eg-project-ground, #111210), transparent 8rem),
+    linear-gradient(90deg, #25291dd9, #25291d44),
+    url('/preview-assets/contour.svg') center / cover;
+}
+
+.eg-home-end .next-chapter-link {
+  min-height: clamp(22rem, 54svh, 40rem);
+  border: 0;
+  padding-block: clamp(3rem, 7vw, 6rem);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  text-decoration: none;
+}
+
+.eg-home-end .next-chapter-meta {
+  color: var(--eg-accent);
+  font: 800 .8rem/1.4 var(--eg-sans);
+  letter-spacing: .1em;
+  opacity: 1;
+  text-transform: uppercase;
+}
+
+.eg-home-end .next-chapter-title {
+  font: 900 clamp(3.2rem, 12vw, 12rem)/.87 var(--eg-sans);
+  letter-spacing: -.065em;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+}
+
+.eg-home-end .next-chapter-subtitle {
+  color: var(--eg-paper);
+  font: 650 clamp(1rem, 1.8vw, 1.6rem)/1.4 var(--eg-sans);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--eg-paper) 55%, transparent);
+  text-underline-offset: .32em;
+}
+
+.eg-home-end .next-chapter-link:is(:hover, :focus-visible) .next-chapter-title {
+  color: var(--eg-accent);
+}
+
+.eg-home-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .4rem clamp(1rem, 5vw, 5rem);
+  padding: clamp(1.3rem, 3vw, 2.6rem) var(--eg-gutter);
+  background: #111210;
+  border-top: 1px solid #eef0e239;
+}
+
+.eg-home-footer-name {
+  font: 850 1.125rem/1.3 var(--eg-sans);
+}
+
+.eg-home-footer nav {
+  max-width: 100%;
+}
+
+.eg-home-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 clamp(.8rem, 3vw, 2.1rem);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.eg-home-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font: 700 .95rem/1.3 var(--eg-sans);
+  text-decoration-thickness: .08em;
+  text-underline-offset: .35em;
+  overflow-wrap: anywhere;
+}
+
+.eg-home-footer a:is(:hover, :focus-visible) {
+  color: var(--eg-accent);
+  text-decoration-line: underline;
+}
+
+@media (max-width: 700px) {
+  .eg-home-footer {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eg-home-end .next-chapter-title {
+    transition: none;
+  }
+
+  .eg-home-end .next-chapter-link:is(:hover, :focus-visible) .next-chapter-title {
+    transform: none;
+  }
+}

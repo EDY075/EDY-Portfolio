@@ -1,0 +1,35 @@
+.eg-hero-disciplines { text-wrap: balance; }
+.eg-hero-disciplines span { white-space: nowrap; }
+
+@keyframes eg-contour-drift {
+  0% { transform: translate3d(-3.7%, -2%, 0) rotate(-3deg) scale(1.02); }
+  52% { transform: translate3d(1.2%, 3%, 0) rotate(.7deg) scale(1.06); }
+  100% { transform: translate3d(3.8%, -1.1%, 0) rotate(3deg) scale(1.01); }
+}
+
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .eg-home .eg-statement h2 {
+      animation: eg-statement-scroll linear both;
+      animation-timeline: view();
+      animation-range: entry 8% entry 80%;
+    }
+    .eg-home .eg-projects .eg-project-media {
+      animation: eg-project-scroll linear both;
+      animation-timeline: view();
+      animation-range: entry 3% entry 84%;
+      --eg-project-slide: 6%;
+    }
+    .eg-home .eg-projects article:nth-child(odd) .eg-project-media { --eg-project-slide: -6%; }
+  }
+}
+
+@keyframes eg-statement-scroll {
+  from { translate: 0 2.65rem; opacity: .55; }
+  to { translate: 0 0; opacity: 1; }
+}
+
+@keyframes eg-project-scroll {
+  from { translate: var(--eg-project-slide) 0; clip-path: inset(0 0 20% 0 round .45rem); }
+  to { translate: 0 0; clip-path: inset(0); }
+}

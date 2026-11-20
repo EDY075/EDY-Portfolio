@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import { Braces, Network, Mail, MapPin } from 'lucide-react';
+import { Braces, Camera, Mail, MapPin, Network } from 'lucide-react';
 import { SiteFrame } from '@/components/SiteFrame';
-import { PageReveal } from '@/components/PageReveal';
 import { isPlaceholder, site } from '@/data/site';
-import { TextReveal } from '@/components/motion/TextReveal';
 import { pageSocialMetadata } from '@/lib/seo';
+import { ContactOptions } from './ContactOptions';
 
 export const metadata: Metadata = {
   title: 'Contato',
@@ -13,40 +12,42 @@ export const metadata: Metadata = {
 };
 
 const contacts = [
-  { label: 'Email', value: site.contact.email, icon: Mail },
-  { label: 'GitHub', value: site.contact.github, icon: Braces },
-  { label: 'LinkedIn', value: site.contact.linkedin, icon: Network },
+  { label: 'Email', value: site.contact.email, icon: Mail, href: `mailto:${site.contact.email}` },
+  { label: 'GitHub', value: site.contact.github, icon: Braces, href: site.contact.github, external: true },
+  { label: 'LinkedIn', value: site.contact.linkedin, icon: Network, href: site.contact.linkedin, external: true },
+  { label: 'Instagram', value: site.contact.instagram, icon: Camera, href: site.contact.instagram, external: true },
   { label: 'Localização', value: site.contact.location, icon: MapPin },
 ];
 
-export default function ContactPage() {
+export default async function ContactPage({ searchParams }: { searchParams: Promise<{ visual?: string | string[] }> }) {
+  const { visual } = await searchParams;
+  const intro = (
+    <div className="ct-intro">
+      <p className="ct-label">Contato</p>
+      <h1 id="pf-contact-title" className="ct-title"><em>Vamos</em> conversar</h1>
+      <p className="ct-lead">Estou aberto a oportunidades, projetos e conversas sobre tecnologia.</p>
+    </div>
+  );
+
+  const channels = (
+    <ul className="ct-links" aria-label="Canais de contato">
+      {contacts.map(({ label, value, icon: Icon, href, external }) => {
+        if (isPlaceholder(value)) return null;
+        const handle = value.replace(/^https:\/\/(?:www\.)?instagram\.com\//, '@').replace(/^https:\/\/(?:www\.)?/, '').replace(/\/$/, '');
+        const content = <><Icon aria-hidden="true" /><span><strong>{label}</strong><span>{handle}</span></span></>;
+        return (
+          <li key={label}>
+            {href ? <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>{content}</a> : <div>{content}</div>}
+          </li>
+        );
+      })}
+    </ul>
+  );
+
   return (
     <SiteFrame showFooter={false}>
-      <main className="contact-page">
-        <section className="contact-hero">
-          <p className="page-kicker"><span>CONTATO</span><span>Aberto a trabalhos com propósito</span></p>
-          <div className="contact-composition">
-            <TextReveal ariaLabel="Vamos construir algo útil" lines={['VAMOS', <em key="something">CONSTRUIR</em>, 'ALGO ÚTIL']} />
-            <div className="contact-aside">
-              <PageReveal className="contact-intro">
-                <p>Estou aberto a oportunidades, projetos interessantes e boas conversas sobre tecnologia, ideias e o que vem a seguir.</p>
-              </PageReveal>
-              <p className="contact-signoff">A mesma disciplina.<br />Mais possibilidades.</p>
-            </div>
-          </div>
-          <div className="contact-grid">
-            {contacts.map(({ label, value, icon: Icon }, index) => {
-              const disabled = isPlaceholder(value) || label === 'Localização';
-              const href = label === 'Email' ? `mailto:${value}` : value;
-              const content = <><Icon aria-hidden="true" /><span><small>{label}</small>{disabled && isPlaceholder(value) ? 'Adicionar no arquivo de dados' : value}</span></>;
-              return (
-                <PageReveal className="contact-item" key={label} delay={index * .06}>
-                  {disabled ? <div>{content}</div> : <a href={href} target={label === 'GitHub' || label === 'LinkedIn' ? '_blank' : undefined} rel="noreferrer">{content}</a>}
-                </PageReveal>
-              );
-            })}
-          </div>
-        </section>
+      <main className="pf-page pf-contact">
+        <ContactOptions key={String(visual)} initial={visual} intro={intro} contacts={channels} />
       </main>
     </SiteFrame>
   );

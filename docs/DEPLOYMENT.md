@@ -1,5 +1,20 @@
 # Preparação para publicação
 
+## Segunda edição
+
+A segunda edição usa o Worker separado `edy-gomes-portfolio-v2` em `https://edy-gomes-portfolio-v2.edy-scanurl-family-worker.workers.dev/`. A primeira edição está no GitHub na branch `archive/portfolio-v1`. A seção Projetos de cliente inclui Raquel Web, CR Fitness, Assistente Personalizado e Andréa Tur. O case Raquel Web inclui apenas demonstração com dados fictícios.
+
+Para gerar e conferir o pacote da segunda edição:
+
+```powershell
+$env:SITE_URL = 'https://edy-gomes-portfolio-v2.edy-scanurl-family-worker.workers.dev/'
+npm run build
+.\node_modules\.bin\wrangler.cmd deploy --config dist/server/wrangler.json --name edy-gomes-portfolio-v2 --dry-run
+```
+
+O comando de publicação usa os mesmos argumentos e dispensa `--dry-run`. O Worker anterior tem nome `edy-gomes-portfolio`; os registros abaixo descrevem aquela edição.
+
+
 O checkout oficial é `D:\EDY-Projects\EDY-Portfolio`. O site foi publicado no Cloudflare Workers em 28/09/2026 como `edy-gomes-portfolio`, na URL `https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/`. Para a prévia local, inicie `npm run dev` e use a URL exibida pelo servidor.
 
 Versão pública atual: `97549a71-9c73-4ab8-a701-789c925d18dc` (06/10/2026), com runtime `c27dfb7`. Versão anterior preservada no histórico: `651db85a-5e35-4803-83e8-59b750458d27`. As conferências de cada entrega estão registradas abaixo.

@@ -1,0 +1,160 @@
+.eg-c-trace-scene {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+}
+
+.eg-c-trace-canvas {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: var(--eg-gutter);
+  width: calc(100% - 2 * var(--eg-gutter));
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  pointer-events: none;
+}
+
+.eg-c-trace-edge {
+  position: absolute;
+  inset: auto 0 -1px;
+  width: 100%;
+  height: clamp(2rem, 8svh, 5rem);
+  fill: var(--eg-ink);
+}
+
+.eg-c-trace-canvas path {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.eg-compare-stage:not([data-trace-started]) .eg-c-trace-scene .eg-c-trace-canvas { visibility: hidden; }
+
+.eg-c-trace-scene path.eg-c-trace-line {
+  stroke: url('#eg-c-trace-color');
+}
+
+.eg-c-trace-mobile,
+.eg-c-trace-continuation {
+  display: none;
+}
+
+.eg-home:has(.eg-compare[data-hero-variant='c']) .eg-trace {
+  display: none;
+}
+
+.eg-home:has(.eg-compare[data-hero-variant='c']) .eg-c-trace-continuation {
+  display: block;
+  z-index: 0;
+  stroke: var(--eg-accent);
+  opacity: .65;
+}
+
+.eg-home:has(.eg-compare[data-hero-variant='c']) .eg-work-heading {
+  animation: none;
+}
+
+.eg-home:has(.eg-compare[data-hero-variant='c']) .eg-trace-project-word {
+  position: relative;
+  display: inline-block;
+  line-height: inherit;
+}
+
+.eg-home:has(.eg-compare[data-hero-variant='c']) .eg-trace-project-word::before,
+.eg-home:has(.eg-compare[data-hero-variant='c']) .eg-trace-project-word::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  pointer-events: none;
+  color: var(--eg-accent);
+  opacity: .65;
+}
+
+.eg-home:has(.eg-compare[data-hero-variant='c']) .eg-trace-project-word::before {
+  inset-block-start: calc(-1 * clamp(2rem, 4.5vw, 5rem));
+  inset-block-end: -.04em;
+  width: .32em;
+  border: solid currentColor;
+  border-width: 0 0 2px 2px;
+  border-end-start-radius: .19em;
+  transform-origin: top;
+}
+
+.eg-home:has(.eg-compare[data-hero-variant='c']) .eg-trace-project-word::after {
+  inset-block-end: -.04em;
+  inset-inline-start: .29em;
+  inset-inline-end: .02em;
+  height: 2px;
+  border-radius: 0 2px 2px 0;
+  background: currentColor;
+  transform-origin: left;
+}
+
+@media (max-width: 760px) {
+  .eg-c-trace-desktop { display: none; }
+  .eg-c-trace-mobile { display: initial; }
+  .eg-c-trace-edge { height: clamp(1.4rem, 5svh, 2.75rem); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .eg-c-trace-scene .eg-c-trace-line {
+    --eg-trace-draw: clamp(0, (var(--eg-scene-progress, 0) - .025) / .88, 1);
+    stroke-dasharray: 1 2;
+    stroke-dashoffset: calc(1 - var(--eg-trace-draw));
+    opacity: clamp(0, var(--eg-trace-draw) * 18, 1);
+  }
+
+  .eg-compare[data-hero-variant='c'] .eg-compare-photo {
+    translate: calc(var(--eg-scene-reveal, 0) * .9rem) calc(var(--eg-scene-reveal, 0) * -.65rem);
+  }
+
+  @supports (animation-timeline: view()) {
+    .eg-home:has(.eg-compare[data-hero-variant='c']) .eg-statement {
+      view-timeline-name: --eg-c-trace-statement;
+    }
+
+    .eg-c-trace-continuation .eg-c-trace-line {
+      animation: eg-c-trace-draw linear both;
+      animation-timeline: --eg-c-trace-statement;
+      animation-range: entry 1% entry 98%;
+    }
+
+    .eg-home:has(.eg-compare[data-hero-variant='c']) .eg-work-heading {
+      view-timeline-name: --eg-c-trace-heading;
+    }
+
+    .eg-home:has(.eg-compare[data-hero-variant='c']) .eg-trace-project-word::before {
+      animation: eg-c-trace-vertical linear both;
+      animation-timeline: --eg-c-trace-heading;
+      animation-range: entry 0% entry 29%;
+    }
+
+    .eg-home:has(.eg-compare[data-hero-variant='c']) .eg-trace-project-word::after {
+      animation: eg-c-trace-underline linear both;
+      animation-timeline: --eg-c-trace-heading;
+      animation-range: entry 28% entry 69%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eg-c-trace-scene .eg-c-trace-canvas { display: none; }
+}
+
+@keyframes eg-c-trace-draw {
+  from { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  to { stroke-dasharray: 1; stroke-dashoffset: 0; }
+}
+
+@keyframes eg-c-trace-vertical {
+  from { transform: scaleY(0); }
+  to { transform: none; }
+}
+
+@keyframes eg-c-trace-underline {
+  from { transform: scaleX(0); }
+  to { transform: none; }
+}

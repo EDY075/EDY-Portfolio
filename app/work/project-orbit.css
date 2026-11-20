@@ -1,0 +1,170 @@
+.eg-site .pf-page .pf-work-hero-orbit {
+  grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+  gap: clamp(1.6rem, 2.9vw, 4rem);
+}
+
+.eg-site .pf-work-hero-orbit .pf-title {
+  font-size: clamp(3.4rem, 6.15vw, 8.35rem);
+}
+
+.pf-orbit {
+  width: 100%;
+  min-width: 0;
+  align-self: center;
+}
+
+.pf-orbit-stage {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: 1000 / 535;
+  container-type: size;
+}
+
+.pf-orbit-track {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: #cff83e6b;
+  pointer-events: none;
+}
+
+.pf-orbit-track path {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1.2px;
+}
+
+.pf-orbit-track .pf-orbit-track-shadow {
+  stroke: #b6d64616;
+  stroke-width: 7px;
+}
+
+.pf-orbit-tiles {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pf-orbit-tile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14.7%;
+}
+
+.pf-orbit-tile:is(:hover, :focus-within) { z-index: 102 !important; }
+
+.pf-orbit-link {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: clip;
+  border: 1px solid #efefe460;
+  border-radius: .36rem .36rem .95rem .36rem;
+  background: #10120e;
+  box-shadow: 0 .34rem 1rem #090a0896;
+}
+
+.pf-orbit-tile[data-current='true'] .pf-orbit-link { border-color: var(--eg-accent); }
+.pf-orbit-link:is(:hover, :focus-visible) { border-color: var(--eg-accent); }
+
+.pf-orbit-link picture,
+.pf-orbit-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+}
+
+.pf-orbit-link img { object-fit: cover; }
+
+.pf-orbit-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .7rem;
+  margin-inline: .3rem;
+  padding: .72rem 0 0;
+  border-top: 1px solid #eeeee33b;
+}
+
+.pf-orbit-selection {
+  display: grid;
+  gap: .28rem;
+  min-width: 0;
+  color: var(--eg-paper);
+  font-size: clamp(.77rem, 1.2vw, 1.12rem);
+  line-height: 1.15;
+}
+
+.pf-orbit-selection strong {
+  overflow-wrap: anywhere;
+  font-weight: 800;
+}
+
+.pf-orbit-selection-meta {
+  display: flex;
+  min-height: 24px;
+  align-items: center;
+  gap: .4rem .65rem;
+  flex-wrap: wrap;
+}
+
+.pf-orbit-selection-meta a {
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  color: var(--eg-accent);
+  font-size: .75rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+
+.pf-orbit-selection span {
+  color: #c7cbb4;
+  font-size: .75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pf-orbit-buttons { display: flex; gap: .27rem; }
+
+.pf-orbit-buttons button {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid #eeeee355;
+  border-radius: .4rem;
+  background: transparent;
+  color: var(--eg-paper);
+}
+
+.pf-orbit-buttons button:is(:hover, :focus-visible) {
+  border-color: var(--eg-accent);
+  background: var(--eg-accent);
+  color: var(--eg-ink);
+}
+
+@media (max-width: 1050px) {
+  .eg-site .pf-page .pf-work-hero-orbit {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.6rem, 4vw, 2.5rem);
+  }
+
+  .eg-site .pf-work-hero-orbit .pf-title { font-size: clamp(2.45rem, 10vw, 6.55rem); }
+  .pf-orbit { width: min(100%, 47rem); justify-self: center; }
+}
+
+@media (max-width: 480px) {
+  .pf-orbit-tile { width: 16%; }
+  .pf-orbit-link { border-radius: .25rem .25rem .55rem .25rem; }
+  .pf-orbit-bar { margin-inline: 0; }
+}

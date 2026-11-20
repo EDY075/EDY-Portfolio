@@ -13,6 +13,20 @@ export type CaseSlide = {
   caption: string;
 };
 
+export type CaseDemo = {
+  title: string;
+  description: string;
+  src: string;
+  poster: string;
+  captions: string;
+  music: { title: string; artist: string; licenseHref: string };
+  identity: {
+    description: string;
+    typography: string;
+    colors: { name: string; value: string }[];
+  };
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -35,6 +49,7 @@ export type Project = {
   caseImageContext?: string;
   caseGallery?: CaseSlide[];
   heroImage?: ProjectImage;
+  demo?: CaseDemo;
 };
 
 export const crmProject: Project = {
@@ -277,6 +292,53 @@ const researchProjects: Project[] = [
 
 const commissionedProjects: Project[] = [
   {
+    slug: 'raquel-web', title: 'Raquel Web', displayTitle: 'Raquel Web',
+    origin: 'Raquel Web foi desenvolvido para a Raquel Oliveira Personal Trainer. O projeto organiza a preparação e o acompanhamento dos treinos. Na área da personal, informações de alunas e prescrições ficam no mesmo fluxo. Na área da aluna, a navegação leva à própria ficha no celular.',
+    subtitle: 'Plataforma de acompanhamento e prescrição de treinos para personal trainer.',
+    summary: 'Aplicativo web privado com uma área de trabalho para a personal e uma experiência de treino para a aluna. O case apresenta a identidade visual, o fluxo de acompanhamento e a leitura da ficha, com telas gravadas em ambiente de demonstração.',
+    status: 'Projeto de cliente privado. Demonstração com dados fictícios.',
+    keywords: ['Projeto de cliente', 'Plataforma de treino', 'Aplicativo web'],
+    features: ['Painel da personal com visão do acompanhamento', 'Cadastro e organização de alunas', 'Prescrição de treinos com versões', 'Área da aluna com acesso à própria ficha pelo celular'],
+    stack: ['React', 'TypeScript', 'Vite', 'FastAPI', 'PostgreSQL'],
+    problem: 'A personal precisa encontrar a ficha de cada aluna no contexto do acompanhamento. Do outro lado, a aluna precisa localizar o próprio treino no celular durante a sessão.',
+    solution: 'A área da personal reúne a lista de alunas e as prescrições. A experiência da aluna organiza a leitura da ficha e dos exercícios em uma navegação adequada ao celular.',
+    outcome: 'O aplicativo e o repositório têm acesso privado. A gravação e a galeria deste case mostram a interface preenchida exclusivamente com dados fictícios.',
+    links: [],
+    image: { src: '/images/projects/covers/raquel-web-1600.webp', alt: 'Capa do case Raquel Web com a identidade visual e uma captura do aplicativo de demonstração', width: 1600, height: 1000 },
+    caseImage: { src: '/images/projects/cases/raquel-web-dashboard.webp', alt: 'Painel da personal no Raquel Web com indicadores e cartões de acompanhamento fictícios', width: 1440, height: 900, fit: 'contain' },
+    caseImageTitle: 'Painel da personal',
+    caseImageContext: 'Visão inicial da área de trabalho. Indicadores e cartões de acompanhamento usam dados fictícios.',
+    caseGallery: [
+      { title: 'Lista de alunas', caption: 'A lista organiza os perfis para abrir as fichas de treino. Todas as pessoas exibidas são fictícias.', image: { src: '/images/projects/cases/raquel-web-alunas.webp', alt: 'Listagem de alunas fictícias no Raquel Web', width: 1440, height: 900, fit: 'contain' } },
+      { title: 'Ficha de treino', caption: 'A personal abre a ficha de uma aluna e consulta a prescrição versionada. Os dados desta ficha são fictícios.', image: { src: '/images/projects/cases/raquel-web-prescricao.webp', alt: 'Tela de prescrição versionada de uma aluna fictícia', width: 1440, height: 900, fit: 'contain' } },
+      { title: 'Treino no celular', caption: 'A área da aluna apresenta a própria ficha e os exercícios em um layout móvel. O exemplo usa uma aluna e uma ficha fictícias.', image: { src: '/images/projects/cases/raquel-web-aluna.webp', alt: 'Ficha de treino fictícia aberta na área móvel da aluna', width: 390, height: 844, fit: 'contain' } },
+    ],
+    demo: {
+      title: 'Demonstração do aplicativo Raquel Web',
+      description: 'Telas reais da aplicação em um ambiente de demonstração com dados fictícios. O vídeo percorre a área da personal e a experiência de treino da aluna no celular.',
+      src: '/media/raquel-web/demo.mp4',
+      poster: '/media/raquel-web/poster.webp',
+      captions: '/media/raquel-web/demo-ptbr.vtt',
+      music: { title: 'Happy Beats — Business Moves Vol. 11', artist: 'Sascha Ende', licenseHref: 'https://ende.app/en/standard-license' },
+      identity: {
+        description: 'A direção Escuro essencial usa carvão para o fundo, cartões em cinza profundo e dourado nas ações. Vinho e magenta assinalam seleções e destaques. O lettering oficial de Raquel Oliveira Personal integra o cabeçalho e o painel.',
+        typography: 'Roboto Condensed nos cartões, Segoe UI nos cabeçalhos do painel inicial e da área da aluna, e Georgia no título editorial da lista de alunas.',
+        colors: [
+          { name: 'Carvão', value: '#0C0F11' },
+          { name: 'Fundo secundário', value: '#111416' },
+          { name: 'Cartões', value: '#191C1F' },
+          { name: 'Bordas', value: '#2B2E32' },
+          { name: 'Branco', value: '#F7F7F8' },
+          { name: 'Texto secundário', value: '#B8B9BF' },
+          { name: 'Dourado', value: '#EDC969' },
+          { name: 'Vinho', value: '#560D2B' },
+          { name: 'Magenta', value: '#A81046' },
+        ],
+      },
+    },
+  },
+
+  {
     slug: 'cr-fitness', title: 'CR Fitness', displayTitle: 'CR Fitness',
     origin: 'O site reúne as informações que uma pessoa precisa para conhecer a academia: modalidades, planos, horários e localização. A identidade preto e amarelo conecta essa apresentação ao posicionamento da CR Fitness, com composições próprias para desktop e celular. As imagens da galeria são capturas do site, não fotografias documentais da unidade.',
     coverNote: 'Arte de capa ilustrativa',
@@ -330,12 +392,12 @@ const selectProjects = (slugs: string[]): Project[] => slugs.map((slug) => {
 });
 
 export const featuredProjects = selectProjects([
-  'edy-crm', 'cr-fitness', 'edy-soc-analytics', 'assistente-personalizado',
+  'edy-crm', 'edy-soc-analytics',
   'edy-shadowcat', 'edy-recon', 'war-room',
 ]);
 export const technicalProjects = selectProjects([
   'edy-verdict', 'edy-siem', 'edy-shield', 'edy-scanurl-family', 'edy-helpdesk',
 ]);
-export const clientProjects = selectProjects(['andrea-tur']);
+export const clientProjects = selectProjects(['raquel-web', 'cr-fitness', 'assistente-personalizado', 'andrea-tur']);
 export const projects: Project[] = [...featuredProjects, ...technicalProjects, ...clientProjects];
 export const getProject = (slug: string) => projects.find((project) => project.slug === slug);

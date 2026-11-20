@@ -9,6 +9,7 @@ import { useHydratedReducedMotion } from './useHydratedReducedMotion';
 
 const pageNames: Record<string, string> = {
   '/': 'EDY — GOMES',
+  '/preview': 'EDY — GOMES',
   '/about': 'SOBRE',
   '/work': 'PROJETOS',
   '/capabilities': 'COMPETÊNCIAS',
@@ -24,11 +25,20 @@ const pageNames: Record<string, string> = {
   '/work/edy-verdict': 'EDY VERDICT',
   '/work/edy-recon': 'EDY RECON',
   '/work/cr-fitness': 'CR Fitness',
+  '/work/raquel-web': 'Raquel Web',
   '/work/assistente-personalizado': 'Assistente Personalizado',
   '/work/edy-shadowcat': 'EDY SHADOWCAT',
 };
-const covered = 'inset(0 0 0% 0)';
-const cleared = 'inset(0 0 100% 0)';
+const rim = (top: number, bottom: number, amplitude: number) => {
+  const x = [-2, 8, 20, 34, 48, 62, 76, 90, 102];
+  const wave = [0, -7, -8, -4, 3, 8, 7, 2, -3];
+  const upper = x.map((value, index) => `${value}% ${top + wave[index] * amplitude}%`);
+  const lower = x.map((value, index) => `${value}% ${bottom - wave[index] * amplitude}%`).reverse();
+  return `polygon(${[...upper, ...lower].join(', ')})`;
+};
+const awaitingEntry = rim(118, 148, 1.4);
+const covered = rim(-18, 118, 1.15);
+const cleared = rim(-44, -15, 1.3);
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -62,7 +72,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     curtain.set({ clipPath: reduce ? cleared : covered });
     const frame = requestAnimationFrame(() => {
       void content.start({ opacity: 1, y: 0, transition: { duration: reduce ? .12 : .38, ease: editorialEase } });
-      void curtain.start({ clipPath: cleared, transition: { duration: reduce ? 0 : .48, ease: editorialEase } }).then(() => {
+      void curtain.start({ clipPath: cleared, transition: { duration: reduce ? 0 : .57, ease: editorialEase } }).then(() => {
         busy.current = false;
         setSettledPath(pathname);
         setDestination(null);
@@ -114,8 +124,8 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     const image = url.pathname.startsWith('/work/') ? anchor.querySelector<HTMLImageElement>('img') : null;
     const coverSrc = image?.currentSrc || image?.src || anchor.dataset.coverSrc;
     setCover(coverSrc && !reduce ? { src: coverSrc } : null);
-    void content.start({ opacity: reduce ? 1 : .2, transition: { duration: reduce ? 0 : .2 } });
-    await curtain.start({ clipPath: covered, transition: { duration: reduce ? 0 : .26, ease: editorialEase } });
+    curtain.set({ clipPath: reduce ? cleared : awaitingEntry });
+    if (!reduce) await curtain.start({ clipPath: covered, transition: { duration: .49, ease: editorialEase } });
     // SmoothScrollProvider owns the final position. Disabling the router's
     // competing restoration prevents destination pages from reopening at the
     // previous page's footer, especially on mobile.
@@ -144,15 +154,17 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   return (
     <>
       <motion.div
-        className="page-transition-curtain"
+        className="page-transition-curtain portfolio-route-wipe"
+        data-active={destination !== null}
         initial={{ clipPath: cleared }}
         animate={curtain}
         aria-hidden="true"
       >
+        <span className="portfolio-route-mark" aria-hidden="true">EG</span>
         {cover && <motion.img className="page-transition-cover" src={cover.src} alt="" aria-hidden="true"
           initial={{ opacity: 0, scale: 1.045 }} animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: .42, ease: editorialEase }} />}
-        <span>{destination ?? pageNames[pathname] ?? 'EDY — GOMES'}</span>
+        <span className="portfolio-route-title">{destination ?? pageNames[pathname] ?? 'EDY — GOMES'}</span>
       </motion.div>
       <motion.div
         key={`${pathname}-page`}

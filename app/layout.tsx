@@ -5,6 +5,9 @@ import { SmoothScrollProvider } from '@/components/motion/SmoothScrollProvider';
 import { HomeEntry } from '@/components/HomeEntry';
 import { pageSocialMetadata, siteUrl } from '@/lib/seo';
 import './globals.css';
+import './preview/preview.css';
+import './portfolio-pages.css';
+import './portfolio-pointer.css';
 
 const display = Cormorant_Garamond({
   variable: '--font-display',

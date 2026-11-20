@@ -6,15 +6,17 @@ Portfólio editorial de **Edmilson Gomes** dedicado a projetos reais de **IT Sup
 
 Uma experiência responsiva, cinematográfica e orientada a case studies — construída para apresentar problemas, decisões técnicas e resultados com clareza.
 
-**[LIVE DEMO](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/)** · **[GITHUB](https://github.com/EDY075/EDY-Portfolio)** · **[LINKEDIN](https://www.linkedin.com/in/edmilsongomes21/)**
+**[LIVE DEMO](https://edy-gomes-portfolio-v2.edy-scanurl-family-worker.workers.dev/)** · **[GITHUB](https://github.com/EDY075/EDY-Portfolio)** · **[LINKEDIN](https://www.linkedin.com/in/edmilsongomes21/)**
 
-## Apresentação em vídeo
+A edição anterior está preservada na [branch archive/portfolio-v1](https://github.com/EDY075/EDY-Portfolio/tree/archive/portfolio-v1).
+
+## Apresentação em vídeo da primeira edição
 
 https://github.com/user-attachments/assets/7668f4da-9530-4102-8719-9fa3e71c3e60
 
 ## Sobre o projeto
 
-EDY — GOMES é o portfólio pessoal de Edmilson Gomes. O projeto combina direção visual editorial, fotografia aprovada e capturas autênticas de produto para apresentar treze cases nas áreas de suporte, segurança, automação e análise.
+EDY — GOMES é o portfólio pessoal de Edmilson Gomes. O projeto combina direção visual editorial, fotografia aprovada e capturas autênticas de produto para apresentar quatorze cases nas áreas de suporte, segurança, automação e análise.
 
 Desktop e mobile possuem composições próprias. A experiência preserva hierarquia, legibilidade e navegação narrativa em cada formato, sem tratar o mobile como uma simples redução do layout amplo.
 
@@ -23,18 +25,19 @@ Desktop e mobile possuem composições próprias. A experiência preserva hierar
 | Projeto | Categoria | Visão geral |
 |---|---|---|
 | [EDY CRM](https://github.com/EDY075/EDY-CRM) | Prospecção · Composição visual | Workspace local com briefs versionados, montagem por seção e prévias; demonstração pública com dados fictícios. |
-| [CR Fitness](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/cr-fitness) | Site institucional · Cliente | Identidade, modalidades, planos e informações da academia em um site publicado. |
-| [EDY SOC Analytics](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-soc-analytics) | Power BI · Security Analytics | Dez páginas analíticas com prioridades, SLA e qualidade das fontes; dados sintéticos. |
-| [Assistente Personalizado](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/assistente-personalizado) | Automação · Caso real privado | Consultas autorizadas, documentos e lembretes pelo Telegram; sem acesso público ao assistente. |
-| [EDY SHADOWCAT](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-shadowcat) | Investigação · Evidências | Pipeline local de 13 etapas, proveniência e relatórios; case com demonstração sintética aprovada. |
-| [EDY RECON](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/edy-recon) | OSINT · Python | Toolkit de reconhecimento autorizado; a distribuição pública demonstra os fluxos offline. |
-| [WAR ROOM](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/war-room) | Documentário · Threat Intelligence | 17 dossiês, 102 capítulos, cartografia e narração autorizada baseada na voz do autor. |
+| [CR Fitness](https://edy-gomes-portfolio-v2.edy-scanurl-family-worker.workers.dev/work/cr-fitness) | Site institucional · Cliente | Identidade, modalidades, planos e informações da academia em um site publicado. |
+| [EDY SOC Analytics](https://edy-gomes-portfolio-v2.edy-scanurl-family-worker.workers.dev/work/edy-soc-analytics) | Power BI · Security Analytics | Dez páginas analíticas com prioridades, SLA e qualidade das fontes; dados sintéticos. |
+| [Raquel Web](https://edy-gomes-portfolio-v2.edy-scanurl-family-worker.workers.dev/work/raquel-web) | Aplicação web · Cliente | Gestão de alunas, prescrição e consulta do treino no celular. Case com demonstração fictícia. |
+| [Assistente Personalizado](https://edy-gomes-portfolio-v2.edy-scanurl-family-worker.workers.dev/work/assistente-personalizado) | Automação · Caso real privado | Consultas autorizadas, documentos e lembretes pelo Telegram; sem acesso público ao assistente. |
+| [EDY SHADOWCAT](https://edy-gomes-portfolio-v2.edy-scanurl-family-worker.workers.dev/work/edy-shadowcat) | Investigação · Evidências | Pipeline local de 13 etapas, proveniência e relatórios; case com demonstração sintética aprovada. |
+| [EDY RECON](https://edy-gomes-portfolio-v2.edy-scanurl-family-worker.workers.dev/work/edy-recon) | OSINT · Python | Toolkit de reconhecimento autorizado; a distribuição pública demonstra os fluxos offline. |
+| [WAR ROOM](https://edy-gomes-portfolio-v2.edy-scanurl-family-worker.workers.dev/work/war-room) | Documentário · Threat Intelligence | 17 dossiês, 102 capítulos, cartografia e narração autorizada baseada na voz do autor. |
 
-Treze cases únicos compõem o catálogo completo. A [curadoria cinematográfica](docs/PORTFOLIO_CURATION_2026-10-06.md) apresenta a nova seleção, três artes de capa e oito imagens adicionais dos projetos. Os cases separam origem, problema, solução, funcionalidades e imagens internas; artes ilustrativas não são apresentadas como capturas reais.
+Quatorze cases únicos compõem o catálogo completo. A [curadoria cinematográfica](docs/PORTFOLIO_CURATION_2026-10-06.md) apresenta a nova seleção, três artes de capa e oito imagens adicionais dos projetos. Os cases separam origem, problema, solução, funcionalidades e imagens internas; artes ilustrativas não são apresentadas como capturas reais.
 
 ## WAR ROOM · edição documental
 
-[Abra o case atualizado](https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/work/war-room) para explorar a cartografia, os capítulos e os 17 episódios completos com narração autorizada baseada na voz do autor. As imagens abaixo são capturas do portfólio publicado em 03/10/2026.
+[Abra o case atualizado](https://edy-gomes-portfolio-v2.edy-scanurl-family-worker.workers.dev/work/war-room) para explorar a cartografia, os capítulos e os 17 episódios completos com narração autorizada baseada na voz do autor. As imagens abaixo são capturas do portfólio publicado em 03/10/2026.
 
 <p>
   <img src="docs/assets/github/screenshots/war-room-case-desktop.webp" alt="Case WAR ROOM publicado no portfólio em desktop" width="68%">
