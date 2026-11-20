@@ -15,7 +15,11 @@ const publicVars: Record<string, string> = publicSiteUrl ? { SITE_URL: publicSit
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
 
 const localBindingConfig = {
-  main: 'vinext/server/fetch-handler',
+  main: './worker.ts',
+  assets: {
+    binding: 'ASSETS',
+    run_worker_first: ['/media/raquel-web/demo.mp4'],
+  },
   compatibility_flags: ['nodejs_compat'],
   vars: publicVars,
   d1_databases: d1
