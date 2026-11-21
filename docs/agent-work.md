@@ -139,3 +139,7 @@ Capturas e QA desta iteração ficaram em work/preloader-identity no worktree. A
 A revisão reproduz a abertura verde-lima da referência do Lando Norris com EG no centro e recorte angular que revela a hero. O intervalo fixo é de 1000 ms seguido por uma saída de 500 ms. Os quadros foram comparados apenas no recorte de cor, com diferença média de 0,44% em desktop e 1,00% no celular. O material de comparação está em work/.reanimate/preloader.
 
 QA local em Chromium a 320×568, 390×844, 844×390, 768×1024, 1024×768, 1280×720, 1440×900 e 1920×1080. Conferidos movimento reduzido sem JavaScript, texto a 200% em 320×568, navegação entre home e contato, retorno e âncoras diretas. Lint, tipagem, build e curadoria passaram. Aparelhos físicos ainda não foram testados.
+
+Publicação autorizada em 20/11/2026. A versão 9ad5ecea-165b-4a0f-9e3a-33d700a57b41 recebeu 100% do tráfego do Worker edy-gomes-portfolio-v2 com o runtime de 54fd3e6. Build com SITE_URL de produção e ensaio Wrangler passaram.
+
+No endereço público, Chromium em 390×844 e 1440×900 aprovou o preloader, o acesso às âncoras, os 14 cases com identidade e tecnologias e a reprodução e o avanço do vídeo da Raquel Web. O teste HTTP confirmou sitemap no domínio ativo, HTTP 206 para bytes do vídeo e HTTP 404 no endereço da edição arquivada.
