@@ -14,6 +14,13 @@ npm run build
 
 O comando de publicação usa os mesmos argumentos e dispensa `--dry-run`. O Worker anterior tem nome `edy-gomes-portfolio`; os registros abaixo descrevem aquela edição.
 
+### Indisponibilidade
+
+A rota /fora-do-ar mostra a página de indisponibilidade com HTTP 503. Ela também é usada em falhas de renderização de páginas HTML tratadas pelo Worker. O botão de tentativa recarrega o endereço solicitado. Uma falha que impeça o próprio Worker de responder será tratada pela infraestrutura do Cloudflare.
+
+Para uma manutenção programada, defina a variável de texto MAINTENANCE_MODE como true no Worker edy-gomes-portfolio-v2. Retire a variável ou defina false ao terminar. A opção afeta a navegação HTML e preserva os arquivos estáticos necessários. A variável deve permanecer ausente ou false em operação normal.
+
+
 
 O checkout oficial é `D:\EDY-Projects\EDY-Portfolio`. O site foi publicado no Cloudflare Workers em 28/09/2026 como `edy-gomes-portfolio`, na URL `https://edy-gomes-portfolio.edy-scanurl-family-worker.workers.dev/`. Para a prévia local, inicie `npm run dev` e use a URL exibida pelo servidor.
 

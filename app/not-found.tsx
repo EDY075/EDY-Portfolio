@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SiteFrame } from '@/components/SiteFrame';
+import './error-page.css';
 
 export default function NotFound() {
   return (
@@ -10,7 +11,10 @@ export default function NotFound() {
             <p className="pf-label">Erro 404</p>
             <h1 id="pf-error-title" className="pf-title"><em>Fora</em> do mapa</h1>
             <p className="pf-lead">Esta página não existe ou mudou de endereço.</p>
-            <Link href="/" className="pf-action" prefetch={false}>Voltar ao início</Link>
+            <div className="pf-error-actions">
+              <Link href="/" className="pf-action" prefetch={false}>Voltar ao início</Link>
+              <Link href="/work" className="pf-error-link" prefetch={false}>Ver projetos</Link>
+            </div>
           </div>
         </section>
       </main>

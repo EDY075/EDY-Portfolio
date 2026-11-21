@@ -126,15 +126,26 @@ body:has(.eg-menu-screen[open]) {
   overflow: auto;
   overscroll-behavior: contain;
   color: var(--eg-paper);
-  background: linear-gradient(#25291db3, #25291db3), var(--eg-ink) url('/preview-assets/contour.svg') center / cover;
+  background: var(--eg-ink);
 }
 .eg-menu-screen::backdrop {
   background: transparent;
 }
 .eg-menu-dialog-layout {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-rows: auto 1fr;
   min-height: 100%;
+  overflow: clip;
+}
+.eg-menu-dialog-layout::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(#25291db3, #25291db3), url('/preview-assets/contour.svg') center / cover;
+  pointer-events: none;
 }
 .eg-menu-bar-open {
   position: sticky;
@@ -249,6 +260,10 @@ body:has(.eg-menu-screen[open]) {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .eg-menu-screen[open] .eg-menu-dialog-layout::before {
+    inset: var(--eg-contour-overscan);
+    animation: var(--eg-contour-loop);
+  }
   .eg-menu-screen[open] {
     animation: eg-menu-enter 540ms cubic-bezier(.76, 0, .24, 1) both;
   }

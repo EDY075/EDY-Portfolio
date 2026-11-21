@@ -1,5 +1,5 @@
 .eg-hero-disciplines { text-wrap: balance; }
-.eg-hero-disciplines span { white-space: nowrap; }
+.eg-hero-disciplines { overflow-wrap: anywhere; }
 
 @keyframes eg-contour-drift {
   0% { transform: translate3d(-3.7%, -2%, 0) rotate(-3deg) scale(1.02); }

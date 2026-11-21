@@ -44,6 +44,15 @@
   opacity: .22;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .eg-site .pf-contour { overflow: clip; }
+
+  .eg-site :is(.pf-hero, .pf-contour)::before {
+    inset: var(--eg-contour-overscan);
+    animation: var(--eg-contour-loop);
+  }
+}
+
 .eg-site .pf-hero-copy { position: relative; min-width: 0; }
 .eg-site .pf-page .pf-title {
   margin: 0;
@@ -64,7 +73,7 @@
 
 .eg-site .pf-page .pf-lead {
   max-width: 32ch;
-  margin: clamp(1.1rem, 3vw, 2.5rem) 0 0;
+  margin: clamp(1.1rem, 3.4vw, 3.5rem) 0 0;
   color: var(--pf-heading);
   font-size: clamp(1rem, 1.55vw, 1.5rem);
   font-weight: 600;
@@ -123,7 +132,7 @@
 .eg-site .pf-reading p + p { margin-top: .85em; }
 .eg-site .pf-reading h3 { margin: 0 0 .65em; font-size: 1.03em; font-weight: 800; }
 .eg-site .pf-section-intro { max-width: 57rem; margin-bottom: clamp(1.6rem, 3vw, 3rem); }
-.eg-site .pf-section-intro > p { max-width: 57ch; margin: .95rem 0 0; color: var(--pf-muted); font-size: clamp(.94rem, 1.2vw, 1.14rem); line-height: 1.55; }
+.eg-site .pf-section-intro > p { max-width: 57ch; margin: clamp(.95rem, 2vw, 2rem) 0 0; color: var(--pf-muted); font-size: clamp(.94rem, 1.2vw, 1.14rem); line-height: 1.55; }
 
 .eg-site .pf-editorial-grid {
   display: grid;
@@ -274,6 +283,7 @@
 .eg-site .pf-work .project-explorer > summary { min-height: 4.25rem; margin-inline: var(--eg-gutter); font-family: var(--eg-sans); font-weight: 850; }
 
 /* Competências e contato. */
+.eg-site .pf-capabilities .pf-panel li { overflow-wrap: anywhere; }
 .eg-site .pf-page .pf-capabilities-hero { gap: clamp(1.5rem, 4vw, 4.5rem); min-height: clamp(31rem, 74svh, 58rem); }
 .eg-site .pf-capabilities-hero .pf-title { font-size: clamp(2.4rem, 8.5vw, 9rem); }
 .eg-site .pf-discipline-list {
@@ -379,7 +389,7 @@
   padding: clamp(2.8rem, 6vw, 6.9rem) var(--eg-gutter);
   border-top: 1px solid var(--pf-outline);
 }
-.eg-site .pf-case .case-gallery h2 { font: 900 clamp(2.55rem, 6vw, 6.7rem)/.9 var(--eg-sans); letter-spacing: -.06em; text-transform: uppercase; }
+.eg-site .pf-case .case-gallery h2 { margin-block: clamp(1rem, 1.6vw, 1.85rem); font: 900 clamp(2.55rem, 6vw, 6.7rem)/1 var(--eg-sans); letter-spacing: -.06em; text-transform: uppercase; }
 .eg-site .pf-case .case-gallery-controls { flex-wrap: wrap; }
 .eg-site .pf-case .case-gallery-controls button { max-width: 100%; border-radius: .4rem; border-color: var(--pf-outline); }
 .eg-site .pf-case .case-gallery-controls button:hover:not(:disabled) { background: var(--eg-accent); color: var(--eg-ink); }
@@ -520,12 +530,24 @@
 }
 .pf-principle-icon::after { transform: rotate(90deg); }
 .pf-principle[open] .pf-principle-icon::after { transform: rotate(0); }
-.pf-principle:is(:hover, [open]) .pf-principle-icon { background: var(--eg-accent); border-color: var(--eg-ink); }
-.eg-site .pf-principle[open] { background: #e4e6d7; border-color: #70755c; }
+.pf-principle:not([open]) summary:focus-visible .pf-principle-icon { background: var(--eg-accent); border-color: var(--eg-ink); }
+@media (hover: hover) {
+  .pf-principle:not([open]) summary:hover .pf-principle-icon { background: var(--eg-accent); border-color: var(--eg-ink); }
+}
+.eg-site .pf-principle[open] {
+  background-color: var(--eg-accent);
+  border-color: var(--eg-ink);
+  color: var(--eg-ink);
+}
+.pf-principle[open] .pf-principle-icon {
+  background-color: var(--eg-ink);
+  border-color: var(--eg-ink);
+  color: var(--eg-accent);
+}
 .pf-principle-example {
   margin: 0 clamp(1rem, 2.8vw, 2.5rem);
   padding: .8rem 0 1rem;
-  border-top: 1px solid #b3b69e;
+  border-top: 1px solid color-mix(in srgb, var(--eg-ink) 32%, transparent);
 }
 .eg-site .pf-principle-example p { margin: 0; }
 .pf-principle-example a {
@@ -537,6 +559,8 @@
   text-underline-offset: .23em;
 }
 @media (prefers-reduced-motion: no-preference) {
+  .eg-site .pf-principle { transition: background-color 260ms ease-out, border-color 260ms ease-out; }
+  .pf-principle-icon { transition: background-color 220ms ease-out, border-color 220ms ease-out, color 220ms ease-out; }
   .pf-principle-icon::after { transition: transform 220ms ease-out; }
   .pf-principle[open] .pf-principle-example { animation: pf-principle-example-in 260ms ease-out both; }
 }

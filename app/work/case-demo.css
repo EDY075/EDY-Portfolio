@@ -1,11 +1,13 @@
 .pf-case-demo-heading {
   display: grid;
-  gap: .85rem;
-  max-width: 62ch;
+  gap: clamp(.85rem, 1.65vw, 1.75rem);
   margin-bottom: clamp(1.4rem, 4vw, 3rem);
 }
 
+.eg-site .pf-page .pf-case-demo-heading .pf-heading { line-height: 1; }
+
 .pf-case-demo-heading > p:last-child {
+  max-width: 62ch;
   color: var(--pf-muted);
   font-size: clamp(.94rem, 1.4vw, 1.15rem);
   line-height: 1.55;

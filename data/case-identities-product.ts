@@ -54,7 +54,7 @@ export const productIdentities = {
   },
   'war-room': {
     description: 'A experiência documental combina preto, dourado fosco e marfim. A nebulosa compõe a abertura, e os fundos escuros dão continuidade ao mapa e à leitura dos dossiês.',
-    typography: 'Georgia nos textos longos. Os títulos declaram Playfair Display com Georgia como alternativa. Rótulos do mapa e metadados usam uma fonte monoespaçada.',
+    typography: 'Georgia nos textos longos. Os títulos usam Playfair Display com Georgia como alternativa. Rótulos do mapa e metadados usam uma fonte monoespaçada.',
     colors: [
       { name: 'Preto de fundo', value: '#0A0A0A' },
       { name: 'Marfim de leitura', value: '#F0ECE4' },

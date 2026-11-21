@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const sections = [
   { id: 'destaques', title: 'Em destaque', intro: 'Uma seleção de sites, sistemas e ferramentas.', items: featuredProjects },
   { id: 'pesquisa', title: 'Segurança e operação', intro: 'Verificação, análise, proteção de endpoints e suporte, com escopo e estágio de validação descritos em cada case.', items: technicalProjects },
-  { id: 'trabalhos-reais', title: 'Projetos de cliente', intro: 'Sites, aplicativos e automações desenvolvidos para clientes.', items: clientProjects },
+  { id: 'trabalhos-reais', title: 'Projetos de clientes', intro: 'Sites, aplicativos e automações desenvolvidos para clientes.', items: clientProjects },
 ] as const;
 
 const clientSites = new Set(['cr-fitness', 'andrea-tur']);
@@ -41,7 +41,7 @@ export default function WorkPage() {
         <nav className="pf-internal-nav" aria-label="Ir para uma área dos projetos">
           <a href="#destaques">Destaques</a>
           <a href="#pesquisa">Segurança e operação</a>
-          <a href="#trabalhos-reais">Projetos de cliente</a>
+          <a href="#trabalhos-reais">Projetos de clientes</a>
           <a href="#explorar-3d">Galeria 3D</a>
         </nav>
 

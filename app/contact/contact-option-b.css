@@ -87,6 +87,13 @@
   border-inline-start: 1px solid var(--ct-divider);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .ct-b-contour {
+    inset: min(-8%, calc(var(--eg-contour-overscan) - 10px));
+    animation: var(--eg-contour-loop);
+  }
+}
+
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .ct-b-portrait img {
     transform: translate(calc(var(--ct-b-x, 0) * 18px), calc(var(--ct-b-y, 0) * 13px)) scale(1.06);
@@ -94,8 +101,8 @@
   }
 
   .ct-b-contour {
-    transform: translate(calc(var(--ct-b-x, 0) * -9px), calc(var(--ct-b-y, 0) * -7px));
-    transition: transform 670ms cubic-bezier(.2, .75, .3, 1);
+    translate: calc(var(--ct-b-x, 0) * -9px) calc(var(--ct-b-y, 0) * -7px);
+    transition: translate 670ms cubic-bezier(.2, .75, .3, 1);
   }
 }
 

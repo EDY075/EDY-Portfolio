@@ -14,7 +14,7 @@ export const caseIdentities = {
   ...technicalIdentities,
   'raquel-web': {
     description: 'A direção Escuro essencial usa carvão para o fundo, cartões em cinza profundo e dourado nas ações. Vinho e magenta assinalam seleções e destaques. O lettering oficial de Raquel Oliveira Personal integra o cabeçalho e o painel.',
-    typography: 'Roboto Condensed nos cartões, Segoe UI nos cabeçalhos do painel inicial e da área da aluna, e Georgia no título editorial da lista de alunas.',
+    typography: 'Roboto Condensed nos cartões, Segoe UI nos cabeçalhos do painel inicial e da área da aluna e Georgia no título editorial da lista de alunas.',
     colors: [
       { name: 'Carvão', value: '#0C0F11' },
       { name: 'Fundo secundário', value: '#111416' },

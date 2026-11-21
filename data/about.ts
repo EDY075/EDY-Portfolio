@@ -31,7 +31,7 @@ export const about = {
 
 export const capabilities = [
   { title: 'SUPORTE DE TI', items: ['Solução de problemas', 'Hardware e software', 'Atendimento ao usuário', 'Manutenção de sistemas'] },
-  { title: 'CIBERSEGURANÇA', items: ['Conscientização de ameaças', 'Gestão de acessos', 'Suporte a incidentes', 'Tratamento de evidências'] },
+  { title: 'CIBERSEGURANÇA', items: ['Conscientização sobre ameaças', 'Gestão de acessos', 'Suporte a incidentes', 'Tratamento de evidências'] },
   { title: 'SISTEMAS', items: ['Organização de sistemas', 'Suporte à infraestrutura', 'Fundamentos de redes', 'Monitoramento de desempenho'] },
   { title: 'AUTOMAÇÃO', items: ['Automação de fluxos', 'Scripts e ferramentas', 'Otimização de processos', 'Eficiência de tempo'] },
   { title: 'DADOS & ANÁLISE', items: ['Organização de dados', 'Relatórios', 'Geração de insights', 'Solução de problemas'] },

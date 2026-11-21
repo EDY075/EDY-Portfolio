@@ -116,7 +116,7 @@
 
 .ct-lead {
   max-width: 31ch;
-  margin: clamp(1rem, 2vw, 1.6rem) 0 0;
+  margin: clamp(1rem, 2.7vw, 2.65rem) 0 0;
   color: var(--ct-text);
   font: 650 clamp(.98rem, 1.55vw, 1.35rem)/1.45 var(--eg-sans);
 }

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#25291d">
+  <title>Portfólio temporariamente indisponível — EDY GOMES</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; color: #eeeee3; background: #25291d; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      align-items: center;
+      min-block-size: 100vh;
+      min-block-size: 100svh;
+      overflow: clip;
+      padding: clamp(2rem, 7vw, 7rem) clamp(1.125rem, 6vw, 6rem);
+    }
+    main::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-radial-gradient(ellipse at 100% 16%, transparent 0 2.3rem, #cafe0026 2.33rem 2.39rem, transparent 2.42rem 3.7rem);
+      mask-image: linear-gradient(110deg, transparent 25%, #000 83%);
+    }
+    .status { max-inline-size: 49rem; }
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .5rem 1rem;
+      color: #cafe00;
+      font-size: .85rem;
+      font-weight: 750;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .brand { color: #eeeee3; }
+    .status-code { border-inline-start: 1px solid #eeeee36b; padding-inline-start: 1rem; }
+    h1 {
+      font-size: clamp(2.4rem, 9vw, 7rem);
+      font-weight: 850;
+      letter-spacing: -.065em;
+      line-height: .93;
+      margin: .32em 0 .26em;
+      overflow-wrap: anywhere;
+    }
+    h1 em {
+      display: block;
+      font-family: Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -.07em;
+    }
+    p { max-inline-size: 30ch; margin: 0; font-size: clamp(1.06rem, 2.3vw, 1.36rem); line-height: 1.55; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem 1.3rem; margin-top: clamp(1.35rem, 4vw, 2.4rem); }
+    .actions a { min-block-size: 3rem; display: inline-flex; align-items: center; color: inherit; font-weight: 750; text-underline-offset: .23em; }
+    .actions a:hover { color: #cafe00; }
+    .actions .retry {
+      padding: .5rem .85rem;
+      border: 1px solid #cafe00;
+      border-radius: .5rem;
+      color: #25291d;
+      background: #cafe00;
+      text-decoration: none;
+    }
+    .actions .retry:hover { color: #25291d; background: #eeeee3; }
+    a:focus-visible { outline: 2px solid #eeeee3; outline-offset: .25rem; }
+  </style>
+</head>
+<body>
+  <main aria-labelledby="status-title">
+    <div class="status">
+      <p class="header"><span class="brand">Edy Gomes</span><span class="status-code">Erro 503</span></p>
+      <h1 id="status-title"><em>Voltamos</em> em breve.</h1>
+      <p>O portfólio está temporariamente indisponível. Tente novamente em alguns instantes.</p>
+      <div class="actions">
+        <a class="retry" href="">Tentar novamente</a>
+        <a href="/">Voltar ao início</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

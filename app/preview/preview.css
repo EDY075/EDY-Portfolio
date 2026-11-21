@@ -11,6 +11,17 @@
   font-weight: 200 900;
   font-display: swap;
 }
+:root {
+  --eg-contour-travel: clamp(1.5rem, 2.45vw, 3rem);
+  --eg-contour-overscan: calc(-1.1 * var(--eg-contour-travel));
+  --eg-contour-loop: eg-contour-orbit 26s linear infinite;
+}
+
+@keyframes eg-contour-orbit {
+  from { transform: rotate(0turn) translateX(var(--eg-contour-travel)) rotate(0turn); }
+  to { transform: rotate(1turn) translateX(var(--eg-contour-travel)) rotate(-1turn); }
+}
+
 .eg-preview {
   --eg-ink: #25291d;
   --eg-paper: #eeeee3;
@@ -43,6 +54,14 @@
   background: url('/preview-assets/contour.svg') center / cover no-repeat;
   opacity: .36;
   pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .eg-hero::before,
+  .eg-statement::before,
+  .portfolio-route-wipe[data-active='true']::before {
+    inset: var(--eg-contour-overscan);
+    animation: var(--eg-contour-loop);
+  }
 }
 .eg-portrait {
   position: absolute;
@@ -89,7 +108,7 @@
   font: 900 clamp(5.75rem, 12.3vw, 14rem)/.79 var(--eg-sans);
   letter-spacing: -.067em;
   text-transform: uppercase;
-  margin: .24em 0 .18em -.038em;
+  margin: .24em 0 .32em -.038em;
 }
 .eg-intro h1 span { display: block; }
 .eg-intro h1 span:first-child {
@@ -139,7 +158,7 @@
   font: 900 clamp(4rem, 11vw, 11rem)/.86 var(--eg-sans);
   text-transform: uppercase;
   letter-spacing: -.055em;
-  margin: .23em 0 .12em;
+  margin: .31em 0 .24em;
 }
 .eg-statement .eg-eyebrow { color: var(--eg-accent); }
 .eg-statement-handoff {

@@ -1,8 +1,10 @@
 import app from 'vinext/server/fetch-handler';
 
 const demoPath = '/media/raquel-web/demo.mp4';
+const maintenancePath = '/fora-do-ar';
 
 interface Env {
+  MAINTENANCE_MODE?: string;
   ASSETS: { fetch(request: Request): Promise<Response> };
 }
 
@@ -44,13 +46,48 @@ async function serveVideo(request: Request, env: Env): Promise<Response> {
   return new Response(content.slice(start, end + 1), { status: 206, headers });
 }
 
-const worker = {
-  fetch(request: Request, env: Env, context: ExecutionContext) {
-    if ((request.method === 'GET' || request.method === 'HEAD') && new URL(request.url).pathname === demoPath) {
-      return serveVideo(request, env);
-    }
+async function serveMaintenance(request: Request, env: Env): Promise<Response> {
+  const headers = {
+    'Content-Type': 'text/html; charset=utf-8',
+    'Cache-Control': 'no-store',
+    'Retry-After': '300',
+    'X-Robots-Tag': 'noindex',
+    'X-Content-Type-Options': 'nosniff',
+    'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'",
+  };
+  const status = 503;
+  if (request.method === 'HEAD') return new Response(null, { status, headers });
 
-    return app.fetch(request, env, context);
+  const assetUrl = new URL('/maintenance.html', request.url);
+  const asset = await env.ASSETS.fetch(new Request(assetUrl)).catch(() => null);
+  return new Response(
+    asset?.ok ? asset.body : '<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Portfólio temporariamente indisponível</title><h1>Portfólio temporariamente indisponível</h1><p>Tente novamente em instantes.</p><a href="/">Voltar ao início</a></html>',
+    { status, headers },
+  );
+}
+
+const worker = {
+  async fetch(request: Request, env: Env, context: ExecutionContext) {
+    const { pathname } = new URL(request.url);
+    const read = request.method === 'GET' || request.method === 'HEAD';
+    if (read && (pathname === maintenancePath || pathname === maintenancePath + '/')) {
+      return serveMaintenance(request, env);
+    }
+    if (read && pathname === demoPath) return serveVideo(request, env);
+
+    const navigation = read && request.headers.get('RSC') !== '1' && (
+      request.mode === 'navigate' || request.headers.get('Accept')?.includes('text/html')
+    );
+    if (!navigation) return app.fetch(request, env, context);
+    if (env.MAINTENANCE_MODE === 'true') return serveMaintenance(request, env);
+
+    try {
+      const response = await app.fetch(request, env, context);
+      return response.status >= 500 ? serveMaintenance(request, env) : response;
+    } catch (error) {
+      console.error('Portfolio page rendering failed', error);
+      return serveMaintenance(request, env);
+    }
   },
 };
 

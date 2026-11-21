@@ -145,3 +145,29 @@ Publicação autorizada em 20/11/2026. A versão 9ad5ecea-165b-4a0f-9e3a-33d700a
 No endereço público, Chromium em 390×844 e 1440×900 aprovou o preloader, o acesso às âncoras, os 14 cases com identidade e tecnologias e a reprodução e o avanço do vídeo da Raquel Web. O teste HTTP confirmou sitemap no domínio ativo, HTTP 206 para bytes do vídeo e HTTP 404 no endereço da edição arquivada.
 
 O recarregamento de /#inicio agora exibe o preloader. A verificação no Chromium reproduziu a supressão em produção e validou abertura e recarga da home, recarga após clicar no logotipo, entrada direta na vitrine e movimento reduzido. A matriz usou 1874×922, 768×1024 e 390×844.
+
+## Movimento e cartões da página Sobre
+
+A coordenação cuida da animação do fundo e da validação integrada. O estado visual dos cartões de Princípios tem implementação paralela e escopo próprio no CSS.
+
+O fundo topográfico da abertura do Sobre percorre um ciclo contínuo de 26 segundos. O teste comparou os pontos de passagem e confirmou que o início e o fim do ciclo coincidem. Os cartões de Princípios usam fundo verde-lima enquanto abertos e restauram a cor original ao fechar. O contraste entre o fundo aberto e o texto escuro é de 12,51:1.
+
+Matriz local em Chromium: 320×568, 390×844, 844×390, 700×900, 701×900, 768×1024, 900×768, 901×768, 1280×720, 1440×900 e 1900×790. Conferidos toque emulado, teclado, fechamento, links, contraste e ausência de rolagem horizontal. Texto a 200% em 320×568, 390×844 e 768×1024. Movimento reduzido mantém o fundo estático e a troca de cor. Lint, tipagem e build passaram. Capturas e QA estão em work/about-motion. Aparelhos físicos ainda não foram testados.
+
+### Topografia em movimento nas demais páginas
+
+A coordenação compartilha o ciclo do Sobre com as páginas internas, Contato e fundos da home. O menu e a seção final da home têm integração independente, usando os mesmos tokens de movimento.
+
+O mesmo ciclo contínuo de 26 segundos do Sobre foi aplicado aos fundos topográficos em Projetos, Competências, cases, Contato, menu e seções da home. A abertura da home preserva seu movimento topográfico próprio e o Contato combina o ciclo contínuo com a resposta ao mouse. A preferência por movimento reduzido desliga o ciclo.
+
+Chromium com viewports 390×844, 768×1024 e 1860×840 verificou as camadas, a coincidência entre início e fim do ciclo, avanço do carrossel por teclado, resposta ao ponteiro em Contato, abertura e fechamento do menu por Escape e link de encerramento da home. Movimento reduzido verificado em 390×844 e 1280×720. Texto a 200% em Projetos a 320×568, 844×390 e 1280×720. Lint, tipagem, curadoria e build passaram. Sem teste em aparelho físico. Captura e QA estão em work/about-motion.
+
+## Páginas de erro e revisão antes da publicação
+
+A coordenação integra a resposta HTTP de indisponibilidade, executa a matriz de texto e publica. A interface de erro e a revisão ortográfica têm responsáveis independentes.
+
+A revisão editorial corrigiu concordância, pontuação e expressões dos cases, além do rótulo Projetos de clientes. A revisão visual abriu espaço entre títulos e descrições na home, no Sobre, em Projetos, no Contato e nas galerias dos cases. Ajustou também a quebra de texto na home e em Competências a 200%.
+
+No Worker local, o teste de layout verificou 143 combinações de páginas e tamanhos em Chromium. Todas as 19 páginas de conteúdo, dois caminhos 404 e a rota 503 foram verificadas em 320×568, 390×844 e 1440×900. A amostra reduzida foi verificada em tablet, celular em paisagem, notebook e desktop amplo, incluindo texto a 200% em 320×568, 390×844 e 768×1024. O teste examinou sobreposições, texto fora da largura disponível, erros JavaScript e status HTTP. Galerias com rolagem horizontal e o carrossel têm testes próprios. Não houve teste em aparelhos físicos.
+
+A 404 oferece links para o início e Projetos. A 503 usa um HTML estático com ação de tentativa e resposta sem cache. A simulação local de manutenção retornou 503 na página solicitada e manteve os arquivos estáticos e o vídeo disponíveis. O teste da Raquel Web confirmou reprodução e avanço. Lint, tipagem, curadoria, build e ensaio Wrangler passaram.

@@ -4,11 +4,37 @@
 }
 
 .eg-home-end .next-chapter {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
   padding-inline: var(--eg-gutter);
+}
+
+.eg-home-end .next-chapter::before,
+.eg-home-end .next-chapter::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.eg-home-end .next-chapter::before {
+  z-index: -2;
+  background: url('/preview-assets/contour.svg') center / cover;
+}
+
+.eg-home-end .next-chapter::after {
+  z-index: -1;
   background:
     linear-gradient(180deg, var(--eg-project-ground, #111210), transparent 8rem),
-    linear-gradient(90deg, #25291dd9, #25291d44),
-    url('/preview-assets/contour.svg') center / cover;
+    linear-gradient(90deg, #25291dd9, #25291d44);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .eg-home-end .next-chapter::before {
+    inset: var(--eg-contour-overscan);
+    animation: var(--eg-contour-loop);
+  }
 }
 
 .eg-home-end .next-chapter-link {

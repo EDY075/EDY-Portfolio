@@ -1,0 +1,35 @@
+.eg-site .pf-error .pf-title {
+  font-size: clamp(3rem, 8.4vw, 9.5rem);
+  line-height: 1;
+}
+
+.eg-site .pf-error .pf-label {
+  color: var(--eg-accent);
+}
+
+.pf-error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .65rem 1.35rem;
+  margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+.eg-site .pf-error-actions .pf-action {
+  margin: 0;
+}
+
+.eg-site .pf-error-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: .55rem .2rem;
+  color: var(--eg-paper);
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: .24em;
+}
+
+.eg-site .pf-error-link:hover {
+  color: var(--eg-accent);
+}
