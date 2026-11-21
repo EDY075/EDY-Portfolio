@@ -22,11 +22,11 @@ const { caseIdentities } = await import(await dataModule('../data/case-identity.
   './case-identities-product': productIdentityModule,
   './case-identities-technical': technicalIdentityModule,
 }));
-const featured = ['edy-crm', 'edy-soc-analytics', 'edy-shadowcat', 'edy-recon', 'war-room'];
+const featured = ['edy-energy', 'edy-crm', 'edy-soc-analytics', 'edy-shadowcat', 'edy-recon', 'war-room'];
 assert.deepEqual(data.featuredProjects.map(project => project.slug), featured);
 assert.deepEqual(data.projects.slice(0, featured.length).map(project => project.slug), featured);
-assert.equal(data.projects.length, 14);
-assert.equal(new Set(data.projects.map(project => project.slug)).size, 14);
+assert.equal(data.projects.length, 15);
+assert.equal(new Set(data.projects.map(project => project.slug)).size, 15);
 assert.deepEqual([...data.featuredProjects, ...data.technicalProjects, ...data.clientProjects], data.projects);
 assert.deepEqual(data.clientProjects.map(project => project.slug), ['raquel-web', 'cr-fitness', 'assistente-personalizado', 'andrea-tur']);
 for (const project of data.projects) assert(project.origin?.length > 60, `${project.slug}: documented origin`);
@@ -54,4 +54,4 @@ for (const project of data.projects) {
 assert.equal(caseIdentities['raquel-web'].colors.length, 9);
 assert.match(caseIdentities['assistente-personalizado'].paletteNote, /Telegram/);
 assert.match(caseIdentities['edy-recon'].paletteNote, /ANSI/);
-console.log('PASS: ordered highlights, 14 unique cases with visual identities and stacks, documented origins and private links preserved');
+console.log('PASS: ordered highlights, 15 unique cases with visual identities and stacks, documented origins and private links preserved');

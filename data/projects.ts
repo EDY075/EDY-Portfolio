@@ -75,6 +75,37 @@ export const crmProject: Project = {
 
 const operationalProjects: Project[] = [
   {
+    slug: 'edy-energy', title: 'EDY Energy', displayTitle: 'Energy',
+    origin: 'O projeto partiu da ideia de usar uma lata como fio condutor de uma vitrine para uma marca conceito de energético. Cada sabor recebeu uma combinação própria de rótulo, cor e partículas, aplicada também às transições do site.',
+    subtitle: 'Vitrine 3D para uma marca conceito de energético.',
+    summary: 'Experiência web que combina identidade visual, animação e um fluxo de compra demonstrativo. O visitante pode explorar seis sabores em 3D, acompanhar a lata entre seções e montar um pack com as suas escolhas.',
+    status: 'Projeto autoral com demonstração pública.',
+    keywords: ['Experiência web 3D', 'Direção de arte', 'Projeto autoral'],
+    features: [
+      'Três animações de abertura com opção de pular',
+      'Carrossel de seis sabores com controle por arraste, toque ou teclado',
+      'Lata 3D que muda de posição, escala e rotação durante a rolagem',
+      'Montador de pack com até seis latas e total atualizado durante a seleção',
+      'Pack e carrinho de demonstração persistidos no navegador',
+      'Controle de som e suporte à preferência por movimento reduzido',
+    ],
+    stack: ['HTML', 'CSS', 'JavaScript', 'Three.js', 'WebGL', 'Canvas 2D', 'Web Audio API', 'Cloudflare Workers'],
+    problem: 'Criar uma vitrine que dê personalidade a cada sabor e mantenha uma navegação clara da primeira interação à montagem do pack.',
+    solution: 'Uma cena WebGL compartilhada renderiza as latas com materiais metálicos e texturas próprias. Ao trocar de sabor, a interface atualiza rótulo, cor e partículas. Na rolagem, a lata acompanha a apresentação até a vitrine e o montador de pack.',
+    outcome: 'Site publicado e código disponível no GitHub. A loja simula seleção, carrinho e confirmação de pedido. Toda a experiência roda no navegador, sem pagamentos ou envio de pedidos.',
+    links: [
+      { label: 'Abrir demonstração', href: 'https://edy-energy.edy-scanurl-family-worker.workers.dev/' },
+      { label: 'Ver código no GitHub', href: 'https://github.com/EDY075/edy-energy' },
+    ],
+    image: { src: '/images/projects/covers/edy-energy-1600.webp', alt: 'Carrossel 3D do EDY Energy com a lata Original Nitro em destaque sobre fundo verde', width: 1600, height: 1000 },
+    caseImage: { src: '/images/projects/cases/edy-energy-flavors.webp', alt: 'Carrossel 3D com a lata Ultra Rosa em destaque sobre fundo rosa', width: 1400, height: 875, fit: 'contain' },
+    caseImageTitle: 'Carrossel de sabores',
+    caseImageContext: 'A cor, o rótulo e os elementos do fundo mudam junto com a lata em destaque.',
+    caseGallery: [
+      { title: 'Montador de pack', caption: 'A vitrine permite combinar até seis latas e atualizar o total exibido na compra demonstrativa.', image: { src: '/images/projects/cases/edy-energy-pack.webp', alt: 'Montador de pack com seis latas selecionadas e o total da compra simulada', width: 1400, height: 875, fit: 'contain' } },
+    ],
+  },
+  {
     slug: 'andrea-tur', title: 'Andréa Tur', displayTitle: 'Andréa Tur',
     origin: 'O ponto de partida foi organizar viagens e destinos em um site que a responsável pudesse manter atualizado. A apresentação pública conecta descoberta, informações e contato; a confirmação de uma reserva continua sendo feita diretamente com Andréa.',
     subtitle: 'Viagens e destinos em uma experiência editorial.',
@@ -374,7 +405,7 @@ const selectProjects = (slugs: string[]): Project[] => slugs.map((slug) => {
 });
 
 export const featuredProjects = selectProjects([
-  'edy-crm', 'edy-soc-analytics',
+  'edy-energy', 'edy-crm', 'edy-soc-analytics',
   'edy-shadowcat', 'edy-recon', 'war-room',
 ]);
 export const technicalProjects = selectProjects([

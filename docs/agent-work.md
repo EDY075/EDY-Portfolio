@@ -185,3 +185,13 @@ Em três aberturas sem cache por rota, comparando dois builds de produção no m
 Chromium em 320, 390, 768 e 1440 px verificou fontes, preloader em #inicio, rolagem, avanço no carrossel, abertura tardia e fechamento por Escape na galeria 3D e reprodução do vídeo. As miniaturas foram testadas em oito tamanhos e densidades, inclusive texto a 200% no menor viewport. Lint, tipos, curadoria, build e ensaio Wrangler passaram. Relatórios brutos estão em work/performance-opt. Aparelhos físicos e Core Web Vitals de visitantes não foram medidos.
 
 Publicação concluída em 21/11/2026 no Worker edy-gomes-portfolio-v2, versão d52accb7-2f52-41a5-b3ab-9a09149e2b38 com 100% do tráfego e runtime f07b192. A validação pública em 320, 390, 768 e 1440 px confirmou tipografia, preloader, rolagem, carrossel e galeria sob demanda. A demonstração da Raquel Web reproduziu e avançou em desktop e celular emulados. Respostas de Sobre, 404, 503 e os novos assets foram conferidas.
+
+## EDY Energy · 21/11/2026
+
+- Coordenação: dados do case, identidade visual, destaque, integração e publicação.
+- Mídia: capa responsiva e capturas reais da demonstração pública.
+- Verificação: revisão independente da integração e matriz de telas após o build.
+
+A capa e as duas imagens internas vieram da demonstração pública do EDY Energy. As capturas mostram o Original Nitro, o Ultra Rosa e o montador com as seis latas selecionadas. Foram geradas versões WebP de 640, 1080 e 1600 px para as capas e de 192 e 384 px para o carrossel.
+
+A revisão independente no Chrome headless cobriu 320×568, 390×844, 768×1024, 900×900, 901×900, 1024×600, 1280×720 e 1440×900, com movimento reduzido. Em 390 e 1440 px, também conferiu texto ampliado a 200%. Foram verificados os caminhos do card, do carrossel infinito e da galeria 3D até o case, o carregamento das imagens, a ausência de sobreposição e o sitemap. A captura do pack foi refeita após a animação do título. Aparelhos físicos não foram usados.

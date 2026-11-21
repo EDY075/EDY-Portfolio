@@ -1,6 +1,25 @@
 import type { CaseIdentity } from './case-identity';
 
 export const productIdentities = {
+  'edy-energy': {
+    description: 'Uma base em carvão e creme dá unidade à vitrine. Cada sabor troca a cor de destaque do cenário e os elementos gráficos do rótulo. Materiais metálicos e iluminação de estúdio dão volume às latas em 3D.',
+    typography: 'Archivo Black nos títulos, Inter nos textos e DM Mono nos rótulos da interface.',
+    colors: [
+      { name: 'Carvão', value: '#16171C' },
+      { name: 'Creme', value: '#F4F1EC' },
+      { name: 'Manga Loco', value: '#13B0C4' },
+      { name: 'Original Nitro', value: '#56C41D' },
+      { name: 'Zero Ultra', value: '#D5DDE6' },
+      { name: 'Ultra Rosa', value: '#E32B7C' },
+      { name: 'Pacific Punch', value: '#DF2C23' },
+      { name: 'Ultra Violeta', value: '#7626D4' },
+    ],
+    details: [
+      'Cada sabor tem uma textura WebP própria aplicada à mesma geometria 3D.',
+      'A troca de sabor revela o novo cenário com uma transição radial.',
+      'O montador de pack reorganiza a composição de latas conforme a seleção.',
+    ],
+  },
   'edy-crm': {
     description: 'O tema Nebulosa mantém a imagem astronômica visível sob painéis translúcidos. O texto claro ganha contraste com sombras discretas, enquanto o coral marca as ações e o foco.',
     typography: 'Geist Variable para títulos, controles e dados do painel.',
