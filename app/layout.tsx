@@ -42,9 +42,14 @@ export const metadata: Metadata = {
     : { index: false, follow: false, noarchive: true, nocache: true },
   ...pageSocialMetadata(
     '/',
-    'EDY — GOMES',
-    'IT Support, Cybersecurity, Systems & Automation.',
-    { src: '/og.png', width: 1200, height: 630, alt: 'EDY — GOMES — IT Support, Cybersecurity, Systems & Automation' },
+    'Edy Gomes | Portfólio',
+    'Suporte de TI, segurança, desenvolvimento e automação.',
+    {
+      src: '/og-portfolio-v2.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Nome Edy Gomes e retrato em preto e branco sobre um fundo claro com linhas topográficas.',
+    },
   ),
 };
 
