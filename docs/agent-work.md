@@ -251,3 +251,14 @@ A capa aparece antes da interação. Passar o mouse no card inicia a prévia qua
 O build integrado foi testado em Chrome para desktop (1440×900), notebook (1280×720) e nos perfis Android 360×720 e 320×568 com fonte-base em 200%. O WebKit foi testado em perfis iPhone 390×844 e iPad 768×1024. A validação cobriu os 15 vídeos no perfil Android, hover sobre o título, teclado, movimento reduzido, troca e parada, erros de mídia e navegação até o case. Com CPU 4× mais lenta, 150 ms de latência e download de 1,6 Mbit/s, o perfil aproximado do Moto G8 reproduziu o EDY Energy, baixou só o vídeo escolhido e abriu o case. O teste foi emulado.
 
 Publicado no Worker edy-gomes-portfolio-v2, versão `29030b8a-2fe9-4eff-a852-3b0314d790fc` com 100% do tráfego. A matriz passou novamente em produção e os 15 MP4 públicos têm o mesmo SHA-256 dos arquivos locais.
+
+## Fluidez das prévias · 21/11/2026
+
+- Mídia: reexportar os loops de imagens e recapturar o movimento do EDY Energy.
+- Interface: antecipar a resposta ao hover mantendo uma única reprodução sob demanda.
+
+Na versão anterior, os arquivos tinham 15–18 fps e o hover aguardava 320 ms antes de montar o vídeo. No Chrome, a reprodução apresentou 15–18 quadros por segundo. O detector de quadros semelhantes reteve apenas 6 de 100 no Raquel Web e 42 de 107 no EDY Energy.
+
+As 15 prévias agora usam H.264 a 30 fps, mudo e 640×400, com arquivos de 127–227 kB. O EDY Energy foi recapturado quadro a quadro do carrossel publicado. O Raquel Web e demais loops usam movimento de câmera sobre as telas públicas. A checagem reteve 165 de 165 quadros no EDY Energy, 164 de 164 no Raquel Web e 169 de 170 no EDY CRM após remoção de quadros semelhantes.
+
+O hover aguarda 120 ms. Quando o cursor chega ao card durante a rolagem, o carregamento começa assim que a rolagem termina, se ele continuar sobre o card. A troca e o encerramento liberam o vídeo ativo. A matriz anterior de desktop, notebook, Android, iPhone e iPad foi reexecutada. O perfil aproximado do Moto G8 também reproduziu a prévia solicitada e abriu o case com CPU e rede limitadas.

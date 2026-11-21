@@ -12,7 +12,7 @@ import { useProjectPreview } from './ProjectPreviewProvider';
 import './project-card-preview.css';
 
 const hoverPreviewQuery = '(any-hover: hover) and (any-pointer: fine) and (prefers-reduced-motion: no-preference)';
-const hoverDelay = 320;
+const hoverDelay = 120;
 
 type CardProject = Pick<Project, 'slug' | 'title' | 'subtitle' | 'keywords' | 'image'>;
 
@@ -23,15 +23,16 @@ export function ProjectCard({ project, index = 0, sequence = false }: { project:
   const stopPreview = preview?.stopPreview;
   const art = useRef<HTMLDivElement>(null);
   const player = useRef<HTMLVideoElement>(null);
-  const hoverTimer = useRef<number>(0);
+  const cancelHover = useRef<(() => void) | null>(null);
   const feedback = useId();
   const [failed, setFailed] = useState(false);
 
   function clearHover() {
-    window.clearTimeout(hoverTimer.current);
+    cancelHover.current?.();
+    cancelHover.current = null;
   }
 
-  useEffect(() => () => window.clearTimeout(hoverTimer.current), []);
+  useEffect(() => () => cancelHover.current?.(), []);
 
   useEffect(() => {
     const video = player.current;
@@ -69,11 +70,27 @@ export function ProjectCard({ project, index = 0, sequence = false }: { project:
   function startHover(event: PointerEvent<HTMLDivElement>) {
     if (!preview || event.pointerType !== 'mouse' || !window.matchMedia(hoverPreviewQuery).matches) return;
     clearHover();
-    hoverTimer.current = window.setTimeout(() => {
-      if (document.documentElement.dataset.projectHover === 'locked' || !window.matchMedia(hoverPreviewQuery).matches) return;
+    const card = event.currentTarget;
+    const root = document.documentElement;
+    const playPreview = () => {
+      clearHover();
+      if (!card.matches(':hover') || !window.matchMedia(hoverPreviewQuery).matches) return;
       setFailed(false);
       preview.startPreview(slug, 'hover');
+    };
+    const timer = window.setTimeout(() => {
+      if (root.dataset.projectHover !== 'locked') {
+        playPreview();
+        return;
+      }
+      // Aguarda o fim da rolagem enquanto o cursor continua sobre o card.
+      const observer = new MutationObserver(() => {
+        if (root.dataset.projectHover !== 'locked') playPreview();
+      });
+      observer.observe(root, { attributeFilter: ['data-project-hover'] });
+      cancelHover.current = () => observer.disconnect();
     }, hoverDelay);
+    cancelHover.current = () => window.clearTimeout(timer);
   }
 
   function stopHover() {
@@ -112,7 +129,7 @@ export function ProjectCard({ project, index = 0, sequence = false }: { project:
         <video
           ref={player}
           className="project-card-preview-video"
-          src={`/media/project-previews/${slug}.mp4`}
+          src={`/media/project-previews/${slug}.mp4?v=2`}
           preload="none"
           muted
           playsInline
