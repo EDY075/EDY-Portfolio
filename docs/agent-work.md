@@ -143,3 +143,5 @@ QA local em Chromium a 320×568, 390×844, 844×390, 768×1024, 1024×768, 1280�
 Publicação autorizada em 20/11/2026. A versão 9ad5ecea-165b-4a0f-9e3a-33d700a57b41 recebeu 100% do tráfego do Worker edy-gomes-portfolio-v2 com o runtime de 54fd3e6. Build com SITE_URL de produção e ensaio Wrangler passaram.
 
 No endereço público, Chromium em 390×844 e 1440×900 aprovou o preloader, o acesso às âncoras, os 14 cases com identidade e tecnologias e a reprodução e o avanço do vídeo da Raquel Web. O teste HTTP confirmou sitemap no domínio ativo, HTTP 206 para bytes do vídeo e HTTP 404 no endereço da edição arquivada.
+
+O recarregamento de /#inicio agora exibe o preloader. A verificação no Chromium reproduziu a supressão em produção e validou abertura e recarga da home, recarga após clicar no logotipo, entrada direta na vitrine e movimento reduzido. A matriz usou 1874×922, 768×1024 e 390×844.

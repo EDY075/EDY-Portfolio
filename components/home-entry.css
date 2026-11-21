@@ -13,7 +13,7 @@
   }
 
   /* The timeline belongs to the document, so returning to the home never restarts it. */
-  body:has(.eg-home):not(:has(:target, .page-transition-content :focus-visible:not(main), .page-transition-curtain[data-active='true'])) > .eg-entry-wipe {
+  body:has(.eg-home):not(:has(:target:not(#inicio), .page-transition-content :focus-visible:not(main), .page-transition-curtain[data-active='true'])) > .eg-entry-wipe {
     opacity: 1;
   }
 
