@@ -173,3 +173,13 @@ No Worker local, o teste de layout verificou 143 combinações de páginas e tam
 A 404 oferece links para o início e Projetos. A 503 usa um HTML estático com ação de tentativa e resposta sem cache. A simulação local de manutenção retornou 503 na página solicitada e manteve os arquivos estáticos e o vídeo disponíveis. O teste da Raquel Web confirmou reprodução e avanço. Lint, tipagem, curadoria, build e ensaio Wrangler passaram.
 
 Publicação de 20/11/2026. Worker edy-gomes-portfolio-v2 na versão dcb36c1b-8e36-4075-9be5-51ecb66bd018, com 100% do tráfego. No ambiente público, as 22 rotas passaram em 390×844 e 1440×900. A home confirmou HTTP 200. A página ausente confirmou HTTP 404. A rota de indisponibilidade confirmou HTTP 503 por GET e HEAD, com Retry-After e noindex. A reprodução, o avanço e a resposta HTTP 206 do vídeo da Raquel Web passaram.
+
+## Otimização de carregamento
+
+A coordenação mede e integra. Tipografia, capas responsivas e auditoria de código legado têm responsáveis separados; resultados serão confrontados com o perfil móvel de entrada da medição publicada.
+
+A otimização remove GSAP e a rolagem legada da árvore ativa. Lenis carrega sob demanda em desktop com movimento permitido. A galeria 3D carrega ao abrir, e o preloader usa 1,1 s no celular com o mesmo recorte angular de saída. A tipografia usa subconjuntos latino e estendido, preservando os 546 caracteres da fonte. O original pode ser recuperado no histórico como public/preview-assets/sans.woff2. As 14 miniaturas da órbita usam variantes dedicadas, e a demonstração da Raquel usa carregamento nativo ao se aproximar do vídeo em navegadores compatíveis.
+
+Em três aberturas sem cache por rota, comparando dois builds de produção no mesmo Worker local, o celular simulado usou CPU 6×, rede de 1,6 Mb/s e 150 ms de latência. LCP de Início, Projetos e Raquel Web passou de 3,56/2,77/2,66 s para 2,76/2,37/2,52 s. O tráfego passou de 625/1.014/704 kB para 396/433/526 kB. No PC simulado com CPU 4×, o LCP final ficou entre 1,08 e 1,33 s. Projetos e Raquel Web tiveram ligeira alta de LCP no PC, junto de menos bytes e término inicial mais cedo.
+
+Chromium em 320, 390, 768 e 1440 px verificou fontes, preloader em #inicio, rolagem, avanço no carrossel, abertura tardia e fechamento por Escape na galeria 3D e reprodução do vídeo. As miniaturas foram testadas em oito tamanhos e densidades, inclusive texto a 200% no menor viewport. Lint, tipos, curadoria, build e ensaio Wrangler passaram. Relatórios brutos estão em work/performance-opt. Aparelhos físicos e Core Web Vitals de visitantes não foram medidos.

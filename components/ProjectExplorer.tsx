@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { ProjectCollection } from './ProjectCollection';
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useHydratedReducedMotion } from './motion/useHydratedReducedMotion';
+
+const ProjectCollection = lazy(() => import('./ProjectCollection').then(module => ({ default: module.ProjectCollection })));
 
 const subscribe = () => () => undefined;
 const clientSnapshot = () => true;
@@ -42,7 +43,11 @@ export function ProjectExplorer() {
   return (
     <details id="explorar-3d" ref={explorerRef} className="project-explorer" open={open} data-lenis-prevent-wheel={open && !reduceMotion ? '' : undefined} onToggle={(event) => setOpen(event.currentTarget.open)}>
       <summary>Explorar todos os projetos em 3D</summary>
-      {open && <ProjectCollection />}
+      {open && (
+        <Suspense fallback={<output className="project-explorer-pending">Carregando galeria 3D…</output>}>
+          <ProjectCollection />
+        </Suspense>
+      )}
     </details>
   );
 }

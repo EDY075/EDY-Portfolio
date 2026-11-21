@@ -1,9 +1,8 @@
 'use client';
 
-import Lenis from 'lenis';
+import type Lenis from 'lenis';
 import { usePathname } from 'next/navigation';
 import { useEffect, useLayoutEffect, useRef } from 'react';
-import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { NAVIGATION_SCROLL_INTENT_KEY, type NavigationScrollIntent } from '@/lib/navigationScroll';
 
 const PROJECT_HOVER_IDLE_DELAY_MS = 150;
@@ -55,31 +54,19 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   }, []);
 
   useEffect(() => {
-    if (pathname !== '/experience') return;
-    const scrollExperience = (event: Event) => {
-      const destination = (event as CustomEvent<number>).detail;
-      if (typeof destination !== 'number' || !Number.isFinite(destination)) return;
-      const top = Math.max(0, destination);
-      if (lenisRef.current) lenisRef.current.scrollTo(top, { immediate: true, force: true });
-      else window.scrollTo({ top, behavior: 'instant' });
-    };
-    window.addEventListener('edy:experience-scroll', scrollExperience);
-    return () => window.removeEventListener('edy:experience-scroll', scrollExperience);
-  }, [pathname]);
-
-  useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const coarse = window.matchMedia('(pointer: coarse)');
     const compact = window.matchMedia('(max-width: 767px)');
     const mediaQueries = [reduced, coarse, compact];
     let stopCurrent: (() => void) | null = null;
-    let refreshFrame = 0;
+    let disposed = false;
+    let loading = false;
 
     const isPortfolioHome = pathname === '/' || pathname === '/preview';
 
-    const startLenis = () => {
-      const lenis = new Lenis({
-        autoRaf: false,
+    const startLenis = (ScrollEngine: typeof Lenis) => {
+      const lenis = new ScrollEngine({
+        autoRaf: true,
         lerp: isPortfolioHome ? 0.08 : 0.12,
         smoothWheel: true,
         wheelMultiplier: isPortfolioHome ? 0.86 : 0.78,
@@ -134,46 +121,42 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
       setProjectHoverLocked(false);
 
-      const update = (time: number) => lenis.raf(time * 1000);
-      const syncTrigger = () => ScrollTrigger.update();
-      const hasScrollTriggers = isPortfolioHome || pathname === '/experience';
       lenis.on('scroll', updateProjectHoverState);
-      if (hasScrollTriggers) lenis.on('scroll', syncTrigger);
-      gsap.ticker.add(update);
-      gsap.ticker.lagSmoothing(0);
 
       return () => {
         clearProjectHoverIdleTimer();
         lenis.off('scroll', updateProjectHoverState);
-        if (hasScrollTriggers) lenis.off('scroll', syncTrigger);
-        gsap.ticker.remove(update);
         lenis.destroy();
         lenisRef.current = null;
         delete root.dataset.projectHover;
       };
     };
 
+    const enabled = () => !reduced.matches && !coarse.matches && !compact.matches;
     const configure = () => {
-      const reading = pathname === '/experience' && document.documentElement.dataset.experienceReading === 'true';
-      const enabled = !reduced.matches && !coarse.matches && !compact.matches && !reading;
-      if (enabled === Boolean(stopCurrent)) return;
+      if (!enabled()) {
+        stopCurrent?.();
+        stopCurrent = null;
+        return;
+      }
+      if (stopCurrent || loading) return;
 
-      stopCurrent?.();
-      stopCurrent = enabled ? startLenis() : null;
-      // Native scroll remains the source of truth. Destroying and recreating
-      // Lenis here keeps the current reading position instead of restoring top.
-      window.cancelAnimationFrame(refreshFrame);
-      refreshFrame = window.requestAnimationFrame(() => ScrollTrigger.refresh());
+      // Touch and reduced-motion visits use the browser's native scrolling.
+      loading = true;
+      void import('lenis').then(({ default: ScrollEngine }) => {
+        if (!disposed && enabled()) stopCurrent = startLenis(ScrollEngine);
+      }).catch(() => {
+        // Native scrolling remains available if the optional module fails.
+      }).finally(() => {
+        loading = false;
+      });
     };
 
     configure();
-    mediaQueries.forEach((query) => query.addEventListener('change', configure));
-    if (pathname === '/experience') window.addEventListener('edy:experience-mode', configure);
-
+    mediaQueries.forEach(query => query.addEventListener('change', configure));
     return () => {
-      mediaQueries.forEach((query) => query.removeEventListener('change', configure));
-      if (pathname === '/experience') window.removeEventListener('edy:experience-mode', configure);
-      window.cancelAnimationFrame(refreshFrame);
+      disposed = true;
+      mediaQueries.forEach(query => query.removeEventListener('change', configure));
       stopCurrent?.();
     };
   }, [pathname]);
@@ -214,7 +197,6 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     if (restoringHistory.current && !intent) {
       restoringHistory.current = false;
       lenisRef.current?.resize();
-      ScrollTrigger.refresh();
       return;
     }
     restoringHistory.current = false;
@@ -239,7 +221,6 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
         scrollToDestination();
         if (delay === 600) {
           lenisRef.current?.resize();
-          ScrollTrigger.refresh();
           clearIntent();
         }
       }, delay));

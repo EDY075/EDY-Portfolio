@@ -1,6 +1,9 @@
 import type { CaseDemo as CaseDemoContent } from '@/data/projects';
 import './case-demo.css';
 
+// O tipo do React ainda não declara loading para vídeo.
+const deferredVideo = { loading: 'lazy' };
+
 export function CaseDemo({ demo }: { demo: CaseDemoContent }) {
   return (
     <section id="demonstracao" className="pf-section pf-section-dark pf-case-demo" aria-labelledby="pf-case-demo-title">
@@ -10,6 +13,7 @@ export function CaseDemo({ demo }: { demo: CaseDemoContent }) {
         <p>{demo.description}</p>
       </div>
       <video
+        {...deferredVideo}
         className="pf-case-demo-video"
         aria-label={demo.title}
         controls

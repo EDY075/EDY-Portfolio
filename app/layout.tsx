@@ -12,12 +12,14 @@ import './portfolio-pointer.css';
 const display = Cormorant_Garamond({
   variable: '--font-display',
   subsets: ['latin'],
+  preload: false,
   weight: ['400', '500', '600', '700'],
 });
 
 const sans = Manrope({
   variable: '--font-sans',
   subsets: ['latin'],
+  preload: false,
   weight: ['400', '500', '600'],
 });
 
@@ -51,6 +53,9 @@ export const viewport: Viewport = { width: 'device-width', initialScale: 1, view
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <link rel="preload" href="/preview-assets/edy-sans-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+      </head>
       <body className={`${display.variable} ${sans.variable}`}>
         <HomeEntry />
         <SmoothScrollProvider>

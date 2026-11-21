@@ -67,6 +67,10 @@
   }
 }
 
+@media (prefers-reduced-motion: no-preference) and (max-width: 700px) {
+  .eg-entry-wipe { --entry-hold: 600ms; }
+}
+
 @keyframes eg-entry-letter-first {
   0% { clip-path: inset(0 0 100% 0); }
   44% { clip-path: inset(0); }

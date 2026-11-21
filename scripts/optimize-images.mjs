@@ -21,9 +21,11 @@ for (const input of inputs) {
   const variants = [];
   for (const width of widths) {
     for (const format of ['avif', 'webp']) {
-      const output = `public/images/optimized/${base}-${width}.${format}`;
+      const mobileHeroAvif = isMobilePortrait && width === 828 && format === 'avif';
+      const version = mobileHeroAvif ? '-v2' : '';
+      const output = `public/images/optimized/${base}-${width}${version}.${format}`;
       const resized = sharp(input).resize({ width, withoutEnlargement: true });
-      if (format === 'avif') await resized.avif({ quality: isPortrait ? 75 : isMobilePortrait ? 84 : 82, effort: 6, chromaSubsampling: '4:4:4' }).toFile(output);
+      if (format === 'avif') await resized.avif({ quality: isPortrait ? 75 : isMobilePortrait ? (mobileHeroAvif ? 72 : 84) : 82, effort: 6, chromaSubsampling: '4:4:4' }).toFile(output);
       else if (isPortrait || isDesktopPortrait || isMobilePortrait) await resized.webp({ quality: isDesktopPortrait ? 93 : isMobilePortrait ? 95 : 91, effort: 6 }).toFile(output);
       else if (meta.format === 'png') await resized.webp({ lossless: true, effort: 6 }).toFile(output);
       else await resized.webp({ quality: 91, effort: 6 }).toFile(output);

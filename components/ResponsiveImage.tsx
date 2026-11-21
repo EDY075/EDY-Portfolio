@@ -8,13 +8,14 @@ type Props = {
   width: number;
   height: number;
   sizes: string;
+  variants?: { avif?: string; webp?: string };
   priority?: boolean;
   className?: string;
   style?: React.CSSProperties;
 };
 
-export function ResponsiveImage({ src, desktopSrc, alt, width, height, sizes, priority = false, className, style }: Props) {
-  const variants = (sources as Record<string, { avif: string; webp: string }>)[src];
+export function ResponsiveImage({ src, desktopSrc, alt, width, height, sizes, variants: customVariants, priority = false, className, style }: Props) {
+  const variants = customVariants ?? (sources as Record<string, { avif: string; webp: string }>)[src];
   const desktopVariants = desktopSrc
     ? (sources as Record<string, { avif: string; webp: string }>)[desktopSrc]
     : undefined;

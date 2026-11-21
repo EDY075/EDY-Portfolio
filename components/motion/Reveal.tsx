@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { editorialEase, revealViewport } from '@/lib/motion';
 import { useHydratedReducedMotion } from './useHydratedReducedMotion';
 
@@ -18,7 +18,7 @@ export function Reveal({ children, className = '', delay = 0, variant = 'soft' }
     : { opacity: 1, y: 0 };
 
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={reduce ? { opacity: 0.85 } : hidden}
       whileInView={visible}
@@ -26,6 +26,6 @@ export function Reveal({ children, className = '', delay = 0, variant = 'soft' }
       transition={{ duration: reduce ? 0.18 : 0.7, delay: reduce ? 0 : delay, ease: editorialEase }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

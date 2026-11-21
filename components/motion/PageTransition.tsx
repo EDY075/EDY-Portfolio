@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useAnimationControls } from 'framer-motion';
+import { domAnimation, LazyMotion, m, useAnimationControls } from 'framer-motion';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent } from 'react';
 import { editorialEase } from '@/lib/motion';
@@ -152,8 +152,8 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <>
-      <motion.div
+    <LazyMotion features={domAnimation} strict>
+      <m.div
         className="page-transition-curtain portfolio-route-wipe"
         data-active={destination !== null}
         initial={{ clipPath: cleared }}
@@ -161,12 +161,12 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         aria-hidden="true"
       >
         <span className="portfolio-route-mark" aria-hidden="true">EG</span>
-        {cover && <motion.img className="page-transition-cover" src={cover.src} alt="" aria-hidden="true"
+        {cover && <m.img className="page-transition-cover" src={cover.src} alt="" aria-hidden="true"
           initial={{ opacity: 0, scale: 1.045 }} animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: .42, ease: editorialEase }} />}
         <span className="portfolio-route-title">{destination ?? pageNames[pathname] ?? 'EDY — GOMES'}</span>
-      </motion.div>
-      <motion.div
+      </m.div>
+      <m.div
         key={`${pathname}-page`}
         className="page-transition-content"
         data-transitioning={destination !== null}
@@ -177,7 +177,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         onClickCapture={navigate}
       >
         {children}
-      </motion.div>
-    </>
+      </m.div>
+    </LazyMotion>
   );
 }

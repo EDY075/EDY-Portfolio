@@ -76,7 +76,7 @@
     "webp": "/images/optimized/edy-portrait-desktop-1280.webp 1280w, /images/optimized/edy-portrait-desktop-1672.webp 1672w"
   },
   "/images/edy-portrait-suit.jpg": {
-    "avif": "/images/optimized/edy-portrait-suit-640.avif 640w, /images/optimized/edy-portrait-suit-828.avif 828w, /images/optimized/edy-portrait-suit-1023.avif 1023w",
+    "avif": "/images/optimized/edy-portrait-suit-640.avif 640w, /images/optimized/edy-portrait-suit-828-v2.avif 828w, /images/optimized/edy-portrait-suit-1023.avif 1023w",
     "webp": "/images/optimized/edy-portrait-suit-640.webp 640w, /images/optimized/edy-portrait-suit-828.webp 828w, /images/optimized/edy-portrait-suit-1023.webp 1023w"
   },
   "/images/projects/helpdesk-operations.png": {

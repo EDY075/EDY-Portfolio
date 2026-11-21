@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ResponsiveImage } from '@/components/ResponsiveImage';
+import orbitCovers from '@/data/project-orbit-covers.json';
 import type { Project } from '@/data/projects';
 import './project-orbit.css';
 
@@ -15,6 +16,8 @@ const stageAspect = 1000 / 535;
 const slideDuration = 2600;
 const stepDuration = 520;
 const spotlight = .14;
+const coverSizes = '(max-width: 480px) 16vw, (max-width: 1050px) min(14.7vw, 111px), 8vw';
+const coverSources: Partial<Record<string, string>> = orbitCovers;
 
 const samples = Array.from({ length: segments + 1 }, (_, index) => {
   const angle = index / segments * radians + Math.PI;
@@ -180,7 +183,13 @@ export function ProjectOrbit({ projects }: { projects: readonly OrbitProject[] }
                 prefetch={false}
                 data-cover-src={image.src}
               >
-                <ResponsiveImage {...image} alt="" sizes="(max-width: 700px) 16vw, (max-width: 1050px) 12vw, 8vw" priority={index === 0} />
+                <ResponsiveImage
+                  {...image}
+                  variants={coverSources[image.src] ? { webp: coverSources[image.src] } : undefined}
+                  sizes={coverSizes}
+                  alt=""
+                  priority={index === 0}
+                />
               </Link>
             </li>
           ))}
