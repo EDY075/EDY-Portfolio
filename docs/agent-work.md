@@ -195,3 +195,5 @@ Publicação concluída em 21/11/2026 no Worker edy-gomes-portfolio-v2, versão 
 A capa e as duas imagens internas vieram da demonstração pública do EDY Energy. As capturas mostram o Original Nitro, o Ultra Rosa e o montador com as seis latas selecionadas. Foram geradas versões WebP de 640, 1080 e 1600 px para as capas e de 192 e 384 px para o carrossel.
 
 A revisão independente no Chrome headless cobriu 320×568, 390×844, 768×1024, 900×900, 901×900, 1024×600, 1280×720 e 1440×900, com movimento reduzido. Em 390 e 1440 px, também conferiu texto ampliado a 200%. Foram verificados os caminhos do card, do carrossel infinito e da galeria 3D até o case, o carregamento das imagens, a ausência de sobreposição e o sitemap. A captura do pack foi refeita após a animação do título. Aparelhos físicos não foram usados.
+
+Publicado no Worker edy-gomes-portfolio-v2, versão `eb0389a8-1ff5-4b0e-b95b-4a225d63a2cc` com 100% do tráfego. A listagem, o case, o sitemap e as metatags responderam no endereço público. Os sete WebP publicados conferem com as dimensões e os hashes locais.
