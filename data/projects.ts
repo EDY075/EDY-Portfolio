@@ -1,3 +1,5 @@
+import type { CaseIdentitySlug } from './case-identity';
+
 export type ProjectImage = {
   src: string;
   alt: string;
@@ -20,15 +22,10 @@ export type CaseDemo = {
   poster: string;
   captions: string;
   music: { title: string; artist: string; licenseHref: string };
-  identity: {
-    description: string;
-    typography: string;
-    colors: { name: string; value: string }[];
-  };
 };
 
 export type Project = {
-  slug: string;
+  slug: CaseIdentitySlug;
   title: string;
   displayTitle: string;
   subtitle: string;
@@ -60,7 +57,7 @@ export const crmProject: Project = {
   status: 'Código público e demonstração local com dados fictícios.',
   keywords: ['Prospecção', 'Composição visual', 'Prévias locais'],
   features: ['Empresas, contatos, funil e tarefas no workspace', 'Briefs adaptativos com histórico de versões', 'Estúdio visual e montagem por seção', 'Prévia local com criação e refinamento por texto', 'Voz e Codex como integrações opcionais configuráveis', 'Exportação ZIP com caminhos portáteis'],
-  stack: ['React', 'TypeScript', 'Flask', 'SQLite', 'Codex app-server'],
+  stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'TanStack Query', 'Flask', 'SQLite', 'Codex app-server (opcional)'],
   problem: 'Pesquisa, decisões visuais, materiais e versões de uma proposta precisam manter o contexto entre etapas, sem confundir uma composição escolhida com uma página pronta.',
   solution: 'O CRM reúne revisão de brief, seleção de materiais, composição por seção, fila persistente e prévias vinculadas à empresa e à versão. Estados explícitos distinguem composição, execução e página disponível.',
   outcome: 'Código e demonstração públicos para execução local. O exemplo constrói prévias determinísticas com empresas fictícias; Codex, modelos de voz e provedores externos dependem de configuração e acesso próprios. A aplicação não publica páginas nem envia prospecção automaticamente.',
@@ -85,7 +82,7 @@ const operationalProjects: Project[] = [
     status: 'Site de turismo desenvolvido para cliente.',
     keywords: ['Turismo', 'Site de cliente', 'Design editorial'],
     features: ['Viagens e agenda públicas', 'Páginas de destinos e detalhes', 'Galeria e perguntas frequentes', 'Contato para reserva pelo WhatsApp'],
-    stack: ['Next.js', 'TypeScript', 'Supabase', 'Cloudflare Workers'],
+    stack: ['Next.js', 'TypeScript', 'Vinext', 'Vite', 'Tailwind CSS', 'Supabase', 'Cloudflare Workers'],
     problem: 'As informações de viagens precisavam ser fáceis de explorar e atualizar, com um caminho claro para falar com a responsável.',
     solution: 'O site organiza a descoberta de viagens e destinos em páginas responsivas, enquanto um painel privado mantém o conteúdo público atualizado.',
     outcome: 'A experiência está implementada para a cliente. A reserva é combinada e confirmada diretamente com Andréa.',
@@ -104,7 +101,7 @@ const operationalProjects: Project[] = [
     status: 'Web/PWA publicada; confirmação física final do Android pendente.',
     keywords: ['Segurança web', 'Web/PWA', 'Análise de URLs'],
     features: ['Conclusão em linguagem simples', 'Risco separado da cobertura da análise', 'Motivos e fontes explicados', 'Histórico opcional no dispositivo'],
-    stack: ['React', 'TypeScript', 'Cloudflare Pages', 'Cloudflare Workers'],
+    stack: ['React', 'TypeScript', 'Vite', 'Cloudflare Pages', 'Cloudflare Workers'],
     problem: 'Sinais técnicos de risco são difíceis de interpretar antes de uma compra online.',
     solution: 'A interface separa sinais positivos, alertas, riscos e verificações sem dados suficientes, sem tratar ausência de informação como prova de risco.',
     outcome: 'A versão web pode ser acessada publicamente. O aplicativo Android ainda aguarda confirmação física final.',
@@ -126,7 +123,7 @@ const operationalProjects: Project[] = [
     status: 'Release pública v1.0.1; demonstração local.',
     keywords: ['Suporte de TI', 'Service Desk', 'Aplicação local'],
     features: ['Ciclo de vida e histórico de chamados', 'SLA e inventário de ativos', 'Diagnósticos Windows somente leitura', 'Base de conhecimento versionada'],
-    stack: ['TypeScript', 'React', 'Node.js', 'SQLite'],
+    stack: ['TypeScript', 'React', 'Node.js', 'Express', 'Prisma', 'SQLite'],
     problem: 'Chamados, ativos e contexto de atendimento exigem um histórico operacional comum.',
     solution: 'O HelpDesk reúne fluxos de atendimento, SLA, inventário, diagnósticos controlados e documentação em uma aplicação local.',
     outcome: 'Código e release v1.0.1 estão públicos; a demonstração pode ser iniciada localmente com dados sintéticos.',
@@ -164,7 +161,7 @@ const operationalProjects: Project[] = [
     status: 'Release pública v0.3.0; aplicação local.',
     keywords: ['SOC', 'SIEM', 'Investigação'],
     features: ['Fila de decisões operacionais', 'Investigação com evidências', 'Alertas, incidentes e casos', 'Recebimento de eventos do EDY Shield'],
-    stack: ['Python', 'FastAPI', 'React', 'TypeScript', 'SQLite'],
+    stack: ['Python', 'FastAPI', 'React', 'TypeScript', 'Vite', 'SQLite'],
     problem: 'Eventos e alertas isolados não mostram com clareza o que exige decisão, quem é responsável e quais evidências sustentam a ação.',
     solution: 'O workspace conecta ingestão, priorização, investigação e casos em um fluxo SOC com estado persistido.',
     outcome: 'A release v0.3.0 documenta o fluxo Shield → SIEM; não há demo pública hospedada.',
@@ -234,7 +231,7 @@ const researchProjects: Project[] = [
     status: 'Código público em release candidate 1.0.0-rc.1; sem instalador distribuído.',
     keywords: ['Verificação', 'Windows', 'Release candidate'],
     features: ['Verificação de repositórios e arquivos', 'Inventário de aplicativos instalados', 'Análise passiva de URLs', 'Relatórios locais com evidências'],
-    stack: ['Rust', 'Tauri', 'React', 'SQLite'],
+    stack: ['Rust', 'Tauri', 'React', 'TypeScript', 'Vite', 'SQLite'],
     problem: 'Uma análise perde confiabilidade quando ausência de verificação é confundida com ausência de risco.',
     solution: 'O VERDICT registra a cobertura e proveniência de cada evidência antes de apresentar uma conclusão.',
     outcome: 'O candidato atual é distribuído como código-fonte para build local; não há instalador público da RC.',
@@ -254,7 +251,7 @@ const researchProjects: Project[] = [
     status: 'Release pública v1.1.0; validação pública offline.',
     keywords: ['OSINT', 'Python', 'Uso autorizado'],
     features: ['Menu de fluxos OSINT', 'Relatórios TXT e HTML com sessão sintética', 'Inicialização local no Windows', 'Módulos externos sujeitos a validação real'],
-    stack: ['Python', 'CLI', 'HTML'],
+    stack: ['Python', 'Colorama', 'CLI', 'HTML'],
     problem: 'Fontes abertas e saídas de reconhecimento ficam dispersas e exigem controle de escopo e proveniência.',
     solution: 'A ferramenta reúne fluxos de consulta e relatórios em uma interface de terminal, com orientação explícita para uso autorizado.',
     outcome: 'A versão pública tem testes offline; não atribui resultados reais a integrações externas ou módulos de rede.',
@@ -320,21 +317,6 @@ const commissionedProjects: Project[] = [
       poster: '/media/raquel-web/poster.webp',
       captions: '/media/raquel-web/demo-ptbr.vtt',
       music: { title: 'Happy Beats — Business Moves Vol. 11', artist: 'Sascha Ende', licenseHref: 'https://ende.app/en/standard-license' },
-      identity: {
-        description: 'A direção Escuro essencial usa carvão para o fundo, cartões em cinza profundo e dourado nas ações. Vinho e magenta assinalam seleções e destaques. O lettering oficial de Raquel Oliveira Personal integra o cabeçalho e o painel.',
-        typography: 'Roboto Condensed nos cartões, Segoe UI nos cabeçalhos do painel inicial e da área da aluna, e Georgia no título editorial da lista de alunas.',
-        colors: [
-          { name: 'Carvão', value: '#0C0F11' },
-          { name: 'Fundo secundário', value: '#111416' },
-          { name: 'Cartões', value: '#191C1F' },
-          { name: 'Bordas', value: '#2B2E32' },
-          { name: 'Branco', value: '#F7F7F8' },
-          { name: 'Texto secundário', value: '#B8B9BF' },
-          { name: 'Dourado', value: '#EDC969' },
-          { name: 'Vinho', value: '#560D2B' },
-          { name: 'Magenta', value: '#A81046' },
-        ],
-      },
     },
   },
 

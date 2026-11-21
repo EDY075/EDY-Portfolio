@@ -1,0 +1,130 @@
+.eg-entry-wipe { display: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .eg-entry-wipe {
+    --entry-hold: 1000ms;
+    --entry-release: 500ms;
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 123;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  /* The timeline belongs to the document, so returning to the home never restarts it. */
+  body:has(.eg-home):not(:has(:target, .page-transition-content :focus-visible:not(main), .page-transition-curtain[data-active='true'])) > .eg-entry-wipe {
+    opacity: 1;
+  }
+
+  .eg-entry-panel {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    color: #282c20;
+    animation: eg-entry-finish 0s linear calc(var(--entry-hold) + var(--entry-release)) forwards;
+  }
+
+  .eg-entry-matte {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #d2ff00;
+  }
+
+  .eg-entry-cutout {
+    transform-box: view-box;
+    transform-origin: 720px 456px;
+    animation: eg-entry-aperture var(--entry-release) linear var(--entry-hold) both;
+  }
+
+  .eg-entry-mark {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-inline-end: .1em;
+    font: 850 clamp(44px, 5.7vh, 58px)/1 'Preview Sans', Arial, sans-serif;
+    letter-spacing: -.11em;
+    transform: skewX(-14deg) scale(.84, 1.22);
+    animation: eg-entry-mark-away 175ms ease var(--entry-hold) both;
+  }
+
+  .eg-entry-mark span:first-child { animation: eg-entry-letter-first var(--entry-hold) ease-in-out both; }
+  .eg-entry-mark span:last-child { animation: eg-entry-letter-second var(--entry-hold) ease-in-out both; }
+
+  .eg-entry-label {
+    position: absolute;
+    inset-inline: 1rem;
+    bottom: max(clamp(24px, 3.1vh, 28px), env(safe-area-inset-bottom));
+    text-align: center;
+    font: 850 .75rem/1.1 'Preview Sans', Arial, sans-serif;
+    text-transform: uppercase;
+    animation: eg-entry-label-away 300ms ease calc(var(--entry-hold) + 100ms) both;
+  }
+}
+
+@keyframes eg-entry-letter-first {
+  0% { clip-path: inset(0 0 100% 0); }
+  44% { clip-path: inset(0); }
+  66% { clip-path: inset(4% 0 0 0); }
+  90%, 100% { clip-path: inset(100% 0 0 0); }
+}
+
+@keyframes eg-entry-letter-second {
+  0%, 22% { clip-path: inset(100% 0 0 0); }
+  57%, 74% { clip-path: inset(0); }
+  100% { clip-path: inset(0 0 78% 0); }
+}
+
+@keyframes eg-entry-mark-away { to { opacity: 0; } }
+@keyframes eg-entry-label-away { to { opacity: 0; } }
+@keyframes eg-entry-finish { to { visibility: hidden; } }
+
+@keyframes eg-entry-aperture {
+  0%, 15% { transform: scale(0); }
+  20% { transform: scale(.09); }
+  25% { transform: scale(.19); }
+  30% { transform: scale(.26); }
+  35% { transform: scale(.44); }
+  40% { transform: scale(.54); }
+  45% { transform: scale(.826); }
+  50% { transform: scale(1); }
+  55% { transform: scale(1.45); }
+  60% { transform: scale(1.74); }
+  65% { transform: scale(2.5); }
+  70% { transform: scale(3.66); }
+  75% { transform: scale(4.52); }
+  80% { transform: scale(6.89); }
+  85% { transform: scale(7.73); }
+  90% { transform: scale(9.22); }
+  95%, 100% { transform: scale(9.55); }
+}
+
+@media (prefers-reduced-motion: no-preference) and (orientation: portrait) {
+  .eg-entry-cutout { animation-name: eg-entry-aperture-portrait; }
+}
+
+@keyframes eg-entry-aperture-portrait {
+  0%, 15% { transform: scale(0); }
+  20% { transform: scale(.085); }
+  25% { transform: scale(.138); }
+  30% { transform: scale(.24); }
+  35% { transform: scale(.41); }
+  40% { transform: scale(.526); }
+  45% { transform: scale(.794); }
+  50% { transform: scale(.97); }
+  55% { transform: scale(1.394); }
+  60% { transform: scale(1.688); }
+  65% { transform: scale(2.406); }
+  70% { transform: scale(2.902); }
+  75% { transform: scale(4.36); }
+  80% { transform: scale(6.72); }
+  85% { transform: scale(7.32); }
+  90% { transform: scale(8.37); }
+  95% { transform: scale(9.17); }
+  100% { transform: scale(9.55); }
+}

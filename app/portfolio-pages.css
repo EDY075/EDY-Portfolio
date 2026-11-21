@@ -399,6 +399,7 @@
 }
 .eg-site .pf-index-list { border-top: 1px solid var(--pf-outline); }
 .eg-site .pf-index-list li { border-bottom: 1px solid var(--pf-outline); padding: .8rem 0; font-weight: 650; }
+.eg-site .pf-case .pf-index-list li { overflow-wrap: anywhere; }
 
 .eg-site .pf-case .next-chapter { padding: 0 var(--eg-gutter); background: var(--eg-ink); }
 .eg-site .pf-case .next-chapter-link { border-color: var(--pf-outline); }

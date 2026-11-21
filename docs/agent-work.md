@@ -121,3 +121,21 @@ Captura isolada com dados fictícios, integração editorial dos projetos de cli
 A demonstração usa o frontend do checkpoint privado e respostas fictícias de API, com solicitações externas bloqueadas durante a gravação. Foram gravados o painel da personal, a lista de alunas, a ficha versionada, o editor e a leitura do treino no celular. Os avatares de Nina, Lia e Bia foram gerados especificamente para esses perfis fictícios. A galeria e a capa usam capturas da demonstração. A montagem final é de 24 segundos, 1920×1080 a 30 fps, sem narração.
 
 QA local do case em Chromium cobriu 320×568, 390×844 e texto a 200%, 844×390, 768×1024, 900×768, 901×768, 1280×720 e 1440×900, além da curadoria com 14 projetos únicos. As gravações originais, a composição e o manifesto ficam fora do Git. A publicação contém somente as mídias revisadas do case.
+
+## Preloader e identidade visual dos cases
+
+A coordenação mantém o componente compartilhado e integra navegação, dados e validação. O preloader tem implementação isolada. O catálogo de identidades é dividido entre cases de produto e cliente e cases de segurança e dados, a partir das fontes locais e das capturas públicas do portfólio.
+
+A seção de identidade é compartilhada pelos 14 cases e independe da existência de vídeo. As paletas foram confrontadas com CSS, tokens de tema ou capturas do projeto. A amostragem editorial do Assistente Personalizado e do EDY RECON é identificada na própria página. As tecnologias foram complementadas a partir dos manifestos dos projetos.
+
+A home abre com monograma EG, topografia e saída diagonal de 580 ms. A cortina de navegação entre páginas continua independente. A entrada dispensa links com âncora e a preferência por movimento reduzido. A revisão independente detectou que o foco programático no elemento main cortava a animação durante a hidratação. A correção foi validada em três aberturas da home e manteve a dispensa da cortina ao focar controles com o teclado.
+
+Chromium em 320×568, 390×844 e 1440×900 verificou os 14 cases. Raquel Web, WAR ROOM, EDY SOC Analytics e Assistente Personalizado também passaram em 700×844, 701×844, 768×1024, 844×390, 900×768, 901×768, 1024×600, 1280×720 e 1920×1080. Texto a 200% foi conferido nesses quatro cases em 320×568, 390×844 e 768×1024. Validados âncoras, navegação por Enter com Lenis, cores e quebra de texto. Os testes da home cobriram entrada, navegação interna, retorno, âncora direta e movimento reduzido. A demonstração da Raquel Web tocou e avançou em 390×844 e 1440×900. Lint, tipagem, build e curadoria passaram. Não houve teste em aparelho físico.
+
+Capturas e QA desta iteração ficaram em work/preloader-identity no worktree. A entrega está na prévia local.
+
+### Preloader com a referência pedida
+
+A revisão reproduz a abertura verde-lima da referência do Lando Norris com EG no centro e recorte angular que revela a hero. O intervalo fixo é de 1000 ms seguido por uma saída de 500 ms. Os quadros foram comparados apenas no recorte de cor, com diferença média de 0,44% em desktop e 1,00% no celular. O material de comparação está em work/.reanimate/preloader.
+
+QA local em Chromium a 320×568, 390×844, 844×390, 768×1024, 1024×768, 1280×720, 1440×900 e 1920×1080. Conferidos movimento reduzido sem JavaScript, texto a 200% em 320×568, navegação entre home e contato, retorno e âncoras diretas. Lint, tipagem, build e curadoria passaram. Aparelhos físicos ainda não foram testados.

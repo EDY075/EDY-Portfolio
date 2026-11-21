@@ -1,0 +1,74 @@
+.eg-site .pf-page .pf-case-identity .pf-heading {
+  font-size: clamp(2.35rem, 5.6vw, 7rem);
+  line-height: .99;
+}
+
+.pf-case-palette {
+  margin-top: clamp(1.8rem, 5vw, 4.5rem);
+}
+
+.pf-case-identity h3 {
+  margin: 0 0 .65rem;
+  font-size: clamp(1.04rem, 1.5vw, 1.35rem);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.pf-case-palette-note {
+  max-width: 68ch;
+  margin: 0 0 1rem;
+  color: #515749;
+  font-size: .92rem;
+  line-height: 1.45;
+}
+
+.pf-case-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 7.8rem), 1fr));
+  gap: clamp(.65rem, 1.7vw, 1.35rem);
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pf-case-swatches li {
+  display: grid;
+  align-content: start;
+  gap: .35rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.pf-case-swatches strong { font-size: .93rem; line-height: 1.25; }
+.pf-case-swatches li > span:last-child { color: #515749; font: .78rem/1.4 ui-monospace, monospace; }
+
+.pf-case-swatch {
+  display: block;
+  min-height: clamp(2.85rem, 6vw, 6rem);
+  border: 1px solid #25291d42;
+  border-radius: .35rem .35rem .9rem .35rem;
+}
+
+.pf-case-identity-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: .65rem clamp(1.5rem, 5vw, 6rem);
+  margin-top: clamp(1.8rem, 4vw, 3.5rem);
+  padding-top: clamp(.85rem, 2vw, 1.5rem);
+  border-top: 1px solid #25291d42;
+}
+
+.pf-case-identity-details ul {
+  display: grid;
+  gap: .55rem;
+  margin: 0;
+  min-width: 0;
+  padding-inline-start: 1.2em;
+  list-style: disc;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  .pf-case-identity-details { grid-template-columns: minmax(0, 1fr); }
+}

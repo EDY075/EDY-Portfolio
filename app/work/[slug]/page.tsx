@@ -8,7 +8,9 @@ import { ProjectVisual } from '@/components/ProjectVisual';
 import { CaseGallery } from '@/components/CaseGallery';
 import { NextChapter } from '@/components/NextChapter';
 import { pageSocialMetadata } from '@/lib/seo';
+import { caseIdentities } from '@/data/case-identity';
 import { CaseDemo } from '../CaseDemo';
+import { ProjectIdentity } from '../ProjectIdentity';
 
 export function generateStaticParams() {
   return projects.map(project => ({ slug: project.slug }));
@@ -73,7 +75,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
           <nav className="pf-internal-nav pf-case-index" aria-label="Seções do projeto">
             {project.origin && <a href="#origem">Origem</a>}
-            {project.demo && <><a href="#demonstracao">Demonstração</a><a href="#identidade">Identidade visual</a></>}
+            {project.demo && <a href="#demonstracao">Demonstração</a>}
+            <a href="#identidade">Identidade visual</a>
             {caseSlides.length > 0 && <a href="#galeria">Imagens do projeto</a>}
             <a href="#desafio">Problema e solução</a>
             <a href="#recursos">Recursos</a>
@@ -89,6 +92,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         )}
 
         {project.demo && <CaseDemo demo={project.demo} />}
+        <ProjectIdentity identity={caseIdentities[project.slug]} />
 
         {caseSlides.length > 0 && <CaseGallery title={project.title} slides={caseSlides} />}
 
@@ -104,9 +108,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </ul>
         </section>
 
-        <section id="tecnologias" className="pf-section pf-section-paper pf-section-split">
+        <section id="tecnologias" className="pf-section pf-section-paper pf-section-split" aria-labelledby="pf-case-tech">
           <div>
-            <h2 className="pf-heading">Tecnologias</h2>
+            <h2 id="pf-case-tech" className="pf-heading">Tecnologias</h2>
             <ul className="pf-tech-list">{project.stack.map(item => <li key={item}>{item}</li>)}</ul>
           </div>
           <div className="pf-reading"><h3>Estado atual</h3><p>{project.outcome}</p></div>

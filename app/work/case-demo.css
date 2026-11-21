@@ -38,29 +38,3 @@
 }
 
 .pf-case-demo-credit a { text-decoration: underline; text-underline-offset: .2em; }
-
-.pf-case-swatches {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
-  gap: clamp(.6rem, 1.7vw, 1.35rem);
-  margin: clamp(1.5rem, 4.5vw, 3.5rem) 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.pf-case-swatches li {
-  display: grid;
-  align-content: start;
-  gap: .4rem;
-  min-width: 0;
-}
-
-.pf-case-swatches strong { font-size: .93rem; line-height: 1.25; }
-.pf-case-swatches li > span:last-child { color: #515749; font: .76rem/1.4 ui-monospace, monospace; }
-
-.pf-case-swatch {
-  display: block;
-  min-height: clamp(2.7rem, 6vw, 6rem);
-  border: 1px solid #25291d42;
-  border-radius: .35rem .35rem .9rem .35rem;
-}

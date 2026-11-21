@@ -24,7 +24,6 @@
 }
 .eg-preview :where(a, button):focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 
-.eg-entry-wipe { display: none; }
 .eg-hero {
   position: relative;
   isolation: isolate;
@@ -298,19 +297,6 @@
 .eg-preview :is(h1, h2, h3) { overflow-wrap: anywhere; }
 
 @media (prefers-reduced-motion: no-preference) {
-  .eg-entry-wipe {
-    display: grid;
-    position: fixed;
-    inset: 0;
-    z-index: 30;
-    place-items: center;
-    pointer-events: none;
-    background: var(--eg-accent);
-    color: var(--eg-ink);
-    font: 700 clamp(3rem, 7vw, 6rem)/1 var(--eg-display);
-    letter-spacing: -.07em;
-    animation: eg-wipe 940ms cubic-bezier(.75, 0, .25, 1) both;
-  }
   .eg-intro { animation: eg-rise 760ms 210ms cubic-bezier(.22, 1, .36, 1) both; }
   .eg-project-media img { transition: transform 470ms cubic-bezier(.22, 1, .36, 1); }
   .eg-project:hover .eg-project-media img { transform: scale(1.06); }
@@ -343,11 +329,6 @@
       animation-range: entry 2% entry 89%;
     }
   }
-}
-@keyframes eg-wipe {
-  0%, 38% { clip-path: inset(0); visibility: visible; }
-  99% { clip-path: inset(100% 0 0); visibility: visible; }
-  100% { clip-path: inset(100% 0 0); visibility: hidden; }
 }
 @keyframes eg-rise {
   from { opacity: .35; transform: translateY(38px); }
@@ -423,12 +404,6 @@
 .eg-project-media img { object-fit: cover; }
 .eg-project-copy h3 { font-size: clamp(1.55rem, 2.77vw, 3.4rem); }
 .eg-project-copy .eg-cover-note { color: #c4c8b9; font-size: .75rem; margin-top: .55rem; }
-.eg-entry-wipe {
-  z-index: 123;
-  background: #cafe00;
-  color: #25291d;
-  font-family: 'Preview Display', sans-serif;
-}
 
 .page-transition-curtain.portfolio-route-wipe {
   background: linear-gradient(#cafe001a, #cafe001a), #cafe00;
