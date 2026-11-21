@@ -49,17 +49,12 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   const busy = useRef(false);
   const entered = useRef(false);
   const fallback = useRef(0);
-  const resetTopOnArrival = useRef(false);
-  const scrollSettleFrame = useRef(0);
-  const scrollSettleTimer = useRef(0);
   const [destination, setDestination] = useState<string | null>(null);
   const [cover, setCover] = useState<{ src: string } | null>(null);
   const [settledPath, setSettledPath] = useState<string | null>(null);
 
   useLayoutEffect(() => {
     window.clearTimeout(fallback.current);
-    window.cancelAnimationFrame(scrollSettleFrame.current);
-    window.clearTimeout(scrollSettleTimer.current);
     // Paint server content immediately on document loads; keep the curtain
     // for internal navigation rather than using it as a loading screen.
     if (!entered.current) {
@@ -77,15 +72,6 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         setSettledPath(pathname);
         setDestination(null);
         setCover(null);
-        if (resetTopOnArrival.current) {
-          const settleAtTop = () => window.dispatchEvent(new Event('edy:scroll-to-top'));
-          settleAtTop();
-          scrollSettleFrame.current = requestAnimationFrame(settleAtTop);
-          scrollSettleTimer.current = window.setTimeout(() => {
-            settleAtTop();
-            resetTopOnArrival.current = false;
-          }, 180);
-        }
       });
     });
     return () => cancelAnimationFrame(frame);
@@ -93,8 +79,6 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
 
   useEffect(() => () => {
     window.clearTimeout(fallback.current);
-    window.cancelAnimationFrame(scrollSettleFrame.current);
-    window.clearTimeout(scrollSettleTimer.current);
   }, []);
 
   const navigate = async (event: MouseEvent<HTMLDivElement>) => {
@@ -110,11 +94,12 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
       return;
     }
     if (url.pathname === pathname) return;
+    // A página nova já pode receber um toque enquanto a cortina termina de sair.
+    if (busy.current && settledPath !== pathname) return;
     event.preventDefault();
     event.stopPropagation();
     if (busy.current) return;
     busy.current = true;
-    resetTopOnArrival.current = !url.hash;
     try {
       sessionStorage.setItem(NAVIGATION_SCROLL_INTENT_KEY, url.hash ? 'hash' : 'top');
     } catch {
@@ -143,7 +128,6 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         // Ignore unavailable browser storage.
       }
       busy.current = false;
-      resetTopOnArrival.current = false;
       setDestination(null);
       setCover(null);
       void content.start({ opacity: 1 });

@@ -7,11 +7,14 @@ import { NAVIGATION_SCROLL_INTENT_KEY, type NavigationScrollIntent } from '@/lib
 
 const PROJECT_HOVER_IDLE_DELAY_MS = 150;
 const PROJECT_HOVER_VELOCITY_EPSILON = 0.01;
+const NAVIGATION_SETTLE_DELAYS_MS = [90, 240, 600];
+const SCROLL_KEYS = new Set(['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ']);
 
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
   const restoringHistory = useRef(false);
+  const previousPath = useRef<string | null>(null);
 
   useEffect(() => {
     const onPopState = () => {
@@ -164,7 +167,10 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   useLayoutEffect(() => {
     let firstFrame = 0;
     let secondFrame = 0;
+    let touchStart: { x: number; y: number } | null = null;
     const settleTimers: number[] = [];
+    const changedPath = previousPath.current !== null && previousPath.current !== pathname;
+    previousPath.current = pathname;
     let intent: NavigationScrollIntent | null = null;
     try {
       intent = sessionStorage.getItem(NAVIGATION_SCROLL_INTENT_KEY) as NavigationScrollIntent | null;
@@ -201,12 +207,59 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     }
     restoringHistory.current = false;
 
-    scrollToDestination();
+    // A abertura direta sem âncora já começa na posição definida pelo navegador.
+    const shouldSettle = changedPath || intent !== null || window.location.hash !== '';
+    if (shouldSettle) scrollToDestination();
     const main = document.querySelector('main');
     if (main && intent !== 'hash') {
       main.tabIndex = -1;
       main.focus({ preventScroll: true });
     }
+    if (!shouldSettle) return;
+
+    const cancelPending = () => {
+      window.cancelAnimationFrame(firstFrame);
+      window.cancelAnimationFrame(secondFrame);
+      settleTimers.forEach(timer => window.clearTimeout(timer));
+      window.removeEventListener('touchstart', onTouchStart, true);
+      window.removeEventListener('touchmove', onTouchMove, true);
+      window.removeEventListener('wheel', onWheel, true);
+      window.removeEventListener('keydown', onKeyDown);
+    };
+
+    const finishSettling = () => {
+      cancelPending();
+      lenisRef.current?.resize();
+      clearIntent();
+    };
+
+    function onTouchStart(event: TouchEvent) {
+      const touch = event.touches[0];
+      touchStart = event.touches.length === 1 ? { x: touch.clientX, y: touch.clientY } : null;
+    }
+
+    function onTouchMove(event: TouchEvent) {
+      const touch = event.touches[0];
+      if (!touchStart || event.touches.length !== 1) return;
+      const moved = Math.max(Math.abs(touch.clientX - touchStart.x), Math.abs(touch.clientY - touchStart.y));
+      if (moved >= 5) finishSettling();
+    }
+
+    function onWheel(event: WheelEvent) {
+      if (!event.ctrlKey && (event.deltaY || event.deltaX)) finishSettling();
+    }
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.defaultPrevented || !SCROLL_KEYS.has(event.key) || event.ctrlKey || event.metaKey || event.altKey) return;
+      if (event.target instanceof Element && event.target.closest('button, input, textarea, select, [contenteditable], [role="slider"]')) return;
+      finishSettling();
+    }
+
+    const passiveCapture = { passive: true, capture: true };
+    window.addEventListener('touchstart', onTouchStart, passiveCapture);
+    window.addEventListener('touchmove', onTouchMove, passiveCapture);
+    window.addEventListener('wheel', onWheel, passiveCapture);
+    window.addEventListener('keydown', onKeyDown);
 
     firstFrame = window.requestAnimationFrame(() => {
       secondFrame = window.requestAnimationFrame(() => {
@@ -214,23 +267,15 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       });
     });
 
-    // Vinext/browser restoration may land after the first paint. These bounded
-    // checks cover that window without permanently fighting user scrolling.
-    for (const delay of [90, 240, 600]) {
+    // O primeiro gesto de rolagem encerra os realinhamentos da navegação.
+    for (const delay of NAVIGATION_SETTLE_DELAYS_MS) {
       settleTimers.push(window.setTimeout(() => {
         scrollToDestination();
-        if (delay === 600) {
-          lenisRef.current?.resize();
-          clearIntent();
-        }
+        if (delay === NAVIGATION_SETTLE_DELAYS_MS.at(-1)) finishSettling();
       }, delay));
     }
 
-    return () => {
-      window.cancelAnimationFrame(firstFrame);
-      window.cancelAnimationFrame(secondFrame);
-      settleTimers.forEach((timer) => window.clearTimeout(timer));
-    };
+    return cancelPending;
   }, [pathname]);
 
   return children;

@@ -197,3 +197,42 @@ A capa e as duas imagens internas vieram da demonstração pública do EDY Energ
 A revisão independente no Chrome headless cobriu 320×568, 390×844, 768×1024, 900×900, 901×900, 1024×600, 1280×720 e 1440×900, com movimento reduzido. Em 390 e 1440 px, também conferiu texto ampliado a 200%. Foram verificados os caminhos do card, do carrossel infinito e da galeria 3D até o case, o carregamento das imagens, a ausência de sobreposição e o sitemap. A captura do pack foi refeita após a animação do título. Aparelhos físicos não foram usados.
 
 Publicado no Worker edy-gomes-portfolio-v2, versão `eb0389a8-1ff5-4b0e-b95b-4a225d63a2cc` com 100% do tráfego. A listagem, o case, o sitemap e as metatags responderam no endereço público. Os sete WebP publicados conferem com as dimensões e os hashes locais.
+
+## Auditoria de links · 21/11/2026
+
+- Coordenação: rastrear os links renderizados em produção e testar rotas, âncoras, menu e galeria.
+- Revisão paralela: conferir endereços atuais dos sites e os destinos dos repositórios públicos.
+
+A auditoria em produção cobriu os 15 cases, 119 destinos com âncora e 42 recursos de galeria e demonstração. As páginas de teste de erro devolveram 404 e 503 conforme o esperado. Em Chrome headless, a navegação por menu, da abertura à lista de projetos e do índice 3D ao detalhe de um case completou o fluxo.
+
+Os dez repositórios dos cases abriram sem autenticação e correspondem às URLs canônicas do GitHub. Os seis destinos de sites e demonstrações, incluindo o catálogo narrado do WAR ROOM, responderam HTTP 200 no endereço esperado. Os 17 áudios do catálogo aceitaram requisições parciais. Instagram e GitHub exibiram a identidade esperada. O LinkedIn bloqueou a requisição direta automatizada, mas o mesmo identificador foi confirmado no perfil público. A licença musical foi localizada no site do autor. O link de e-mail foi conferido sem envio de mensagem.
+
+O campo de site do perfil público EDY075 no GitHub ainda aponta para o Worker da primeira edição. Esse endereço fica no perfil do GitHub e não exige alteração de código no portfólio 2.0.
+
+## Auditoria mobile · 21/11/2026
+
+- Coordenação: escopo, critérios, comparação entre motores, mídia e publicação dos resultados.
+- Verificação independente: WebKit em perfis iOS e Chrome em perfis Android.
+
+Escopo em produção: Início, Projetos, Sobre, Competências, Contato, 15 cases e páginas de erro 404 e 503. Chrome com perfis Android cobriu as 22 telas em 320×568, 360×800, 393×851, 412×915, 430×932, 851×393 e 800×1280. WebKit com perfis iOS/iPadOS cobriu as 22 telas em 320×568, 390×844, 440×956, 844×390 e 768×1024, mais sete telas em cada lado do breakpoint em 760 e 761 px. Foram 278 carregamentos nessa matriz, sem falhas de status, rolagem horizontal na página ou sobreposição detectada entre cabeçalhos dos cases e suas capas. Os três modos da rota de prévia também foram abertos em ambos os motores.
+
+Os testes de toque incluíram menu, retrato, controle dos princípios, carrossel, índice 3D, navegação entre cases e galeria. O preloader apareceu em carregamentos novos de Início, encerrou a animação em aproximadamente 1,1 s e ficou oculto com redução de movimento. O vídeo do Raquel Web reproduziu, avançou para 12 s e carregou as legendas pt-BR em ambos os motores. O menu e o conteúdo principal tiveram conferência adicional com tamanho-base de fonte simulado em 200%, incluindo largura de 320 px.
+
+Alvos secundários próximos de 40–43 px foram medidos nas miniaturas do carrossel, no menu de tablet e no controle de ampliar imagens. O WebKit para Windows renderizou pesos da fonte variável com espessura semelhante. A diferença também foi reproduzida com o arquivo anterior do portfólio e com Roboto variável, enquanto o controle Arial estático mudou de espessura. A emulação retornou 0 px para as áreas seguras de tela. Aparelhos físicos, recortes de tela e barras reais do navegador precisam de confirmação em dispositivo.
+
+No Chrome com perfil Pixel 7, um gesto vertical iniciado logo após abrir um case pode perder a posição e saltar para o topo. O salto ocorreu tanto no acesso direto quanto ao entrar pelo carrossel, com e sem redução de movimento. Na repetição em produção, um gesto iniciado 420 ms após abrir o case avançou até pelo menos 56 px e retornou ao topo aos 588 ms. Com início aos 700 ms, o salto deixou de ocorrer. O provedor de rolagem reaplica a posição de destino em 90, 240 e 600 ms.
+
+Na fase inicial do carrossel infinito com redução de movimento, o cartão EDY SOC Analytics cobre o centro do EDY HelpDesk em larguras de 320, 390 e 440 px no WebKit. Em 390 px, confirmei nos dois motores que um toque no ponto compartilhado abre o case de SOC Analytics. A listagem abaixo do carrossel e o índice 3D oferecem acesso ao HelpDesk. O código e o site publicado ficaram sem mudanças durante a auditoria.
+
+## Correções de navegação mobile · 21/11/2026
+
+- Coordenação: integração, reprodução comparativa, testes com perfil aproximado do Moto G8 e publicação.
+- Implementação: rolagem após a navegação e seleção de projetos no carrossel em arquivos separados.
+
+O provedor de rolagem interrompe os realinhamentos quando detecta gesto, roda ou tecla de rolagem. A transição deixou de reaplicar um segundo conjunto de resets e permite seguir um link na página nova durante a saída da cortina. Menu e controles do carrossel só ficam habilitados quando já conseguem responder ao toque.
+
+O carrossel mostra três capas separadas em telas compactas e com toque. O link Ver case acompanha o projeto selecionado. Os 15 projetos continuam disponíveis pelos controles. Em telas amplas com mouse, a órbita mantém as 15 capas em movimento.
+
+A matriz do build final cobriu 22 rotas nos perfis móveis em Chrome, Edge, Firefox e WebKit, incluindo navegação pelo menu, troca de case e reprodução do vídeo de Raquel Web. Samsung Internet, Opera, Brave, Android System WebView, Instagram e Facebook no Android, além de Chrome, Edge e Firefox no iOS, foram simulados por perfil e testados em cinco rotas e nos fluxos de menu e carrossel. Esses perfis usam os motores de teste, sem executar os aplicativos móveis correspondentes.
+
+O perfil aproximado do Moto G8 cobriu 22 rotas em 360×720 CSS px, DPR 2, e quatro rotas em 360×665 px com CPU quatro vezes mais lenta, download limitado a 1,6 Mbit/s e latência de 150 ms. Conferi também 320 px com fonte a 200%, paisagem em 780×360, iPhone em 390×844, os 15 destinos do carrossel e a órbita animada em desktop. Não houve teste com o aparelho da pessoa que relatou o problema.

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from 'react';
 import { site } from '@/data/site';
 import './preview-menu.css';
 
@@ -13,6 +13,10 @@ const frames = [
   { href: '/work/cr-fitness', label: 'CR Fitness', src: '/images/projects/covers/cr-fitness-cinematic-20261006-640.webp', width: 640, height: 400 },
   { href: '/work/andrea-tur', label: 'Andréa Tur', src: '/images/projects/covers/andrea-tur-640.webp', width: 640, height: 400 },
 ];
+
+const subscribe = () => () => undefined;
+const clientSnapshot = () => true;
+const serverSnapshot = () => false;
 
 function RollingLabel({ label }: { label: string }) {
   return (
@@ -35,6 +39,7 @@ function Wordmark({ href }: { href: string }) {
 
 export function PreviewMenu() {
   const pathname = usePathname();
+  const ready = useSyncExternalStore(subscribe, clientSnapshot, serverSnapshot);
   const isHome = pathname === '/' || pathname === '/preview';
   const homeHref = isHome ? '#inicio' : '/';
   const destinations = [
@@ -96,6 +101,7 @@ export function PreviewMenu() {
             aria-haspopup="dialog"
             aria-controls="eg-menu-screen"
             aria-expanded={open}
+            disabled={!ready}
             onClick={openMenu}
           >
             <span className="eg-menu-icon" aria-hidden="true" />
