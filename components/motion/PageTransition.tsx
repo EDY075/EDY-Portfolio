@@ -111,16 +111,9 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     setCover(coverSrc && !reduce ? { src: coverSrc } : null);
     curtain.set({ clipPath: reduce ? cleared : awaitingEntry });
     if (!reduce) await curtain.start({ clipPath: covered, transition: { duration: .49, ease: editorialEase } });
-    // SmoothScrollProvider owns the final position. Disabling the router's
-    // competing restoration prevents destination pages from reopening at the
-    // previous page's footer, especially on mobile.
+    // O provedor ajusta a rolagem depois que a rota muda. A posição da página
+    // de origem precisa ficar disponível para o histórico do navegador.
     router.push(`${url.pathname}${url.search}${url.hash}`, { scroll: false });
-    if (!url.hash) {
-      // push() records the source history entry first; resetting immediately
-      // afterwards makes the new document start at zero without erasing the
-      // position restored by the browser when the user presses Back.
-      window.dispatchEvent(new Event('edy:scroll-to-top'));
-    }
     fallback.current = window.setTimeout(() => {
       try {
         sessionStorage.removeItem(NAVIGATION_SCROLL_INTENT_KEY);

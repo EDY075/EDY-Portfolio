@@ -18,15 +18,16 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
   useEffect(() => {
     const onPopState = () => {
-      restoringHistory.current = true;
+      restoringHistory.current = previousPath.current !== window.location.pathname;
       try {
         sessionStorage.removeItem(NAVIGATION_SCROLL_INTENT_KEY);
       } catch {
         // Ignore unavailable browser storage.
       }
     };
-    window.addEventListener('popstate', onPopState);
-    return () => window.removeEventListener('popstate', onPopState);
+    // Registra a volta antes que o roteador renderize a rota do histórico.
+    window.addEventListener('popstate', onPopState, true);
+    return () => window.removeEventListener('popstate', onPopState, true);
   }, []);
 
   useEffect(() => {
@@ -200,9 +201,17 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     // Back/forward navigation keeps its saved position. Explicit links always
     // honor the recorded destination, even if a late browser restoration fires.
-    if (restoringHistory.current && !intent) {
+    const { __vinext_scrollX: left, __vinext_scrollY: top } = window.history.state ?? {};
+    const savedPosition = changedPath && pathname === window.location.pathname && typeof top === 'number' && Number.isFinite(top);
+    if (savedPosition || (restoringHistory.current && !intent)) {
       restoringHistory.current = false;
       lenisRef.current?.resize();
+      if (savedPosition) {
+        // A rolagem suave pode interromper a restauração durante a transição.
+        lenisRef.current?.scrollTo(top, { immediate: true, force: true });
+        window.scrollTo({ top, left: typeof left === 'number' ? left : 0, behavior: 'instant' });
+        clearIntent();
+      }
       return;
     }
     restoringHistory.current = false;
