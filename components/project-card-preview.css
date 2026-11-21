@@ -22,24 +22,16 @@
   z-index: 1;
   inset-block-start: .65rem;
   inset-inline-end: .65rem;
-  display: inline-flex;
-  min-width: 44px;
-  min-height: 44px;
-  max-width: calc(100% - 1.3rem);
-  align-items: center;
-  justify-content: center;
-  gap: .3em;
-  padding: .42em .75em;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
   border: 1px solid #eeeee3a6;
   border-radius: .45rem;
   background: #1a1d15ef;
   color: var(--eg-paper, #eeeee3);
-  font: 800 .8rem/1.2 var(--eg-sans, sans-serif);
   cursor: pointer;
-}
-
-.project-card-preview-button svg {
-  flex: none;
 }
 
 .project-card-preview-button:focus-visible {

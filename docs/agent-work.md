@@ -264,3 +264,5 @@ As 15 prévias agora usam H.264 a 30 fps, mudo e 640×400, com arquivos de 127�
 O hover aguarda 120 ms. Quando o cursor chega ao card durante a rolagem, o carregamento começa assim que a rolagem termina, se ele continuar sobre o card. A troca e o encerramento liberam o vídeo ativo. A matriz anterior de desktop, notebook, Android, iPhone e iPad foi reexecutada. O perfil aproximado do Moto G8 também reproduziu a prévia solicitada e abriu o case com CPU e rede limitadas.
 
 Publicado no Worker edy-gomes-portfolio-v2, versão `bd6d43c5-cf45-417b-8be3-f0096bfe4cda` com 100% do tráfego. A matriz e os hashes dos 15 MP4 com `?v=2` passaram em produção. O Chrome mediu 30 quadros por segundo sem descarte na janela de cerca de dois segundos para EDY Energy, EDY CRM e Raquel Web.
+
+Os controles de prévia passam a exibir apenas ícones, com área de toque de 44×44 px e rótulos para leitores de tela. O build foi testado em Chrome para desktop, notebook e Android emulado, e em WebKit com perfis de iPhone e iPad. Validei também fonte a 200% em 320 px, reprodução, parada, foco por teclado e hover. Os testes foram emulados.

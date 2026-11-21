@@ -172,8 +172,7 @@ export function ProjectCard({ project, index = 0, sequence = false }: { project:
         aria-describedby={failed ? feedback : undefined}
         onClick={togglePreview}
       >
-        {mode ? <Square aria-hidden="true" size={14} /> : <Play aria-hidden="true" size={14} />}
-        {mode ? 'Parar prévia' : 'Prévia'}
+        {mode ? <Square aria-hidden="true" size={18} /> : <Play aria-hidden="true" size={18} />}
       </button>
       <output id={feedback} className="project-card-preview-status">
         {failed ? 'Prévia indisponível. Tente novamente.' : ''}
