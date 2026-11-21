@@ -1,16 +1,130 @@
+'use client';
+
+import { Play, Square } from 'lucide-react';
 import Link from 'next/link';
+import { useEffect, useId, useRef, useState, type PointerEvent } from 'react';
+import { flushSync } from 'react-dom';
 import type { Project } from '@/data/projects';
 import { PageReveal } from './PageReveal';
 import { ImageReveal } from './motion/ImageReveal';
 import { DeferredProjectVisual } from './DeferredProjectVisual';
+import { useProjectPreview } from './ProjectPreviewProvider';
+import './project-card-preview.css';
 
-export function ProjectCard({ project, index = 0, sequence = false }: { project: Project; index?: number; sequence?: boolean }) {
+const hoverPreviewQuery = '(any-hover: hover) and (any-pointer: fine) and (prefers-reduced-motion: no-preference)';
+const hoverDelay = 320;
+
+type CardProject = Pick<Project, 'slug' | 'title' | 'subtitle' | 'keywords' | 'image'>;
+
+export function ProjectCard({ project, index = 0, sequence = false }: { project: CardProject; index?: number; sequence?: boolean }) {
+  const preview = useProjectPreview();
+  const slug = project.slug;
+  const mode = preview?.active?.slug === slug ? preview.active.mode : undefined;
+  const stopPreview = preview?.stopPreview;
+  const art = useRef<HTMLDivElement>(null);
+  const player = useRef<HTMLVideoElement>(null);
+  const hoverTimer = useRef<number>(0);
+  const feedback = useId();
+  const [failed, setFailed] = useState(false);
+
+  function clearHover() {
+    window.clearTimeout(hoverTimer.current);
+  }
+
+  useEffect(() => () => window.clearTimeout(hoverTimer.current), []);
+
+  useEffect(() => {
+    const video = player.current;
+    const artwork = art.current;
+    if (!mode || !video || !artwork || !stopPreview) return;
+
+    const fail = () => {
+      if (player.current !== video) return;
+      setFailed(true);
+      stopPreview(slug);
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) stopPreview(slug);
+    });
+    observer.observe(artwork);
+
+    const hoverMedia = window.matchMedia(hoverPreviewQuery);
+    const stopIfMotionChanges = () => {
+      if (!hoverMedia.matches) stopPreview(slug, 'hover');
+    };
+    if (mode === 'hover') {
+      hoverMedia.addEventListener('change', stopIfMotionChanges);
+      void video.play().catch(fail);
+    }
+
+    return () => {
+      observer.disconnect();
+      hoverMedia.removeEventListener('change', stopIfMotionChanges);
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+    };
+  }, [mode, slug, stopPreview]);
+
+  function startHover(event: PointerEvent<HTMLDivElement>) {
+    if (!preview || event.pointerType !== 'mouse' || !window.matchMedia(hoverPreviewQuery).matches) return;
+    clearHover();
+    hoverTimer.current = window.setTimeout(() => {
+      if (document.documentElement.dataset.projectHover === 'locked' || !window.matchMedia(hoverPreviewQuery).matches) return;
+      setFailed(false);
+      preview.startPreview(slug, 'hover');
+    }, hoverDelay);
+  }
+
+  function stopHover() {
+    clearHover();
+    stopPreview?.(slug, 'hover');
+  }
+
+  function togglePreview() {
+    if (!preview) return;
+    clearHover();
+    if (mode) {
+      preview.stopPreview(slug);
+      return;
+    }
+    setFailed(false);
+    // O navegador precisa associar play() ao toque para liberar a reprodução.
+    flushSync(() => preview.startPreview(slug, 'manual'));
+    const video = player.current;
+    if (video) void video.play().catch(() => {
+      if (player.current !== video) return;
+      setFailed(true);
+      preview.stopPreview(slug);
+    });
+  }
+
   const visual = (
-    <div className={`project-art project-art-real project-art-${(index % 9) + 1}`}>
+    <div
+      ref={art}
+      className={`project-art project-art-real project-art-${(index % 9) + 1}`}
+    >
       <DeferredProjectVisual
         image={project.image}
         sizes="(max-width: 700px) 94vw, (max-width: 900px) 46vw, 31vw"
       />
+      {mode && (
+        <video
+          ref={player}
+          className="project-card-preview-video"
+          src={`/media/project-previews/${slug}.mp4`}
+          preload="none"
+          muted
+          playsInline
+          loop
+          aria-hidden="true"
+          onPlaying={event => { event.currentTarget.dataset.playing = 'true'; }}
+          onError={() => {
+            setFailed(true);
+            stopPreview?.(slug);
+          }}
+        />
+      )}
     </div>
   );
   const content = (
@@ -30,7 +144,26 @@ export function ProjectCard({ project, index = 0, sequence = false }: { project:
       </div>
     </Link>
   );
+  const card = preview ? (
+    <div className="project-card-preview" onPointerEnter={startHover} onPointerLeave={stopHover}>
+      {content}
+      <button
+        className="project-card-preview-button"
+        type="button"
+        disabled={!preview.ready}
+        aria-label={`${mode ? 'Parar prévia' : 'Prévia'} de ${project.title}`}
+        aria-describedby={failed ? feedback : undefined}
+        onClick={togglePreview}
+      >
+        {mode ? <Square aria-hidden="true" size={14} /> : <Play aria-hidden="true" size={14} />}
+        {mode ? 'Parar prévia' : 'Prévia'}
+      </button>
+      <output id={feedback} className="project-card-preview-status">
+        {failed ? 'Prévia indisponível. Tente novamente.' : ''}
+      </output>
+    </div>
+  ) : content;
   return sequence
-    ? <div className={`project-entry project-entry-sequence${index >= 6 ? ' project-entry-new' : ''}`}>{content}</div>
-    : <PageReveal className="project-entry" delay={(index % 2) * 0.08}>{content}</PageReveal>;
+    ? <div className={`project-entry project-entry-sequence${index >= 6 ? ' project-entry-new' : ''}`}>{card}</div>
+    : <PageReveal className="project-entry" delay={(index % 2) * 0.08}>{card}</PageReveal>;
 }

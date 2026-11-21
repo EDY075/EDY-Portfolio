@@ -238,3 +238,14 @@ A matriz do build final cobriu 22 rotas nos perfis móveis em Chrome, Edge, Fire
 O perfil aproximado do Moto G8 cobriu 22 rotas em 360×720 CSS px, DPR 2, e quatro rotas em 360×665 px com CPU quatro vezes mais lenta, download limitado a 1,6 Mbit/s e latência de 150 ms. Conferi também 320 px com fonte a 200%, paisagem em 780×360, iPhone em 390×844, os 15 destinos do carrossel e a órbita animada em desktop. Não houve teste com o aparelho da pessoa que relatou o problema.
 
 As correções foram publicadas no Worker edy-gomes-portfolio-v2, versão `86a5327c-9796-4640-8786-37b779fbc486`. A rodada pública confirmou as 22 rotas e os fluxos principais nos quatro motores/perfis já citados. Ao voltar de um case para a listagem, Chrome e WebKit recuperaram a posição anterior em ambos os modos de movimento. O histórico usa a posição registrada para a rota que o navegador está reabrindo.
+
+## Prévias animadas dos projetos · 21/11/2026
+
+- Interface: controles de prévia e reprodução sob demanda nos cards de Projetos.
+- Mídia: compilação de cenas públicas de cada case. Coordenação verifica a matriz, integra e publica.
+
+Os 15 cards da listagem em Projetos ganharam loops H.264 mudos, de 640×400 px e cerca de 6 segundos, com 65 a 233 kB por arquivo. O EDY Energy usa uma captura da troca de sabores. O Raquel Web usa trechos da demonstração com dados fictícios. Os outros 13 vídeos alternam imagens públicas dos cases.
+
+A capa aparece antes da interação. Passar o mouse no card inicia a prévia quando a preferência de movimento permite. O botão Prévia oferece início e parada por toque ou teclado. Uma única prévia fica ativa e o link do case continua independente. Sair da área visível, trocar de card, ocultar a página ou enfrentar uma falha libera o vídeo conforme o modo de reprodução.
+
+O build integrado foi testado em Chrome para desktop (1440×900), notebook (1280×720) e nos perfis Android 360×720 e 320×568 com fonte-base em 200%. O WebKit foi testado em perfis iPhone 390×844 e iPad 768×1024. A validação cobriu os 15 vídeos no perfil Android, hover sobre o título, teclado, movimento reduzido, troca e parada, erros de mídia e navegação até o case. Com CPU 4× mais lenta, 150 ms de latência e download de 1,6 Mbit/s, o perfil aproximado do Moto G8 reproduziu o EDY Energy, baixou só o vídeo escolhido e abriu o case. O teste foi emulado.
