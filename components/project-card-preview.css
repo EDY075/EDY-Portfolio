@@ -1,7 +1,3 @@
-.project-card-preview {
-  position: relative;
-}
-
 .project-card-preview-video {
   position: absolute;
   inset: 0;
@@ -15,48 +11,4 @@
 
 .project-card-preview-video[data-playing='true'] {
   opacity: 1;
-}
-
-.project-card-preview-button {
-  position: absolute;
-  z-index: 1;
-  inset-block-start: .65rem;
-  inset-inline-end: .65rem;
-  display: grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  padding: 0;
-  border: 1px solid #eeeee3a6;
-  border-radius: .45rem;
-  background: #1a1d15ef;
-  color: var(--eg-paper, #eeeee3);
-  cursor: pointer;
-}
-
-.project-card-preview-button:focus-visible {
-  outline: 2px solid var(--eg-accent, #cafe00);
-  outline-offset: 3px;
-}
-
-@media (hover: hover) {
-  .project-card-preview-button:enabled:hover {
-    border-color: var(--eg-accent, #cafe00);
-    background: var(--eg-accent, #cafe00);
-    color: var(--eg-ink, #25291d);
-  }
-}
-
-.project-card-preview-status:not(:empty) {
-  position: absolute;
-  z-index: 1;
-  inset-block-start: 3.8rem;
-  inset-inline-end: .65rem;
-  max-width: calc(100% - 1.3rem);
-  padding: .4em .6em;
-  border-radius: .35rem;
-  background: #1a1d15;
-  color: var(--eg-paper, #eeeee3);
-  font: 700 .75rem/1.25 var(--eg-sans, sans-serif);
-  pointer-events: none;
 }

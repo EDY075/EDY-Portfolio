@@ -266,3 +266,14 @@ O hover aguarda 120 ms. Quando o cursor chega ao card durante a rolagem, o carre
 Publicado no Worker edy-gomes-portfolio-v2, versão `bd6d43c5-cf45-417b-8be3-f0096bfe4cda` com 100% do tráfego. A matriz e os hashes dos 15 MP4 com `?v=2` passaram em produção. O Chrome mediu 30 quadros por segundo sem descarte na janela de cerca de dois segundos para EDY Energy, EDY CRM e Raquel Web.
 
 Os controles de prévia passam a exibir apenas ícones, com área de toque de 44×44 px e rótulos para leitores de tela. O build foi testado em Chrome para desktop, notebook e Android emulado, e em WebKit com perfis de iPhone e iPad. Validei também fonte a 200% em 320 px, reprodução, parada, foco por teclado e hover. Os testes foram emulados.
+
+## Reprodução automática nas capas · 21/11/2026
+
+- Implementação: remover controles e ajustar acionamento automático por dispositivo.
+- Coordenação: auditar desktop, toque, movimento reduzido e publicação.
+
+Os 15 cards passaram a reproduzir suas capas animadas sem controles. O hover inicia a reprodução no computador. Em telas de toque, um card próximo ao centro é selecionado após a rolagem parar, e a animação termina sozinha. O modo de movimento reduzido mantém a capa estática.
+
+Verificação local em Chrome e em perfis emulados de Android, iPhone e iPad. No perfil aproximado do Moto G8 com CPU 4× mais lenta e rede de 1,6 Mbit/s, a passagem rápida por três cards carregou apenas o vídeo do card selecionado. Build, lint, tipos e simulação do deploy passaram.
+
+Publicado no Worker edy-gomes-portfolio-v2, versão `bc436748-dc83-4e92-8c47-edac99bab607` com 100% do tráfego. A mesma matriz e a simulação de conexão lenta passaram no endereço público.
