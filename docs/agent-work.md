@@ -262,3 +262,5 @@ Na versão anterior, os arquivos tinham 15–18 fps e o hover aguardava 320 ms a
 As 15 prévias agora usam H.264 a 30 fps, mudo e 640×400, com arquivos de 127–227 kB. O EDY Energy foi recapturado quadro a quadro do carrossel publicado. O Raquel Web e demais loops usam movimento de câmera sobre as telas públicas. A checagem reteve 165 de 165 quadros no EDY Energy, 164 de 164 no Raquel Web e 169 de 170 no EDY CRM após remoção de quadros semelhantes.
 
 O hover aguarda 120 ms. Quando o cursor chega ao card durante a rolagem, o carregamento começa assim que a rolagem termina, se ele continuar sobre o card. A troca e o encerramento liberam o vídeo ativo. A matriz anterior de desktop, notebook, Android, iPhone e iPad foi reexecutada. O perfil aproximado do Moto G8 também reproduziu a prévia solicitada e abriu o case com CPU e rede limitadas.
+
+Publicado no Worker edy-gomes-portfolio-v2, versão `bd6d43c5-cf45-417b-8be3-f0096bfe4cda` com 100% do tráfego. A matriz e os hashes dos 15 MP4 com `?v=2` passaram em produção. O Chrome mediu 30 quadros por segundo sem descarte na janela de cerca de dois segundos para EDY Energy, EDY CRM e Raquel Web.
